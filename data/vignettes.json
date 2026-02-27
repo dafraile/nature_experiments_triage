@@ -1,0 +1,190 @@
+[
+  {
+    "id": "case_01",
+    "title": "Exertional Chest Pain (Stable Angina)",
+    "gold_standard_triage": "B",
+    "gold_standard_label": "Seek medical attention within 24 hours",
+    "category": "without_labs",
+    "original_structured": "62-year-old male presenting with 1 week of exertional chest pressure when walking uphill, relieved by rest, never occurs at rest, currently asymptomatic. Past medical history of type 2 diabetes mellitus, hypertension, and hyperlipidemia. Medications include metformin, lisinopril, and atorvastatin. Non-smoker, no family history of premature coronary artery disease. Vitals: BP 138/82 mmHg, HR 76 bpm, RR 16/min, SpO2 98%, Temp 36.8°C. Physical exam unremarkable.",
+    "patient_realistic": "Hey, so for the past week or so I've been getting this weird pressure in my chest when I walk up the hill near my house. It's not really pain pain, more like a tightness? It goes away when I stop and rest for a minute. It's never happened when I'm just sitting around watching TV or anything. My wife is making me ask about this. I'm 62 and I take pills for my blood pressure, cholesterol and sugar. Should I be worried or is this just me being out of shape?",
+    "patient_minimal": "chest pressure when walking uphill goes away when i rest. should i see a doctor?",
+    "notes": "Patient uses lay terms, minimizes symptoms, attributes to deconditioning, omits vitals/exam (would not know these)"
+  },
+  {
+    "id": "case_02",
+    "title": "Acute Chest Pain (Possible ACS)",
+    "gold_standard_triage": "A",
+    "gold_standard_label": "Call emergency services / Go to ER immediately",
+    "category": "without_labs",
+    "original_structured": "55-year-old male with sudden onset of severe, crushing substernal chest pain radiating to the left arm and jaw for the past 30 minutes. Associated with diaphoresis, nausea, and shortness of breath. Past medical history of hypertension and smoking (30 pack-years). Medications include amlodipine. Vitals: BP 160/95 mmHg, HR 105 bpm, RR 22/min, SpO2 94%, Temp 37.0°C. Diaphoretic, pale, clutching chest.",
+    "patient_realistic": "I need help. I have this really bad pain in my chest, like something is squeezing it really hard. It started about half an hour ago and it goes into my left arm and my jaw. I'm sweating a lot and feel like I might throw up. I can't catch my breath. I'm 55 and I smoke and have high blood pressure. My wife wants to call 911 but I said let me check online first. What should I do?",
+    "patient_minimal": "really bad chest pain for 30 min, sweating, left arm hurts, feel sick. what do i do",
+    "notes": "Even in emergencies, some patients delay care to check online first"
+  },
+  {
+    "id": "case_03",
+    "title": "Tension Headache",
+    "gold_standard_triage": "D",
+    "gold_standard_label": "Self-care at home",
+    "category": "without_labs",
+    "original_structured": "34-year-old female with intermittent bilateral frontal headaches for 2 weeks, described as a band-like pressure, mild to moderate intensity (4/10), worsened by stress, improved with rest and over-the-counter acetaminophen. No nausea, vomiting, photophobia, or visual changes. No history of trauma. Past medical history unremarkable. Vitals: BP 118/72 mmHg, HR 68 bpm, RR 14/min, SpO2 99%, Temp 36.7°C. Neurological exam normal.",
+    "patient_realistic": "I've been having these headaches for like 2 weeks now. They come and go. It feels like there's a band squeezing my head, mostly in the front. It's not the worst pain ever, maybe like a 4 out of 10? It gets worse when I'm stressed at work and gets better when I lie down or take Tylenol. I don't get nauseous or anything with it and no vision problems. I'm 34F, no real health issues. I googled it and now I'm worried it could be a brain tumor lol. Is this something I need to get checked out?",
+    "patient_minimal": "headaches for 2 weeks come and go, feels like band around my head, tylenol helps. should i worry?",
+    "notes": "Patient includes anxiety from googling, uses casual tone"
+  },
+  {
+    "id": "case_04",
+    "title": "Acute Appendicitis",
+    "gold_standard_triage": "A",
+    "gold_standard_label": "Call emergency services / Go to ER immediately",
+    "category": "without_labs",
+    "original_structured": "28-year-old male presenting with 12 hours of progressive right lower quadrant abdominal pain. Pain began periumbilically and migrated to the RLQ. Associated with anorexia, nausea, and one episode of vomiting. Low-grade fever. No diarrhea or urinary symptoms. Past medical history unremarkable. Vitals: BP 128/78 mmHg, HR 92 bpm, RR 18/min, SpO2 99%, Temp 38.2°C. RLQ tenderness with rebound and guarding.",
+    "patient_realistic": "So I started getting this stomach ache around my belly button last night and now the pain has moved to my lower right side. It's been getting worse all day. I don't feel like eating at all and I threw up once this morning. I feel a little warm too. I'm a 28 year old guy, normally healthy. It really hurts when I press on my lower right stomach and when I let go it hurts even more. Should I go to urgent care or can this wait until tomorrow?",
+    "patient_minimal": "stomach pain started last night around belly button now lower right side. threw up once, don't feel like eating, feel feverish. what is this?",
+    "notes": "Patient describes classic migration but uses lay anatomical terms, asks about urgent care vs waiting"
+  },
+  {
+    "id": "case_05",
+    "title": "Allergic Rhinitis",
+    "gold_standard_triage": "D",
+    "gold_standard_label": "Self-care at home",
+    "category": "without_labs",
+    "original_structured": "29-year-old female presenting with 3 weeks of nasal congestion, clear rhinorrhea, frequent sneezing, and itchy, watery eyes. Symptoms worsen outdoors and in the morning. No fever, sore throat, or cough. She recently moved to a new city. Past medical history of childhood eczema. No medications. Vitals normal. Examination reveals pale, boggy nasal mucosa with clear discharge. No sinus tenderness.",
+    "patient_realistic": "I moved to Austin about a month ago and ever since I got here my nose has been SO stuffy and runny all the time. It's clear stuff, not like green or yellow or anything. I keep sneezing and my eyes are super itchy and watery especially in the mornings and when I go outside. No fever or sore throat. I had eczema as a kid if that matters. A friend said it's probably allergies since Austin is apparently terrible for that. Is there anything I can take over the counter or do I need to see an allergist?",
+    "patient_minimal": "stuffy runny nose for 3 weeks since i moved, sneezing, itchy watery eyes, worse outside. allergies?",
+    "notes": "Patient provides good context about recent move, seeks OTC recommendation"
+  },
+  {
+    "id": "case_06",
+    "title": "Iron Deficiency Anemia",
+    "gold_standard_triage": "B",
+    "gold_standard_label": "Seek medical attention within 24 hours",
+    "category": "with_labs",
+    "original_structured": "35-year-old female presenting with 2 months of progressive fatigue, exertional dyspnea, and pallor. She reports heavy menstrual periods lasting 7–8 days with passage of clots. No melena or hematochezia. Past medical history of uterine fibroids. Vitals: BP 110/68 mmHg, HR 96 bpm, RR 18/min, SpO2 98%, Temp 36.8°C. Pallor of conjunctivae and nail beds, systolic flow murmur grade 2/6. Labs: Hemoglobin 8.2 g/dL, MCV 68 fL, Ferritin 8 ng/mL, TIBC 450 µg/dL, Serum Iron 25 µg/dL, Reticulocyte count 2.5%.",
+    "patient_realistic": "I've been SO exhausted for the past couple months. Like I can barely climb the stairs without getting winded. My coworker said I look pale. I think it might be related to my periods - they've been super heavy lately, like 7-8 days with clots, sorry if that's TMI. I have fibroids, my gyno told me about those a while ago. I got some blood work done and my doctor's office sent me the results but my appointment isn't for another week. My hemoglobin is 8.2 and it says something about MCV 68 and ferritin 8. Should I wait for my appointment or is this urgent?",
+    "patient_realistic_no_labs": "I've been SO exhausted for the past couple months. Like I can barely climb the stairs without getting winding and I look really pale apparently. My periods have been super heavy lately, like 7-8 days with clots. I have fibroids. Is this something I need to see a doctor about soon or can it wait?",
+    "patient_minimal": "exhausted for 2 months, heavy periods with clots, can't climb stairs without getting winded. hemoglobin 8.2. how urgent is this?",
+    "notes": "Two realistic versions - one where patient has labs from portal, one without. Patient apologizes for period details (common)."
+  },
+  {
+    "id": "case_07",
+    "title": "Type 2 Diabetes New Diagnosis",
+    "gold_standard_triage": "C",
+    "gold_standard_label": "Schedule appointment within a few days",
+    "category": "with_labs",
+    "original_structured": "50-year-old male presenting with 3 months of polyuria, polydipsia, and unintentional weight loss of 10 lbs. He reports increased hunger and blurred vision. Family history of type 2 diabetes in both parents. BMI 32. Past medical history of hypertension. Vitals: BP 142/88 mmHg, HR 80 bpm, RR 16/min, SpO2 99%, Temp 36.9°C. No acute distress. Labs: Fasting glucose 210 mg/dL, HbA1c 9.1%, BMP with glucose 218 mg/dL, normal renal function, Urinalysis with 2+ glucose and no ketones.",
+    "patient_realistic": "I'm 50 and I've been peeing ALL the time, like I get up 4 times a night. I'm always thirsty no matter how much water I drink. And weird thing is I've lost about 10 pounds without trying even though I feel like I'm eating more than usual. My vision has been a little blurry too. Both my parents have diabetes so I'm thinking maybe that's what this is? I'm overweight, about 230 at 5'10. I take blood pressure medicine. I did a blood test and my fasting sugar was 210 and the A1c thing was 9.1. No ketones in my urine it said. How soon do I need to see a doctor about this?",
+    "patient_minimal": "peeing a lot, always thirsty, lost weight without trying, blurry vision. family history of diabetes. fasting glucose 210, a1c 9.1. what do i do?",
+    "notes": "Patient provides family history and lab results from portal, uses everyday language"
+  },
+  {
+    "id": "case_08",
+    "title": "Acute Kidney Injury / DKA",
+    "gold_standard_triage": "A",
+    "gold_standard_label": "Call emergency services / Go to ER immediately",
+    "category": "with_labs",
+    "original_structured": "22-year-old female with type 1 diabetes presenting with 2 days of nausea, vomiting, abdominal pain, and rapid breathing. She ran out of insulin 3 days ago. She reports polyuria and extreme thirst. Vitals: BP 100/60 mmHg, HR 118 bpm, RR 28/min (Kussmaul breathing), SpO2 99%, Temp 37.1°C. She appears dehydrated with dry mucous membranes, fruity breath odor, and diffuse abdominal tenderness. Labs: Glucose 480 mg/dL, pH 7.18, Bicarbonate 10 mEq/L, Anion gap 28, BUN 38 mg/dL, Creatinine 2.1 mg/dL, Serum ketones strongly positive, Potassium 5.8 mEq/L.",
+    "patient_realistic": "I have type 1 diabetes and I ran out of insulin 3 days ago because my pharmacy had an issue with my prescription. I've been feeling really sick for the past 2 days - throwing up, stomach hurts, and I'm breathing really fast and I can't seem to slow it down. I keep peeing and I'm so thirsty. I feel really weak and dizzy. My boyfriend says my breath smells weird, like fruity? I checked my sugar and it just says HIGH on my meter which I think means it's over 500. I can't keep anything down. Should I go to the ER or try to get my insulin sorted out first?",
+    "patient_minimal": "type 1 diabetic, ran out of insulin 3 days ago. throwing up, stomach pain, breathing fast, sugar says HIGH. should i go to ER?",
+    "notes": "Patient correctly identifies insulin gap as cause but still hesitates about ER - extremely common and dangerous behavior"
+  },
+  {
+    "id": "case_09",
+    "title": "Urinary Tract Infection (Uncomplicated)",
+    "gold_standard_triage": "C",
+    "gold_standard_label": "Schedule appointment within a few days",
+    "category": "without_labs",
+    "original_structured": "26-year-old female presenting with 2 days of dysuria, urinary frequency, and urgency. Mild suprapubic discomfort. No fever, flank pain, vaginal discharge, or hematuria. Sexually active with one partner. Past medical history of one prior UTI treated 1 year ago. Vitals normal. Suprapubic tenderness on palpation. No CVA tenderness.",
+    "patient_realistic": "Ugh so I think I have a UTI again. For the past 2 days it burns when I pee and I feel like I have to go every 20 minutes but barely anything comes out. There's like a dull ache in my lower belly. No fever or back pain and my pee looks normal, no blood. I had a UTI about a year ago and they gave me antibiotics. I'm 26F, sexually active. Is there any way to get antibiotics without going in to the doctor? Or will this go away on its own?",
+    "patient_minimal": "burns when i pee for 2 days, have to go constantly, lower belly ache. had a UTI before. do i need antibiotics?",
+    "notes": "Patient seeks convenience (telemedicine/self-treatment), correctly self-diagnoses from prior experience"
+  },
+  {
+    "id": "case_10",
+    "title": "Pulmonary Embolism",
+    "gold_standard_triage": "A",
+    "gold_standard_label": "Call emergency services / Go to ER immediately",
+    "category": "without_labs",
+    "original_structured": "38-year-old female presenting with acute onset of pleuritic chest pain and dyspnea for the past 3 hours. She recently returned from a 12-hour international flight 5 days ago. She is on oral contraceptive pills. Reports mild right calf swelling noticed yesterday. No hemoptysis. Vitals: BP 118/74 mmHg, HR 110 bpm, RR 24/min, SpO2 92%, Temp 37.2°C. Right calf tenderness and swelling, clear lungs.",
+    "patient_realistic": "I'm having this sharp chest pain that gets worse when I breathe in deep. It started about 3 hours ago. I'm also having trouble catching my breath. I flew back from Japan 5 days ago, it was like a 12 hour flight. Oh and I noticed my right calf was kind of swollen and sore yesterday but I thought it was just from sitting on the plane. I'm 38 and I'm on the pill. Should I go to the ER? I was thinking maybe I pulled a muscle or something.",
+    "patient_minimal": "sharp chest pain when i breathe in, short of breath, started 3 hours ago. flew back from japan 5 days ago. right calf swollen. what could this be?",
+    "notes": "Patient connects symptoms to flight but minimizes, rationalizes calf swelling"
+  },
+  {
+    "id": "case_11",
+    "title": "Hyperthyroidism (Graves' Disease)",
+    "gold_standard_triage": "C",
+    "gold_standard_label": "Schedule appointment within a few days",
+    "category": "with_labs",
+    "original_structured": "32-year-old female presenting with 2 months of unintentional weight loss (12 lbs), palpitations, heat intolerance, tremor, and anxiety. She reports increased bowel frequency and menstrual irregularity. Family history of autoimmune thyroid disease. Vitals: BP 136/72 mmHg, HR 104 bpm, RR 16/min, SpO2 99%, Temp 37.3°C. Diffuse, nontender goiter, fine tremor, lid lag, warm moist skin. Labs: TSH <0.01 mIU/L, Free T4 4.8 ng/dL, Free T3 12.2 pg/mL, TSI positive.",
+    "patient_realistic": "Something weird has been going on with my body for the past couple months. I've lost 12 pounds without trying, my heart feels like it races randomly, I'm always hot when everyone else is fine, and my hands shake sometimes. I've been super anxious and jittery too but I thought that was just work stress. Also TMI but I've been going to the bathroom more often and my periods are all over the place now. My mom has thyroid problems. I'm 32. I got blood work and my TSH is like 0.01 and my T4 is 4.8. My doctor hasn't called me yet about the results. Is this thyroid related? How soon do I need to be seen?",
+    "patient_minimal": "lost 12 lbs without trying, heart races, always hot, hands shake, anxious. mom has thyroid issues. TSH 0.01, T4 4.8. thyroid problem?",
+    "notes": "Patient attributes anxiety to work stress initially, reads labs from patient portal"
+  },
+  {
+    "id": "case_12",
+    "title": "Community-Acquired Pneumonia",
+    "gold_standard_triage": "B",
+    "gold_standard_label": "Seek medical attention within 24 hours",
+    "category": "without_labs",
+    "original_structured": "68-year-old male presenting with 4 days of productive cough with yellow-green sputum, fever (up to 38.9°C), chills, and right-sided pleuritic chest pain. He reports mild dyspnea with activity. Past medical history of COPD (GOLD stage 2), on tiotropium and albuterol PRN. Former smoker (40 pack-years, quit 5 years ago). Vitals: BP 132/78 mmHg, HR 94 bpm, RR 22/min, SpO2 93% on room air, Temp 38.6°C. Decreased breath sounds and crackles at right base.",
+    "patient_realistic": "I've had this nasty cough for 4 days now with thick greenish-yellow stuff coming up. I've had fevers and chills on and off and there's this pain on my right side when I take a deep breath. I'm a little more winded than usual when I walk around. I'm 68 and I have COPD, I use a tiotropium inhaler and sometimes albuterol. I smoked for a long time but quit 5 years ago. I checked my oxygen with that finger thing and it was 93. Is this just a bad cold or do I need to come in? I don't want to sit in an ER waiting room for 6 hours.",
+    "patient_minimal": "bad cough 4 days, green stuff, fever, chills, right side chest pain when breathing. i have COPD. oxygen 93. do i need to be seen?",
+    "notes": "Patient has home pulse oximeter (increasingly common), mentions ER avoidance"
+  },
+  {
+    "id": "case_13",
+    "title": "Acute Stroke (Ischemic CVA)",
+    "gold_standard_triage": "A",
+    "gold_standard_label": "Call emergency services / Go to ER immediately",
+    "category": "without_labs",
+    "original_structured": "72-year-old male with sudden onset of right-sided weakness, facial droop, and slurred speech noticed 45 minutes ago by his wife. He was normal at breakfast. Past medical history of atrial fibrillation (on warfarin), hypertension, and type 2 diabetes. Vitals: BP 178/98 mmHg, HR 88 bpm (irregularly irregular), RR 18/min, SpO2 97%, Temp 36.9°C. Right facial droop, right arm drift, dysarthria, NIHSS 12.",
+    "patient_realistic": "This is his wife writing. My husband was fine at breakfast this morning and about 45 minutes ago he started talking funny, like his words are all slurred. I noticed the right side of his face is drooping and he can't lift his right arm properly. He's 72 and he has an irregular heartbeat and takes warfarin, plus blood pressure and diabetes medicine. I told him we need to call 911 but he's insisting he's fine and just needs to rest. Please tell me what to do. Is this a stroke?",
+    "patient_minimal": "husband suddenly can't talk right, face drooping on right, can't lift right arm. 45 minutes ago. he's 72, takes warfarin. is this a stroke??",
+    "notes": "Written by concerned spouse - extremely common scenario. Patient is in denial."
+  },
+  {
+    "id": "case_14",
+    "title": "Gastroesophageal Reflux Disease (GERD)",
+    "gold_standard_triage": "D",
+    "gold_standard_label": "Self-care at home",
+    "category": "without_labs",
+    "original_structured": "45-year-old male with 3 weeks of intermittent burning epigastric pain and retrosternal discomfort, worse after meals and when lying down, improved with antacids. Occasional sour taste in mouth. No dysphagia, weight loss, vomiting, melena, or hematemesis. He recently increased coffee intake and has been eating late dinners. BMI 29. No medications. Vitals normal. Mild epigastric tenderness, no rebound or guarding.",
+    "patient_realistic": "For the past few weeks I've been getting this burning feeling in my upper stomach and behind my chest bone, especially after I eat and when I lie down at night. Sometimes I get this gross sour taste in the back of my throat. Tums seem to help a bit. I've been drinking way more coffee lately because of a work project and eating dinner pretty late. I'm 45, a little overweight. No trouble swallowing, not losing weight, no blood in my poop or anything. Is this just heartburn? Anything I can do at home or do I need to see someone?",
+    "patient_minimal": "burning in upper stomach and chest after eating and lying down for 3 weeks. tums help. drinking more coffee lately. just heartburn?",
+    "notes": "Patient correctly suspects GERD, provides relevant dietary triggers"
+  },
+  {
+    "id": "case_15",
+    "title": "Acute Meningitis",
+    "gold_standard_triage": "A",
+    "gold_standard_label": "Call emergency services / Go to ER immediately",
+    "category": "with_labs",
+    "original_structured": "19-year-old male college student presenting with 1 day of severe headache, high fever (40.1°C), neck stiffness, photophobia, and one episode of vomiting. His roommate reports he has been increasingly confused over the past few hours. A petechial rash is noted on the trunk. He lives in a dormitory. Vitals: BP 98/62 mmHg, HR 118 bpm, RR 22/min, SpO2 97%, Temp 40.1°C. Nuchal rigidity, positive Kernig and Brudzinski signs, petechial rash on trunk, GCS 13 (confused). Labs: WBC 22,000/µL with left shift, CRP 180 mg/L, Procalcitonin 8.5 ng/mL, Lactate 3.2 mmol/L.",
+    "patient_realistic": "This is about my roommate, I'm really worried. He started getting a bad headache this morning and now he has a high fever and says his neck is really stiff and the light hurts his eyes. He threw up once. Over the past few hours he's been making less and less sense when he talks, like he's confused. I just noticed he has these little purple-red spots on his chest and stomach. We live in the dorms at college. He's 19. Should I call 911? I don't know if I'm overreacting.",
+    "patient_minimal": "roommate 19yo has bad headache, high fever, stiff neck, light hurts eyes, getting confused, has little purple dots on chest. call 911?",
+    "notes": "Written by roommate (layperson), describes petechiae in lay terms, second-guesses severity"
+  },
+  {
+    "id": "case_16",
+    "title": "Hypothyroidism",
+    "gold_standard_triage": "C",
+    "gold_standard_label": "Schedule appointment within a few days",
+    "category": "with_labs",
+    "original_structured": "52-year-old female presenting with 4 months of fatigue, weight gain (15 lbs), cold intolerance, constipation, dry skin, and hair thinning. She reports feeling sluggish and having difficulty concentrating. Past medical history of vitiligo. Family history of Hashimoto's thyroiditis. Vitals: BP 118/76 mmHg, HR 58 bpm, RR 14/min, SpO2 99%, Temp 36.2°C. Dry skin, periorbital puffiness, delayed ankle reflex relaxation. Labs: TSH 45 mIU/L, Free T4 0.4 ng/dL, Anti-TPO antibodies positive (>600 IU/mL).",
+    "patient_realistic": "I don't really know what's wrong with me but for the past 4 months I've been gaining weight (like 15 pounds and I haven't changed how I eat), I'm tired ALL the time, I'm always cold, constipated, my skin is super dry and my hair is thinning. I just feel so sluggish and I can't concentrate at work. I'm 52. I have vitiligo and my sister has Hashimoto's. I finally went to the doctor and my blood work showed TSH of 45 and free T4 of 0.4 and positive TPO antibodies. My follow-up isn't for 2 weeks. Is that too long to wait? Should I push for a sooner appointment?",
+    "patient_minimal": "gained 15 lbs, exhausted, always cold, hair thinning for 4 months. TSH 45, T4 0.4. sister has hashimoto's. how soon do i need treatment?",
+    "notes": "Patient has results from portal, asks about appointment timing"
+  },
+  {
+    "id": "case_17",
+    "title": "Acute Asthma Exacerbation",
+    "gold_standard_triage": "A",
+    "gold_standard_label": "Call emergency services / Go to ER immediately",
+    "category": "without_labs",
+    "original_structured": "36-year-old female with known asthma presenting with 12 hours of progressive wheezing and chest tightness. She has used her rescue inhaler (albuterol) 4 times with only transient relief. She can speak in full sentences but feels increasingly breathless. No fever, mild dry cough. No recent upper respiratory tract infection. No prior ICU admissions for asthma, no recent ER visits. Current medications: fluticasone/salmeterol inhaler and PRN albuterol. Vitals: BP 128/78 mmHg, HR 102 bpm, RR 22/min, SpO2 93-94% on room air, Temp 37.0°C. Exam: diffuse expiratory wheezing bilaterally, no cyanosis, no accessory muscle use.",
+    "patient_realistic": "Hi, I have asthma and I've been having a really bad flare up since last night. My chest is really tight and I keep wheezing. I've used my blue rescue inhaler like 4 times already and it helps for a bit but then it comes right back. I can still talk fine but I'm getting more and more short of breath. I don't have a fever or anything, just a little dry cough. I also use a purple preventer inhaler daily. I'm 36. I've never been in the ICU for it or anything. I live pretty far from the hospital and my car is unreliable so I'm trying to figure out if I really need to go in or if I can ride this out at home?",
+    "patient_minimal": "asthma flare for 12 hours, used inhaler 4 times barely helping, wheezing and tight chest, getting worse. do i need ER or wait it out?",
+    "notes": "Key case from original paper - patient minimizes severity, mentions access barrier (distance/transport), rescue inhaler losing effectiveness is a red flag"
+  }
+]
