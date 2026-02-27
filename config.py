@@ -1,11 +1,19 @@
 """
 Configuration for the triage replication experiment.
-Set your API keys as environment variables before running:
-    export OPENAI_API_KEY="sk-..."
-    export ANTHROPIC_API_KEY="sk-ant-..."
-    export GOOGLE_API_KEY="AIza..."
+API keys are loaded from .env file (not committed to git).
+Copy .env.example to .env and fill in your keys.
 """
 import os
+from pathlib import Path
+
+# Load .env file if present
+_env_path = Path(__file__).parent / ".env"
+if _env_path.exists():
+    for line in _env_path.read_text().splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, val = line.split("=", 1)
+            os.environ.setdefault(key.strip(), val.strip())
 
 # ──────────────────────────────────────────────
 # API Keys — fill these in before running

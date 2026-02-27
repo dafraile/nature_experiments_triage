@@ -2,6 +2,12 @@
 .env
 *.key
 
+# Manuscript drafts (not for public repo)
+*.docx
+
+# Scoring sheets (contain regenerated API responses)
+clinician_scoring_sheet.xlsx
+
 # Python
 __pycache__/
 *.pyc
