@@ -6,12 +6,14 @@ This repository accompanies our Matters Arising response to Ramaswamy et al. (*N
 
 ## Key Findings
 
-Over **1,074 trials** across 5 frontier LLMs (GPT-5.2, Claude Sonnet 4.6, Claude Opus 4.6, Gemini 3 Flash, Gemini 3.1 Pro), we find:
+Across the full **1,275-cell main experiment matrix** (currently **1,252 scored**; **23 unresolved Gemini 3.1 Pro rows** remain), we find:
 
-- **Prompt format significantly affects triage accuracy** (χ² = 9.64, p = 0.008)
-- **DKA (diabetic ketoacidosis)**: 100% correct emergency triage (60/60 trials) across all models and all formats — the original study's "base your answer only" instruction, not model incapability, likely explains their reported under-triage
-- **Asthma exacerbation**: Minimal patient format ("asthma flare 12 hours, inhaler barely helping") achieves 100% correct triage (20/20), while the structured clinical format achieves only 50% (10/20)
+- **Prompt format significantly affects triage accuracy** in the reconciled main dataset (χ² = 6.93, p = 0.0312)
+- **DKA (diabetic ketoacidosis)**: 100% correct emergency triage in every scored trial so far (74/74)
+- **Asthma exacerbation**: The pattern is mixed, not uniformly "fixed" by naturalistic phrasing. The minimal patient prompt reaches 100% (25/25), the realistic patient prompt reaches 48% (12/25), and the structured clinical format reaches 40% (10/25)
 - **Confidence scores** vary by 15+ percentage points for identical clinical content in different formats, confirming these are generated text artefacts, not calibrated probabilities
+
+The unresolved main rows are now entirely Gemini 3.1 Pro API failures.
 
 ## Motivation
 
@@ -88,7 +90,8 @@ python run_experiment.py --runs 1 --tag quick_test
 ### 4. Analyze results
 
 ```bash
-python analyze_results.py results/results_*.csv
+python reconcile_results.py --write
+python analyze_results.py results/main_experiment_reconciled.csv
 ```
 
 This produces accuracy tables, per-case breakdowns, statistical tests (chi-squared, McNemar's, Cohen's kappa), and publication-quality figures.

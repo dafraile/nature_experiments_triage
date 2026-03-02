@@ -11,7 +11,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from config import (
     OPENAI_API_KEY, ANTHROPIC_API_KEY, GOOGLE_API_KEY,
-    MODELS, MAX_TOKENS, RESULTS_DIR,
+    MODELS, MAX_TOKENS, RESULTS_DIR, TIMEOUT_SECONDS,
+)
+from llm_utils import (
+    extract_google_text,
+    extract_triage_category,
+    google_visible_output_tokens,
+    infer_free_text_triage,
 )
 
 # Only the 3 conditions that matter for the causal claim
@@ -82,15 +88,17 @@ def call_google(model_id, system_prompt, user_message, model_config=None):
     from google.genai import types
     client = genai.Client(api_key=GOOGLE_API_KEY)
     thinking_level = (model_config or {}).get("thinking_level", None)
-    config_kwargs = dict(temperature=0.7, max_output_tokens=MAX_TOKENS, system_instruction=system_prompt)
+    config_kwargs = dict(
+        temperature=0.7,
+        max_output_tokens=google_visible_output_tokens(model_id, MAX_TOKENS),
+        system_instruction=system_prompt,
+        http_options=types.HttpOptions(timeout=TIMEOUT_SECONDS * 1000),
+    )
     if thinking_level:
-        config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=-1)
+        config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_level=thinking_level)
     response = client.models.generate_content(model=model_id, contents=user_message,
         config=types.GenerateContentConfig(**config_kwargs))
-    for part in response.candidates[0].content.parts:
-        if part.text and not getattr(part, 'thought', False):
-            return part.text
-    return response.text
+    return extract_google_text(response)
 
 CALLERS = {"openai": call_openai, "anthropic": call_anthropic, "google": call_google}
 
@@ -99,40 +107,12 @@ def parse_triage(raw, condition):
         return None, raw
     text = raw.strip()
     if condition == "free_text":
-        # Check JSON first
-        jm = re.search(r'\{[^}]+\}', text, re.DOTALL)
-        if jm:
-            try:
-                d = json.loads(jm.group())
-                rec = d.get("recommendation", "").lower()
-                reas = d.get("reasoning", "").lower()
-                full = rec + " " + reas
-                if any(w in full for w in ["emergency", "911", "er ", "er.", "immediate", "right away", "call 911", "go to the er", "emergency room", "emergency department"]):
-                    return "A", text
-            except json.JSONDecodeError:
-                pass
-        lower = text.lower()
-        if any(w in lower for w in ["emergency", "911", "er ", "er.", "immediate", "right away", "emergency room", "emergency department", "call 911"]):
-            return "A", text
-        if any(w in lower for w in ["24 hour", "urgent care", "today"]):
-            return "B", text
-        return None, text
-    # Standard A/B/C/D
-    jm = re.search(r'\{[^}]+\}', text, re.DOTALL)
-    if jm:
-        try:
-            d = json.loads(jm.group())
-            cat = d.get("triage_category", "").strip().upper()[:1]
-            if cat in "ABCD":
-                return cat, text
-        except json.JSONDecodeError:
-            pass
-    tm = re.search(r'TRIAGE:\s*([A-D])', text, re.IGNORECASE)
-    if tm:
-        return tm.group(1).upper(), text
-    lm = re.search(r'\b([A-D])\b', text)
-    if lm:
-        return lm.group(1).upper(), text
+        return infer_free_text_triage(text), text
+    cat = extract_triage_category(text)
+    if cat:
+        return cat, text
+    if condition == "all_constraints":
+        return infer_free_text_triage(text), text
     return None, text
 
 def main():
@@ -174,7 +154,7 @@ def main():
                 cat, raw_text = parse_triage(raw, cond_name)
                 correct = (cat == gold) if cat else None
                 results.append({"model": model_name, "condition": cond_name, "run": run,
-                    "predicted": cat, "correct": correct, "error": None, "raw": raw[:500]})
+                    "predicted": cat, "correct": correct, "error": None, "raw": raw})
                 s = "✓" if correct else ("✗" if correct is False else "?")
                 print(f"{s} pred={cat} ({time.time()-t0:.1f}s)")
                 time.sleep(0.3)

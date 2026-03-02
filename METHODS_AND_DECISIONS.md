@@ -2,23 +2,24 @@
 
 ## Matters Arising: Ramaswamy et al. (2026) — Nature Medicine
 
-This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total: **1,903 API calls** across four experiment phases.
+This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total: **2,010 planned cells** across four experiment phases; **1,950 are currently scored** in the reconciled datasets.
 
 ---
 
 ## 1. Core Argument
 
-Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. Their headline finding derives primarily from two scenarios: DKA and acute asthma exacerbation. We demonstrate that this under-triage is an artifact of the evaluation's **forced discretisation** (A/B/C/D letter choice), not a failure of clinical knowledge. When the same models are allowed to respond in natural language, they consistently recommend emergency care.
+Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. Their headline finding derives primarily from two scenarios: DKA and acute asthma exacerbation. We demonstrate that this under-triage is strongly shaped by the evaluation's **forced discretisation** (A/B/C/D letter choice), not simply by missing clinical knowledge. When the forced-choice letter constraint is removed and models can answer in free text, the under-triage largely disappears in the susceptible model families.
 
 ---
 
-## 2. Experiment 1: Main Replication (1,168 trials)
+## 2. Experiment 1: Main Replication (1,275 planned; 1,252 scored)
 
 **Goal:** Test whether triage accuracy depends on prompt format (structured vs. naturalistic vs. minimal).
 
 **Design:**
 - 5 models × 17 clinical vignettes × 3 prompt formats × 5 runs = 1,275 planned trials
-- 1,168 successful (Gemini 3.1 Pro had 47 API errors from rate limiting)
+- 1,252 currently scored in the reconciled canonical dataset
+- 23 rows remain unresolved: all are Gemini 3.1 Pro API failures
 
 **Models tested:**
 
@@ -38,9 +39,13 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 **Decision rationale:** Three formats test the ecological validity argument. The structured format mirrors the paper's methodology; the realistic format adds access barriers and hedging language (matching real patient behaviour); the minimal format tests whether models can triage from sparse information.
 
-**Key result:** Prompt format significantly affected triage accuracy (χ² = 9.64, p = 0.008). For DKA, all models achieved 100% correct triage across all formats (60/60). For asthma, structured format failed in GPT-5.2 and Gemini models but succeeded in patient formats.
+**Key result:** Prompt format significantly affected triage accuracy in the reconciled dataset (χ² = 6.93, p = 0.0312). For DKA, every scored trial is correct (74/74). For asthma, the effect is mixed rather than uniformly rescued by "realistic" wording: structured = 40% (10/25), patient_realistic = 48% (12/25), patient_minimal = 100% (25/25). The defensible claim is that prompt format materially changes outcomes, not that any naturalistic rewrite automatically fixes the case.
 
-**Files:** `run_experiment.py`, `results/results_*.json`
+**Canonical files:** `reconcile_results.py`, `results/main_experiment_reconciled.csv`, `results/main_experiment_reconciled.json`
+
+**Raw sources:** `results_claude_opus_*.csv`, `results_claude_sonnet_*.csv`, `results_gemini_flash_*.csv`, `results_gpt52_*.csv`, `results_case17_triage_*.csv`, `results_gemini_pro_resumed.json`
+
+**Note:** `combined_clean.csv` was an earlier partial working file and is no longer the canonical source for headline statistics.
 
 ---
 
@@ -57,9 +62,11 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 **Decision rationale:** The other AI reviewer suggested isolating each constraint to identify the active ingredient. This was the first pass before the full ablation.
 
+**Status:** 120/120 rows are currently scored after rerunning the previously truncated Gemini 3 Flash outputs with a higher visible-output token budget.
+
 **Key finding:** GPT-5.2 dropped from 40% → 0% on asthma when the constraint was added. This motivated the full ablation design.
 
-**Files:** `sensitivity_constraint.py`, `results/sensitivity_constraint_*.json`
+**Canonical files:** `reconcile_aux_results.py`, `results/sensitivity_constraint_reconciled.csv`, `results/sensitivity_constraint_reconciled.json`
 
 ---
 
@@ -79,9 +86,11 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 **Decision rationale:** A reviewer could argue "you just used a better prompt." The one-factor design shows we tested the paper's own components, not exotic prompting. The critical comparison is forced-choice vs. free-text with everything else held constant.
 
+**Status:** 239/240 rows are currently scored. One Gemini 3 Flash `all_constraints` row remains non-parseable after targeted reruns.
+
 **Key finding:** Forced-choice format is the dominant failure inducer. GPT-5.2: 0/5 every forced-choice condition, 5/5 free text. This motivated the high-power replication.
 
-**Files:** `ablation_constraint.py`, `results/ablation_constraint_*.json`
+**Canonical files:** `reconcile_aux_results.py`, `results/ablation_constraint_reconciled.csv`, `results/ablation_constraint_reconciled.json`
 
 ---
 
@@ -93,19 +102,21 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 **Decision rationale:** The initial ablation used n=5 per cell, which a reviewer could dismiss as underpowered. We scaled to n=25 to enable Fisher's exact test with strong p-values. We focused on asthma because it drives the paper's headline finding (81-94% under-triage across asthma prompt variants).
 
+**Status:** 369/375 rows are currently scored. Six Gemini `all_constraints` outputs (three Flash, three Pro) remain too truncated or non-committal to score. The Fisher's exact tests use the fully scored forced-choice vs. free-text cells, so those p-values are unchanged.
+
 **Results:**
 
 | Model | Forced-choice | Free-text | All constraints | Fisher's p |
 |-------|:---:|:---:|:---:|:---:|
-| Gemini 3.1 Pro | **0/25 (0%)** | 25/25 (100%) | 0/20 (0%) | **1.58 × 10⁻¹⁴** |
+| Gemini 3.1 Pro | **0/25 (0%)** | 25/25 (100%) | 0/22 scored (0%); 3 unresolved | **1.58 × 10⁻¹⁴** |
 | GPT-5.2 | 4/25 (16%) | 25/25 (100%) | 1/25 (4%) | 3.76 × 10⁻¹⁰ |
-| Gemini 3 Flash | 6/25 (24%) | 25/25 (100%) | 4/5 (80%) | 1.16 × 10⁻⁸ |
+| Gemini 3 Flash | 6/25 (24%) | 25/25 (100%) | 12/22 scored (55%); 3 unresolved | 1.16 × 10⁻⁸ |
 | Claude Sonnet 4.6 | 25/25 (100%) | 25/25 (100%) | 23/25 (92%) | 1.00 |
 | Claude Opus 4.6 | 25/25 (100%) | 25/25 (100%) | 25/25 (100%) | 1.00 |
 
-**Interpretation:** Three of five frontier models show statistically significant under-triage under forced-choice that completely disappears with free-text. Claude models are robust, demonstrating the vulnerability is model-family-specific and format-dependent, not inherent to the clinical scenario.
+**Interpretation:** Three of five frontier models show statistically significant under-triage under forced-choice that completely disappears with free-text. Claude models are more robust overall, but they are not literally immune in every prompt/case combination (for example, Claude Opus fails the asthma `patient_realistic` case in the main experiment). The vulnerability is therefore format-dependent and model-dependent, not inherent to the clinical scenario alone.
 
-**Files:** `ablation_power.py`, `run_gemini_pro_ablation.py`, `results/ablation_power_*.json`
+**Canonical files:** `reconcile_aux_results.py`, `results/ablation_power_reconciled.csv`, `results/ablation_power_reconciled.json`
 
 ---
 
@@ -124,7 +135,7 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 ## 7. Key Design Decisions and Reviewer Pre-emptions
 
 ### Why five models, not just GPT?
-The paper tested only ChatGPT Health. Testing across model families (OpenAI, Anthropic, Google) shows this is a format-dependent vulnerability, not a model-specific one. The fact that Claude models are immune proves it's not inherent to the clinical scenario.
+The paper tested only ChatGPT Health. Testing across model families (OpenAI, Anthropic, Google) shows this is a format-dependent vulnerability, not a model-specific one. The fact that the Claude models are materially more robust on the key ablations shows it is not inherent to the clinical scenario, even though Claude is not perfect in every prompt/case combination.
 
 ### Why we don't test ChatGPT Health directly
 We couldn't access ChatGPT Health in our region. However, GPT-5.2 (the same model family, without product-layer guardrails) correctly triages every emergency in free-text. If the unconstrained model has the clinical knowledge, the product version is unlikely to lack it — the failure is in how the evaluation elicits and measures the response.
@@ -204,6 +215,6 @@ python ablation_power.py
 3. **Causal mechanism** — Forced A/B/C/D is the dominant failure inducer (Experiment 3)
 4. **Statistical confirmation** — p = 10⁻⁸ to 10⁻¹⁴ across three model families (Experiment 4)
 5. **Clinical validation** — Free-text responses judged appropriate by blinded clinician (Experiment 6)
-6. **Model-family specificity** — Claude models immune → it's the format, not the scenario
+6. **Model-family specificity** — Claude models are more robust, so the effect is not inherent to the scenario
 
 The paper's headline "51.6% emergency under-triage" is conditional on their evaluation format. Remove the forced A/B/C/D constraint, and the models recommend emergency care correctly.

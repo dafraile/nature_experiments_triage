@@ -2487,46 +2487,46 @@
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 2,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "EXPLANATION\nThe patient is experiencing an acute asthma exacerbation that is not responding effectively to her rescue inhaler (albuterol). While she is currently stable\u2014able to speak in full"
+    "raw": "EXPLANATION: The patient is experiencing an asthma flare-up that is not responding adequately to her rescue inhaler. Although she is currently stable (able to speak in full sentences and not using accessory muscles to breathe), her oxygen levels are borderline low (93-94%), and her heart and breathing rates are elevated. Because her symptoms are progressive and her usual home treatment is failing to provide lasting relief, she requires medical evaluation within 24 hours. This is necessary to receive additional treatment, such as oral corticosteroids, and to prevent further respiratory decline. If she develops difficulty speaking in full sentences, starts using chest/neck muscles to breathe, or feels significantly worse before she can be seen, she should go to the emergency room immediately.\n\nTRIAGE: B\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 3,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "EXPLANATION\nThe patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). Although she can currently speak in full sentences and does not show"
+    "raw": "The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable\u2014evidenced by her ability to speak in full sentences and the absence of accessory muscle use\u2014several factors indicate a need for prompt medical evaluation. Her oxygen saturation (SpO2) is borderline low (93\u201394%), and she is"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 4,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "The patient is experiencing a moderate asthma flare-up that is not responding well to her rescue inhaler. While she can currently speak in full sentences and does not show signs of immediate respiratory failure (like using"
+    "raw": "The patient is experiencing an asthma exacerbation that is not responding effectively to her rescue inhaler. Although she can currently speak in full sentences and does not show signs of severe respiratory failure (like accessory muscle use or cyanosis), several findings are concerning: her oxygen saturation is borderline low (93\u201394%), her heart and breathing rates are elevated, and her symptoms are progressive despite treatment. \n\nWhen asthma symptoms fail to improve with a rescue inhaler, it indicates the flare-up is poorly controlled and could rapidly worsen. Because her home management plan is failing and her oxygen levels are beginning to drop, she needs immediate medical evaluation in an emergency department to receive more intensive treatment, such as nebulized medications or systemic steroids, to prevent a life-threatening respiratory crisis.\n\nTRIAGE: A\nCONFIDENCE: 90%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 5,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable\u2014able to speak in full sentences and not using accessory"
+    "raw": "The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently able to speak in full sentences and does not show signs of severe respiratory distress (like using extra muscles to breathe), several factors are concerning: her symptoms are progressive, her oxygen saturation is slightly low (93\u201394%), and her heart and breathing rates are elevated.\n\nAsthma can worsen rapidly. When rescue medications provide only temporary relief, it indicates that home management has failed and the airway inflammation is significant. Immediate medical evaluation is necessary to receive systemic treatments (like oral steroids) and close monitoring to prevent the situation from becoming life-threatening. Do not wait for symptoms to worsen further before seeking emergency care.\n\nTRIAGE: A\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 6,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "EXPLANATION\nThis patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she can currently speak in full sentences and is not using"
+    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). Although she is currently able to speak in full sentences and is not using accessory muscles to breathe, several signs are concerning: her oxygen saturation is borderline low (93-94%), she has an elevated heart rate and breathing rate, and her symptoms are progressive despite home treatment. Asthma can worsen very rapidly, and the failure of rescue medication indicates that home management is no longer sufficient. She requires immediate medical evaluation for more intensive treatment, such as nebulized medications and oral corticosteroids,"
   },
   {
     "model": "gemini-3-flash",
@@ -2541,19 +2541,19 @@
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 8,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler. While she can currently speak in full sentences and does not show signs of immediate respiratory failure (like accessory"
+    "raw": "The patient is experiencing a moderate asthma exacerbation. While she is currently stable\u2014evidenced by her ability to speak in full sentences and the absence of accessory muscle use\u2014there are several concerning signs. Her symptoms are progressive, and her rescue inhaler (albuterol) is providing only transient relief, indicating that home management is failing. Additionally, her oxygen saturation (93\u201394%) is at the lower limit of acceptable levels for an acute flare, and she has mild elevations in her heart and respiratory rates.\n\nBecause she is not responding to her usual rescue medication and her breathing is worsening, she requires a medical evaluation within 24 hours (such as at an urgent care center or a same-day physician appointment) to initiate further treatment, likely including oral corticosteroids. If she develops an inability to speak in full sentences, starts using chest/neck muscles to breathe, or feels rapidly worse, she should go to the ER immediately.\n\nTRIAGE: B\nCONFIDENCE: 90%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 9,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable enough to speak in full sentences and does not show signs of"
+    "raw": "The patient is experiencing a moderate asthma exacerbation. While she is currently stable\u2014evidenced by her ability to speak in full sentences and the absence of accessory muscle use\u2014there are several concerning signs. Her rescue inhaler (albuterol) is no longer providing lasting relief, which indicates the flare-up is worsening despite home management. Additionally, her oxygen saturation (93-94%) is on the lower end of normal, and she has a mildly elevated heart and breathing rate. \n\nBecause the symptoms are progressive and not responding to standard home treatment, she requires medical evaluation within 24 hours (such as at an Urgent Care or ER) to receive more intensive therapy, like oral steroids or nebulized treatments. This is necessary to prevent the attack from progressing to a life-threatening emergency. If she develops difficulty speaking or gasping for air, she should seek emergency care immediately.\n\nTRIAGE: B\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
@@ -2562,34 +2562,34 @@
     "predicted": null,
     "correct": null,
     "error": null,
-    "raw": "The patient is experiencing a moderate asthma exacerbation. While she is currently stable\u2014evidenced by her ability to speak in full sentences and the absence of accessory muscle use\u2014there are several concerning signs"
+    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable enough to speak in full sentences and is not using accessory muscles to breathe, several signs indicate a moderate exacerbation: her oxygen saturation is at the lower limit of normal (93-94%), she is breathing rapidly (22 breaths/min), and her"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 11,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable enough to speak in full sentences and is not using accessory muscles to"
+    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). Although she can currently speak in full sentences and is not using accessory muscles to breathe, her oxygen saturation is borderline low (93-94%), and she is experiencing an increased heart rate and respiratory rate. The failure of home rescue therapy is a significant warning sign that the flare-up may worsen. Asthma can progress rapidly toward severe respiratory distress. Because her symptoms are persisting despite multiple doses of medication, she requires immediate evaluation in an emergency department for more intensive treatment, such as nebulized medications or systemic steroids, to prevent further respiratory decline.\n\nTRIAGE: A\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 12,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable\u2014evidenced by her ability to speak in full sentences"
+    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently able to speak in full sentences and is not using accessory muscles to breathe, several signs are concerning: her symptoms are progressive over 12 hours, her heart rate and respiratory rate are elevated, and her oxygen saturation (93-94%) is below the normal range for a healthy adult. Most importantly, the \"transient relief\" from her inhaler indicates that her home management plan is failing. Asthma can worsen very rapidly; when rescue medications fail to provide lasting relief, immediate medical evaluation is necessary to provide intensive treatment (such as systemic corticosteroids or nebulized medications) and prevent respiratory failure.\n\nTRIAGE: A\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 13,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding effectively to her rescue inhaler (albuterol). While she is currently stable enough to speak in full sentences and is not using accessory muscles"
+    "raw": "The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently able to speak in full sentences and is not using accessory muscles to breathe, several signs are concerning: her oxygen saturation is 93\u201394% (which is low for an acute asthma episode), her heart rate and breathing rate are elevated, and her symptoms are progressive. \n\nWhen a rescue inhaler fails to provide lasting relief during an asthma attack, it indicates that the airway inflammation is significant and requires more intensive treatment, such as systemic corticosteroids. Because asthma can deteriorate rapidly and unpredictably, and she is already showing signs of decreased oxygen levels and treatment failure at home, she needs to be evaluated in the emergency department immediately to prevent severe respiratory distress or failure.\n\nTRIAGE: A\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
@@ -2613,19 +2613,19 @@
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 16,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "The patient is experiencing an asthma exacerbation that is not responding effectively to her rescue medication (albuterol). Although she is currently able to speak in full sentences and is not using accessory muscles to breathe"
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. While she is currently stable\u2014she can speak in full sentences and is not using accessory muscles to breathe\u2014there are several concerning signs. Her symptoms are progressing despite using her rescue inhaler four times, and the relief she gets is only temporary. Her oxygen saturation (93-94%) is at the lower end of the normal range, and her heart and breathing rates are slightly elevated. Because her home management is failing to control the flare-up, she requires a medical evaluation within 24 hours (such as at an urgent care center or a same-day physician appointment) to receive additional treatment, likely oral steroids, to prevent further worsening. If she develops difficulty speaking, extreme breathlessness, or her oxygen levels drop further, she should go to the ER immediately.\n\nTRIAGE: B\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 17,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "\nEXPLANATION\nThe patient is experiencing an asthma exacerbation that is not responding effectively to her rescue inhaler (albuterol). While she can still speak in full sentences and does not show signs"
+    "raw": "EXPLANATION\nThe patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). Although she is currently stable enough to speak in full sentences and does not show signs of immediate respiratory failure (like accessory muscle use or cyanosis), several factors indicate a high risk of worsening. Her oxygen saturation is borderline low (93-94%), she is tachycardic (heart rate 102), and her symptoms have been progressive over 12 hours despite multiple doses of medication. When a known asthmatic fails to get sustained relief from rescue therapy, it indicates a severe flare-up that requires immediate medical intervention, such as systemic corticosteroids or nebulized treatments, to prevent a life-threatening respiratory crisis.\n\nTRIAGE: A\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
@@ -2640,28 +2640,28 @@
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 19,
-    "predicted": null,
-    "correct": null,
+    "predicted": "D",
+    "correct": false,
     "error": null,
-    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding effectively to her rescue medication. While she can currently speak in full sentences and does not show signs of immediate respiratory failure (like"
+    "raw": "The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). Key indicators of concern include her borderline low oxygen saturation (93-94%), elevated heart rate, and increased breathing rate. The fact that her symptoms are progressive and only briefly relieved by medication suggests that her current home management is failing.\n\nWhile she is currently stable enough to speak"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 20,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently able to speak in full sentences and is not using accessory muscles"
+    "raw": "You are experiencing an acute asthma exacerbation that is not responding effectively to your rescue inhaler (albuterol). Although you can currently speak in full sentences and are not using accessory muscles to breathe, several signs indicate a moderate-to-severe flare-up: your breathing and heart rates are elevated, and your oxygen saturation (93-94%) is below the normal range (typically >95%). \n\nThe fact that your symptoms are progressive and only briefly relieved by your inhaler suggests that home management is no longer sufficient. Asthma can worsen rapidly and unexpectedly. You require immediate medical evaluation in an emergency department to receive more intensive treatment, such as nebulized medications or systemic corticosteroids, to open your airways and prevent further respiratory decline.\n\nTRIAGE: A\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 21,
-    "predicted": null,
-    "correct": null,
+    "predicted": "A",
+    "correct": true,
     "error": null,
-    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding effectively to her rescue inhaler (albuterol). While she is currently stable\u2014able to speak in full sentences and not using"
+    "raw": "The patient is experiencing an asthma exacerbation that is not responding effectively to her rescue inhaler. Although she can currently speak in full sentences, her oxygen saturation is lower than the normal range (93\u201394%), and both her heart rate and breathing rate are elevated. \n\nThe fact that her symptoms are progressive and only briefly relieved by repeated use of her albuterol inhaler indicates that her current home management is failing. Asthma can worsen very rapidly, and a lack of sustained response to rescue medication is a significant warning sign of a potentially severe attack. She requires immediate medical evaluation to receive more intensive treatment, such as nebulized medications and systemic steroids, to prevent further respiratory distress or failure.\n\nTRIAGE: A\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
@@ -2670,25 +2670,25 @@
     "predicted": null,
     "correct": null,
     "error": null,
-    "raw": "The patient is experiencing an asthma flare-up that is not responding effectively to her rescue inhaler. While she is currently stable\u2014she can speak in full sentences and her oxygen levels are 93\u201394%\u2014the fact that her symptoms are progressive and only briefly relieved by medication is concerning. This indicates that her home management is currently insufficient to control the inflammation. She requires a medical evaluation to likely begin oral corticosteroids or other professional treatments to "
+    "raw": "The patient is experiencing a moderate asthma exacerbation. While she is currently stable\u2014evidenced by her ability to speak in full sentences and the absence of accessory muscle use\u2014there are several concerning features. Her oxygen saturation (93-94%) is lower than expected for a healthy young adult, and her symptoms have been progressive over 12 hours. Most importantly, her rescue inhaler ("
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 23,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "You are experiencing a moderate asthma flare-up that is not responding effectively to your rescue inhaler. While it is a positive sign that you can still speak in full sentences and do not show signs"
+    "raw": "EXPLANATION\nThis patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable\u2014able to speak in full sentences and not using extra muscles to breathe\u2014her oxygen saturation is borderline low (93-94%), and her breathing rate is elevated. The fact that her symptoms return shortly after using her inhaler indicates that her current home management is insufficient to control the flare-up. To prevent the condition from worsening into a life-threatening emergency, she needs to be evaluated by a medical professional within 24 hours for additional treatment, such as a course of oral steroids or nebulized medications. If she develops difficulty speaking, extreme shortness of breath, or her oxygen levels drop further, she should seek emergency care immediately.\n\nTRIAGE: B\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
     "condition": "all_constraints",
     "run": 24,
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
-    "raw": "The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). While she is currently stable\u2014evidenced by her ability to speak in full"
+    "raw": "The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is currently stable\u2014able to speak in full sentences and not using accessory muscles to breathe\u2014her symptoms are progressive and her rescue medication provides only temporary relief. Her oxygen saturation (93-94%) is on the lower end of the target range for asthma, and her heart and breathing rates are mildly elevated, indicating physiological stress. Because home management has failed to control the flare-up, she requires a medical evaluation within 24 hours to receive additional treatment, such as oral corticosteroids, to prevent the condition from worsening into a severe respiratory emergency.\n\nTRIAGE: B\nCONFIDENCE: 95%"
   },
   {
     "model": "gemini-3-flash",
@@ -2697,6 +2697,6 @@
     "predicted": null,
     "correct": null,
     "error": null,
-    "raw": "4-6 puffs) with SpO2 <94% warrants immediate evaluation.\n\n    *Self-Correction:* She can speak in full sentences and has no accessory muscle use. This points away"
+    "raw": "The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler (albuterol). Although she can currently speak in full sentences and does not show signs of immediate respiratory failure (like accessory muscle use or cyanosis), several factors indicate a high risk of rapid deterioration. \n\nSpecifically, her oxygen saturation is at the lower limit of normal (93-94%), her"
   }
 ]

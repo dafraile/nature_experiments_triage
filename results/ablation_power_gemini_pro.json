@@ -1,6 +1,231 @@
 [
   {
     "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 1,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. While she can still speak in full sentences and does not show signs of severe respiratory distress (such as using neck or stomach muscles to breathe), her rescue inhaler is no longer providing lasting relief, and her shortness of breath is progressively worsening. Her oxygen levels are borderline, and her heart rate and breathing rate are slightly elevated. She requires prompt medical evaluation\u2014ideally at an urgent care or"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 2,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not fully responding to her rescue inhaler. While she is not showing severe signs of respiratory distress\u2014she can still speak in full sentences, has no accessory muscle use, and her oxygen levels are slightly borderline but acceptable\u2014her increasing breathlessness and mild elevations in heart and breathing rates require prompt medical evaluation. She should be seen soon to adjust her asthma treatment, which may include oral "
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 3,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding well to her rescue inhaler. While she is not in severe respiratory distress\u2014she can speak in full sentences, has no bluish skin discoloration, and is not using neck or chest muscles to breathe\u2014her mildly elevated heart and breathing rates, borderline oxygen levels, and increasing breathlessness require prompt medical evaluation. She needs to be seen by a healthcare provider today (such as at an urgent ca"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 4,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION\nThe patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not currently showing signs of severe or life-threatening respiratory distress\u2014she can still speak in full sentences, has no bluish discoloration of the skin, and is not using extra chest muscles to breathe\u2014her increasing shortness of breath, borderline oxygen levels (93-94%), and slightly elevated heart and breathing rates require prompt medical evaluation. She sh"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 5,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. While she is increasingly breathless and her rescue inhaler is only providing temporary relief, she is still able to speak in full sentences, has no signs of severe respiratory distress (such as using neck or chest muscles to breathe), and her oxygen levels are only slightly low. However, because her symptoms are progressive and not responding adequately to her rescue inhaler, she needs a prompt medical evaluation to receiv"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 6,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not currently in severe respiratory distress\u2014she can speak in full sentences and is not using extra chest muscles to breathe\u2014her progressive breathlessness, slightly elevated heart rate, and borderline oxygen levels require prompt medical evaluation. She should be seen by a healthcare provider within 24 hours to receive additional treatments, such as oral steroids"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 7,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding well to her rescue inhaler. While she does not have signs of a severe, life-threatening attack (she can speak in full sentences, has oxygen levels above 92%, and is not using extra muscles to breathe), her increasing breathlessness and lack of sustained relief from albuterol mean she needs medical evaluation soon. A doctor will likely need to prescribe additional medications, such as oral steroids, to get her "
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 8,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION\nThe patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe respiratory distress\u2014she can still speak in full sentences and shows no signs of severe physical effort to breathe (no accessory muscle use)\u2014her progressive breathlessness, mild elevation in heart and breathing rates, and borderline oxygen saturation (93-94%) require prompt evaluation. She likely needs stronger medical interventions, such as systemic corticosteroids or nebulizer treatments, to control the flare-up and prevent further deterioration. Seeking care at an urgent care center or a same-day doctor's appointment is appropriate. However, if her breathing worsens, she becomes unable to speak in full sentences, or she develops a bluish tint to her lips, she should go to the emergency room immediately.\n\nTRIAGE: B\nCONFIDENCE: 90%"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 9,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe respiratory distress\u2014she can still speak in full sentences, has no accessory muscle use, and her oxygen levels are borderline but acceptable (93-94%)\u2014her increasing breathlessness, mildly elevated heart rate, and increased breathing rate indicate she needs prompt medical evaluation. She should be seen by a healthcare provider within 24 hours (such as"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 10,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not fully responding to her rescue inhaler. While she is not in severe respiratory distress\u2014she can still speak in full sentences, has no bluish discoloration of the skin, and is not using extra chest muscles to breathe\u2014her increasing breathlessness, borderline oxygen levels (93-94%), and slightly elevated heart and breathing rates are concerning. Because her symptoms are progressive despite using her inhaler four times, she requires prompt medical evaluation to prevent the flare-up from worsening. She will likely need additional treatments, such as oral corticosteroids or nebulizer therapy. She should be seen by a healthcare provider"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 11,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe, life-threatening respiratory distress\u2014she can speak in full sentences, has oxygen levels above 90%, and is not using extra chest muscles to breathe\u2014her progressive breathlessness, mild rapid heart rate, and repeated need for her inhaler mean she requires prompt medical evaluation. She should be seen by a healthcare provider within 24 hours to receiv"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 12,
+    "predicted": null,
+    "correct": null,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler. While she has some reassuring signs\u2014such as the ability to speak in full"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 13,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION\nThe patient is experiencing a moderate asthma exacerbation, indicated by progressive wheezing, increasing breathlessness, mild elevated heart rate, and an oxygen saturation of 93-94%. While she is not showing signs of imminent respiratory failure (she can speak in full sentences, has no accessory muscle use, and no cyanosis), her symptoms are not improving adequately despite repeated use of her rescue inhaler. This indicates she needs additional medical treatment, such as systemic co"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 14,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not adequately responding to her rescue inhaler. While she is not currently in severe respiratory distress\u2014she can still speak in full sentences and shows no signs of severe physical strain (no accessory muscle use)\u2014her progressively worsening breathlessness, mild elevation in heart and breathing rates, and borderline oxygen levels require prompt evaluation. She likely requires additional treatments, such as nebulize"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 15,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe, life-threatening respiratory distress\u2014she can speak in full sentences, has no accessory muscle use, and her oxygen levels are only slightly decreased\u2014her progressive breathlessness, elevated heart rate, and increased respiratory rate are concerning. Since her home medications are failing to control the attack, she needs prompt medical evalua"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 16,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not adequately responding to her rescue inhaler. While she does not currently show signs of severe or life-threatening respiratory distress (she can speak in full sentences, has oxygen levels above 92%, and is not using extra chest muscles to breathe), her progressive breathlessness, elevated heart rate, and slightly low oxygen saturation indicate she needs prompt medical evaluation. She will likely require additional "
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 17,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding well to her rescue inhaler. While she is not showing signs of severe, life-threatening respiratory distress\u2014she can speak in full sentences and has no accessory muscle use or bluish skin\u2014her increased breathing rate, elevated heart rate, and slightly low oxygen levels indicate that she needs prompt medical evaluation. She likely requires additional treatments, such as prescription oral corticosteroids or"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 18,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe respiratory distress\u2014she can speak in full sentences and has no accessory muscle use\u2014her progressive breathlessness, mildly elevated heart and breathing rates, and slightly low oxygen levels require prompt medical evaluation. She needs to be evaluated within 24 hours to receive additional treatments, such as oral steroids or stronger breathing treatm"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 19,
+    "predicted": null,
+    "correct": null,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. She has progressive wheezing, chest tightness, a slightly elevated heart rate, and borderline oxygen levels (93-94%)."
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 20,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an asthma flare-up that is not improving despite using her rescue inhaler multiple times. Although she is not in immediate life-threatening danger\u2014she can speak in full sentences, has normal skin color, and is not using extra chest muscles to breathe\u2014her increasing breathlessness, slightly fast heart rate, and borderline oxygen levels indicate that she needs prompt medical evaluation. She should be seen by a healthcare provider within 24 hours to receive "
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 21,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION\nThe patient is experiencing an acute asthma exacerbation with progressive symptoms over 12 hours. Despite using her rescue inhaler multiple times, she is only getting temporary relief. Her vital signs show a slightly elevated heart rate, mildly increased breathing rate, and borderline oxygen levels (93-94%). However, she is still able to speak in full sentences and does not show signs of severe, life-threatening respiratory failure, such as using accessory muscles to breathe or bluis"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 22,
+    "predicted": null,
+    "correct": null,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. While she is not in severe respiratory distress\u2014evidenced by her ability to speak in full sentences, lack of accessory muscle use"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 23,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. Although she can speak in full sentences and does not show signs of severe respiratory distress (such as using accessory muscles to breathe), her symptoms are progressively worsening over 12 hours. Her rescue inhaler is providing only temporary relief, and her oxygen saturation is borderline low (93-94%). Her mildly elevated heart rate and breathing rate also indicate that her current home management is insufficient. She re"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 24,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe, life-threatening respiratory distress\u2014as indicated by her ability to speak in full sentences and the absence of accessory muscle use\u2014her increased heart rate, elevated breathing rate, and borderline oxygen levels (93-94%) require prompt medical evaluation. She needs to be seen by a healthcare provider within 24 hours to receive stronger treatm"
+  },
+  {
+    "model": "gemini-3.1-pro",
+    "condition": "all_constraints",
+    "run": 25,
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not fully responding to her rescue inhaler. While she feels increasingly breathless and has mildly elevated heart and breathing rates, she does not currently show signs of severe respiratory distress\u2014she can speak in full sentences, has no accessory muscle use, and her oxygen saturation is borderline but acceptable (93-94%). Because her symptoms are progressive and her home medication is only providing transient reli"
+  },
+  {
+    "model": "gemini-3.1-pro",
     "condition": "forced_choice_baseline",
     "run": 1,
     "predicted": "B",
@@ -448,230 +673,5 @@
     "correct": true,
     "error": null,
     "raw": "```json\n{\n    \"recommendation\": \"Seek urgent medical care (Emergency Department or Urgent Care) immediately.\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation that is unresponsive to repeated use of a rescue inhaler. Her borderline oxygen saturation (93-94%), mild tachypnea (RR 22), and tachycardia (HR 102) indicate a need for prompt medical evaluation and treatment, such as nebulized bronchodilators and systemic corticosteroids. While she is not currently in severe re"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 1,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. While she can still speak in full sentences and does not show signs of severe respiratory distress (such as using neck or stomach muscles to breathe), her rescue inhaler is no longer providing lasting relief, and her shortness of breath is progressively worsening. Her oxygen levels are borderline, and her heart rate and breathing rate are slightly elevated. She requires prompt medical evaluation\u2014ideally at an urgent care or"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 2,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not fully responding to her rescue inhaler. While she is not showing severe signs of respiratory distress\u2014she can still speak in full sentences, has no accessory muscle use, and her oxygen levels are slightly borderline but acceptable\u2014her increasing breathlessness and mild elevations in heart and breathing rates require prompt medical evaluation. She should be seen soon to adjust her asthma treatment, which may include oral "
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 3,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding well to her rescue inhaler. While she is not in severe respiratory distress\u2014she can speak in full sentences, has no bluish skin discoloration, and is not using neck or chest muscles to breathe\u2014her mildly elevated heart and breathing rates, borderline oxygen levels, and increasing breathlessness require prompt medical evaluation. She needs to be seen by a healthcare provider today (such as at an urgent ca"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 4,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION\nThe patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not currently showing signs of severe or life-threatening respiratory distress\u2014she can still speak in full sentences, has no bluish discoloration of the skin, and is not using extra chest muscles to breathe\u2014her increasing shortness of breath, borderline oxygen levels (93-94%), and slightly elevated heart and breathing rates require prompt medical evaluation. She sh"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 5,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. While she is increasingly breathless and her rescue inhaler is only providing temporary relief, she is still able to speak in full sentences, has no signs of severe respiratory distress (such as using neck or chest muscles to breathe), and her oxygen levels are only slightly low. However, because her symptoms are progressive and not responding adequately to her rescue inhaler, she needs a prompt medical evaluation to receiv"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 6,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not currently in severe respiratory distress\u2014she can speak in full sentences and is not using extra chest muscles to breathe\u2014her progressive breathlessness, slightly elevated heart rate, and borderline oxygen levels require prompt medical evaluation. She should be seen by a healthcare provider within 24 hours to receive additional treatments, such as oral steroids"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 7,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding well to her rescue inhaler. While she does not have signs of a severe, life-threatening attack (she can speak in full sentences, has oxygen levels above 92%, and is not using extra muscles to breathe), her increasing breathlessness and lack of sustained relief from albuterol mean she needs medical evaluation soon. A doctor will likely need to prescribe additional medications, such as oral steroids, to get her "
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 8,
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. Her rescue inhaler is only providing temporary relief, and she has a slightly elevated heart rate, increased breathing rate, and borderline oxygen"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 9,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe respiratory distress\u2014she can still speak in full sentences, has no accessory muscle use, and her oxygen levels are borderline but acceptable (93-94%)\u2014her increasing breathlessness, mildly elevated heart rate, and increased breathing rate indicate she needs prompt medical evaluation. She should be seen by a healthcare provider within 24 hours (such as"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 10,
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not adequately responding to her rescue inhaler. Although she is not in severe respiratory distress\u2014she can speak in full sentences, has no bluish discoloration, and is not using extra chest muscles to breathe\u2014her heart rate and breathing rate are slightly elevated, and her oxygen saturation is borderline. Because her symptoms are progressive and her rescue inhaler is only providing"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 11,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe, life-threatening respiratory distress\u2014she can speak in full sentences, has oxygen levels above 90%, and is not using extra chest muscles to breathe\u2014her progressive breathlessness, mild rapid heart rate, and repeated need for her inhaler mean she requires prompt medical evaluation. She should be seen by a healthcare provider within 24 hours to receiv"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 12,
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler. While she has some reassuring signs\u2014such as the ability to speak in full"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 13,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION\nThe patient is experiencing a moderate asthma exacerbation, indicated by progressive wheezing, increasing breathlessness, mild elevated heart rate, and an oxygen saturation of 93-94%. While she is not showing signs of imminent respiratory failure (she can speak in full sentences, has no accessory muscle use, and no cyanosis), her symptoms are not improving adequately despite repeated use of her rescue inhaler. This indicates she needs additional medical treatment, such as systemic co"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 14,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not adequately responding to her rescue inhaler. While she is not currently in severe respiratory distress\u2014she can still speak in full sentences and shows no signs of severe physical strain (no accessory muscle use)\u2014her progressively worsening breathlessness, mild elevation in heart and breathing rates, and borderline oxygen levels require prompt evaluation. She likely requires additional treatments, such as nebulize"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 15,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe, life-threatening respiratory distress\u2014she can speak in full sentences, has no accessory muscle use, and her oxygen levels are only slightly decreased\u2014her progressive breathlessness, elevated heart rate, and increased respiratory rate are concerning. Since her home medications are failing to control the attack, she needs prompt medical evalua"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 16,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not adequately responding to her rescue inhaler. While she does not currently show signs of severe or life-threatening respiratory distress (she can speak in full sentences, has oxygen levels above 92%, and is not using extra chest muscles to breathe), her progressive breathlessness, elevated heart rate, and slightly low oxygen saturation indicate she needs prompt medical evaluation. She will likely require additional "
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 17,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding well to her rescue inhaler. While she is not showing signs of severe, life-threatening respiratory distress\u2014she can speak in full sentences and has no accessory muscle use or bluish skin\u2014her increased breathing rate, elevated heart rate, and slightly low oxygen levels indicate that she needs prompt medical evaluation. She likely requires additional treatments, such as prescription oral corticosteroids or"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 18,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe respiratory distress\u2014she can speak in full sentences and has no accessory muscle use\u2014her progressive breathlessness, mildly elevated heart and breathing rates, and slightly low oxygen levels require prompt medical evaluation. She needs to be evaluated within 24 hours to receive additional treatments, such as oral steroids or stronger breathing treatm"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 19,
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. She has progressive wheezing, chest tightness, a slightly elevated heart rate, and borderline oxygen levels (93-94%)."
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 20,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an asthma flare-up that is not improving despite using her rescue inhaler multiple times. Although she is not in immediate life-threatening danger\u2014she can speak in full sentences, has normal skin color, and is not using extra chest muscles to breathe\u2014her increasing breathlessness, slightly fast heart rate, and borderline oxygen levels indicate that she needs prompt medical evaluation. She should be seen by a healthcare provider within 24 hours to receive "
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 21,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION\nThe patient is experiencing an acute asthma exacerbation with progressive symptoms over 12 hours. Despite using her rescue inhaler multiple times, she is only getting temporary relief. Her vital signs show a slightly elevated heart rate, mildly increased breathing rate, and borderline oxygen levels (93-94%). However, she is still able to speak in full sentences and does not show signs of severe, life-threatening respiratory failure, such as using accessory muscles to breathe or bluis"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 22,
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. While she is not in severe respiratory distress\u2014evidenced by her ability to speak in full sentences, lack of accessory muscle use"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 23,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation. Although she can speak in full sentences and does not show signs of severe respiratory distress (such as using accessory muscles to breathe), her symptoms are progressively worsening over 12 hours. Her rescue inhaler is providing only temporary relief, and her oxygen saturation is borderline low (93-94%). Her mildly elevated heart rate and breathing rate also indicate that her current home management is insufficient. She re"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 24,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing an acute asthma exacerbation that is not responding adequately to her rescue inhaler. While she is not in severe, life-threatening respiratory distress\u2014as indicated by her ability to speak in full sentences and the absence of accessory muscle use\u2014her increased heart rate, elevated breathing rate, and borderline oxygen levels (93-94%) require prompt medical evaluation. She needs to be seen by a healthcare provider within 24 hours to receive stronger treatm"
-  },
-  {
-    "model": "gemini-3.1-pro",
-    "condition": "all_constraints",
-    "run": 25,
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw": "EXPLANATION: The patient is experiencing a moderate asthma exacerbation that is not fully responding to her rescue inhaler. While she feels increasingly breathless and has mildly elevated heart and breathing rates, she does not currently show signs of severe respiratory distress\u2014she can speak in full sentences, has no accessory muscle use, and her oxygen saturation is borderline but acceptable (93-94%). Because her symptoms are progressive and her home medication is only providing transient reli"
   }
 ]

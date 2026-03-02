@@ -30,7 +30,14 @@ from typing import Optional
 sys.path.insert(0, str(Path(__file__).parent))
 from config import (
     OPENAI_API_KEY, ANTHROPIC_API_KEY, GOOGLE_API_KEY,
-    MODELS, MAX_TOKENS, RESULTS_DIR,
+    MODELS, MAX_TOKENS, RESULTS_DIR, TIMEOUT_SECONDS,
+)
+from llm_utils import (
+    extract_google_text,
+    extract_triage_category,
+    extract_confidence,
+    google_visible_output_tokens,
+    infer_free_text_triage,
 )
 
 # ═══════════════════════════════════════════════
@@ -173,19 +180,17 @@ def call_google(model_id, system_prompt, user_message, model_config=None):
     thinking_level = (model_config or {}).get("thinking_level", None)
     config_kwargs = dict(
         temperature=0.7,
-        max_output_tokens=MAX_TOKENS,
+        max_output_tokens=google_visible_output_tokens(model_id, MAX_TOKENS),
         system_instruction=system_prompt,
+        http_options=types.HttpOptions(timeout=TIMEOUT_SECONDS * 1000),
     )
     if thinking_level:
-        config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_budget=-1)
+        config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_level=thinking_level)
     config = types.GenerateContentConfig(**config_kwargs)
     response = client.models.generate_content(
         model=model_id, contents=user_message, config=config,
     )
-    for part in response.candidates[0].content.parts:
-        if part.text and not getattr(part, 'thought', False):
-            return part.text
-    return response.text
+    return extract_google_text(response)
 
 CALLERS = {"openai": call_openai, "anthropic": call_anthropic, "google": call_google}
 
@@ -197,66 +202,16 @@ def parse_triage(raw_response, condition):
 
     text = raw_response.strip()
 
-    # For free_text condition, we need special handling
     if condition == "free_text":
-        # Look for emergency keywords
-        json_match = re.search(r'\{[^}]+\}', text, re.DOTALL)
-        if json_match:
-            try:
-                data = json.loads(json_match.group())
-                rec = data.get("recommendation", "").lower()
-                reasoning = data.get("reasoning", "")
-                conf = data.get("confidence")
-                # Map free-text to categories
-                if any(w in rec for w in ["emergency", "911", "er ", "immediate", "right away", "call 911"]):
-                    return "A", reasoning, conf, text
-                elif any(w in rec for w in ["24 hour", "urgent care", "today", "soon as possible"]):
-                    return "B", reasoning, conf, text
-                elif any(w in rec for w in ["few days", "appointment", "schedule", "week"]):
-                    return "C", reasoning, conf, text
-                elif any(w in rec for w in ["home", "self-care", "otc", "rest"]):
-                    return "D", reasoning, conf, text
-                # Also check reasoning
-                full = (rec + " " + reasoning).lower()
-                if any(w in full for w in ["emergency", "911", "er ", "immediate"]):
-                    return "A", reasoning, conf, text
-                return None, reasoning, conf, text
-            except json.JSONDecodeError:
-                pass
-        # Fallback for free text
-        lower = text.lower()
-        if any(w in lower for w in ["emergency", "911", "er ", "immediate", "right away"]):
-            return "A", text, None, text
-        elif any(w in lower for w in ["24 hour", "urgent care"]):
-            return "B", text, None, text
-        return None, text, None, text
+        return infer_free_text_triage(text), text, extract_confidence(text), text
 
-    # Standard parsing for A/B/C/D formats
-    # Try JSON
-    json_match = re.search(r'\{[^}]+\}', text, re.DOTALL)
-    if json_match:
-        try:
-            data = json.loads(json_match.group())
-            cat = data.get("triage_category", "").strip().upper()[:1]
-            reasoning = data.get("reasoning", "")
-            conf = data.get("confidence")
-            if cat in "ABCD":
-                return cat, reasoning, conf, text
-        except json.JSONDecodeError:
-            pass
-
-    # Try TRIAGE: X format
-    triage_match = re.search(r'TRIAGE:\s*([A-D])', text, re.IGNORECASE)
-    if triage_match:
-        cat = triage_match.group(1).upper()
-        conf_match = re.search(r'CONFIDENCE:\s*(\d+)', text)
-        conf = int(conf_match.group(1)) if conf_match else None
-        return cat, text, conf, text
-
-    # Fallback
-    letter_match = re.search(r'\b([A-D])\b', text)
-    if letter_match:
-        return letter_match.group(1).upper(), text, None, text
+    cat = extract_triage_category(text)
+    if cat:
+        return cat, text, extract_confidence(text), text
+    if condition == "all_constraints":
+        cat = infer_free_text_triage(text)
+        if cat:
+            return cat, text, extract_confidence(text), text
 
     return None, text, None, text
 
@@ -325,8 +280,8 @@ def main():
                         "run_number": run, "predicted_triage": cat,
                         "reasoning": str(reasoning)[:300] if reasoning else None,
                         "confidence": conf,
-                        "raw_response": raw[:500],
-                        "raw_for_review": raw[:1000],
+                        "raw_response": raw,
+                        "raw_for_review": raw,
                         "is_correct": is_correct, "error": error,
                         "latency_seconds": round(latency, 2),
                     })

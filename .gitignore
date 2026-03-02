@@ -4,6 +4,7 @@
 
 # Manuscript drafts (not for public repo)
 *.docx
+*.tex
 
 # Scoring sheets (contain regenerated API responses)
 clinician_scoring_sheet.xlsx

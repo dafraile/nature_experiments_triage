@@ -447,9 +447,10 @@ case_05,Allergic Rhinitis,D,gemini-3-flash,google,patient_minimal,natural,5,D,"Y
     ""reasoning"": ""Your symptoms (sneezing, itchy eyes, and runny nose) are classic signs of environmental allergies, especially since they worsen outdoors and began after you moved to a new area. Since you have no emergency symptoms like difficulty breathing, chest pain, or high fever, you can likely manage this with over-the-counter antihistamines or nasal sprays. If symptoms persist or worsen despite home treatment, you should see a doctor."",
     ""confidence"": 95
 }",True,,6.84,2026-02-27T01:51:16.311689
-case_06,Iron Deficiency Anemia,B,gemini-3-flash,google,original_structured,structured,1,,,,"8 is a threshold for concern, but stability moves it away from A).
-
-    *Self-Correction:* If the patient was dizzy at rest or had chest pain, it would be A",,,7.56,2026-02-27T01:51:24.877041
+case_06,Iron Deficiency Anemia,B,gemini-3-flash,google,original_structured,structured,1,B,,,"```json
+{
+    ""triage_category"": ""B"",
+    ""reasoning"": ""The patient presents with symptomatic moderate microcytic anemia (Hemoglobin 8.2 g/dL) characterized by exertional dyspnea and physical signs such as a systolic flow murmur and pallor. The lab profile (low Ferritin, high TIBC) is diagnostic of iron deficiency, likely secondary to",True,,8.75,2026-03-02T21:44:44.974947
 case_06,Iron Deficiency Anemia,B,gemini-3-flash,google,original_structured,structured,2,B,"The patient presents with symptomatic moderate microcytic anemia (Hemoglobin 8.2 g/dL) confirmed as iron deficiency (low ferritin, high TIBC) likely due to chronic menorrhagia from uterine fibroids. While the patient is currently hemodynamically stable, the presence of exertional dyspnea and a systolic flow murmur indicates significant physiological compensation. She requires medical evaluation within 24 hours to initiate iron replacement therapy and coordinate definitive management of the underlying fibroids to prevent further decline in hemoglobin.",90.0,"```json
 {
     ""triage_category"": ""B"",

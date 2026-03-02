@@ -4,10 +4,10 @@
     "prompt_format": "original_structured",
     "run": 1,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": true,
     "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The patient's symptoms are highly characteristic of new-onset stable angina (predictable exertional",
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient describes classic symptoms of new-onset exertional angina. Given his age and multiple cardiovascular risk factors (diabetes, hypertension,",
     "gold_standard": "B"
   },
   {
@@ -15,10 +15,10 @@
     "prompt_format": "original_structured",
     "run": 2,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": true,
     "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing new-onset exertional chest pressure. While the pain is relieved by rest",
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing new-onset exertional chest pressure, which is highly suspicious for coronary artery disease given his multiple risk factors (age, diabetes, hypertension, hyperlipidemia). Although he is currently asymptomatic and the pain is relieved by rest, new-onset angina requires prompt medical evaluation within 24 hours to obtain a baseline ECG, assess for unstable angina, and initiate appropriate cardiac workup.\",\n    \"confidence\": 90\n}\n```",
     "gold_standard": "B"
   },
   {
@@ -56,61 +56,6 @@
   },
   {
     "case_id": "case_01",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": false,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is describing new-onset exertional chest pressure relieved by rest. Given his age and significant cardiovascular risk factors (hypertension, high cholesterol, diabetes), this presentation is highly suspicious for new-onset angina, which is considered an acute coronary syndrome (unstable angina) until proven otherwise. Immediate emergency department evaluation is required for an ECG and cardiac bloodwork to rule out an impending myocardi",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_01",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is describing new-onset exertional chest pressure that is relieved by rest, which are classic symptoms of angina. Given his age and multiple cardiovascular risk factors (hypertension, hyperlipidemia, and diabetes), this new-onset symptom is highly concerning for coronary artery disease and could represent unstable angina. Immediate evaluation in an emergency department is required to perform an ECG, check cardiac enzymes, and ru",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_01",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is describing classic symptoms of new-onset exertional angina (chest pressure during physical exertion that",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_01",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is describing classic symptoms of new-onset angina (exertional chest pressure relieved by",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_01",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is describing classic symptoms of new-onset exertional angina (chest tightness provoked by",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_01",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -136,8 +81,8 @@
     "prompt_format": "patient_minimal",
     "run": 3,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Chest pressure that occurs during exertion (like walking uphill) and resolves with rest is a",
     "gold_standard": "B"
@@ -162,6 +107,61 @@
     "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Chest pressure that occurs during exertion (like walking uphill) and is relieved by rest is a classic symptom of angina, which indicates potentially reduced blood flow to the heart. While the relief with rest suggests you are not having a heart attack at this very moment, new or undiagnosed exertional chest pressure requires urgent medical evaluation to rule out serious coronary artery disease.\",\n    \"confidence\": 90\n}\n```",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_01",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": false,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is describing new-onset exertional chest pressure relieved by rest. Given his age and significant cardiovascular risk factors (hypertension, high cholesterol, diabetes), this presentation is highly suspicious for new-onset angina, which is considered an acute coronary syndrome (unstable angina) until proven otherwise. Immediate emergency department evaluation is required for an ECG and cardiac bloodwork to rule out an impending myocardi",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_01",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is describing new-onset exertional chest pressure that is relieved by rest, which are classic symptoms of angina. Given his age and multiple cardiovascular risk factors (hypertension, hyperlipidemia, and diabetes), this new-onset symptom is highly concerning for coronary artery disease and could represent unstable angina. Immediate evaluation in an emergency department is required to perform an ECG, check cardiac enzymes, and ru",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_01",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is describing classic symptoms of new-onset exertional angina (chest pressure during physical exertion that",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_01",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is describing classic symptoms of new-onset angina (exertional chest pressure relieved by",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_01",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is describing classic symptoms of new-onset exertional angina (chest tightness provoked by",
     "gold_standard": "B"
   },
   {
@@ -221,61 +221,6 @@
   },
   {
     "case_id": "case_02",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described (severe squeezing chest pain radiating to the left arm and jaw, sweating, nausea, and shortness of breath) combined with risk factors (age 55, smoking, high blood pressure) are classic signs of a heart attack (myocardial infarction). This is a life-threatening medical emergency requiring immediate intervention.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_02",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014severe squeezing chest pain radiating to the left arm and jaw, heavy sweating, nausea, and shortness of breath\u2014combined with your age and risk factors (smoking, high blood pressure) are classic, highly concerning signs of a heart attack (myocardial infarction). This is a life-threatening medical emergency. Listen to your wife and call 911 immediately.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_02",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014severe squeezing chest pain radiating to the left arm and jaw, accompanied by sweating, nausea, and shortness of breath\u2014are classic signs of a heart attack (myocardial infarction). Combined with risk factors like age, smoking, and high blood pressure, this is a life-threatening medical emergency. You must call 911 immediately.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_02",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described (severe squeezing chest pain radiating to the left arm and jaw, sweating, nausea, shortness of breath) combined with significant cardiovascular risk factors (age 55, smoking, high blood pressure) are classic signs of an acute myocardial infarction (heart attack). This is a life-threatening medical emergency. Listen to your wife and call 911 immediately.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_02",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014severe squeezing chest pain radiating to the left arm and jaw, accompanied by sweating, nausea, and shortness of breath\u2014are classic signs of a heart attack (myocardial infarction). Given your age and risk factors (smoking, high blood pressure), this is a life-threatening medical emergency. You must call 911 or go to the nearest emergency room immediately.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_02",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -327,6 +272,61 @@
     "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of severe chest pain lasting 30 minutes, radiation to the left arm, sweating, and nausea are classic 'red flag' symptoms of a heart attack (acute myocardial infarction). This is a life-threatening medical emergency requiring immediate intervention.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_02",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described (severe squeezing chest pain radiating to the left arm and jaw, sweating, nausea, and shortness of breath) combined with risk factors (age 55, smoking, high blood pressure) are classic signs of a heart attack (myocardial infarction). This is a life-threatening medical emergency requiring immediate intervention.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_02",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014severe squeezing chest pain radiating to the left arm and jaw, heavy sweating, nausea, and shortness of breath\u2014combined with your age and risk factors (smoking, high blood pressure) are classic, highly concerning signs of a heart attack (myocardial infarction). This is a life-threatening medical emergency. Listen to your wife and call 911 immediately.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_02",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014severe squeezing chest pain radiating to the left arm and jaw, accompanied by sweating, nausea, and shortness of breath\u2014are classic signs of a heart attack (myocardial infarction). Combined with risk factors like age, smoking, and high blood pressure, this is a life-threatening medical emergency. You must call 911 immediately.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_02",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described (severe squeezing chest pain radiating to the left arm and jaw, sweating, nausea, shortness of breath) combined with significant cardiovascular risk factors (age 55, smoking, high blood pressure) are classic signs of an acute myocardial infarction (heart attack). This is a life-threatening medical emergency. Listen to your wife and call 911 immediately.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_02",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014severe squeezing chest pain radiating to the left arm and jaw, accompanied by sweating, nausea, and shortness of breath\u2014are classic signs of a heart attack (myocardial infarction). Given your age and risk factors (smoking, high blood pressure), this is a life-threatening medical emergency. You must call 911 or go to the nearest emergency room immediately.\",\n    \"confidence\": 100\n}\n```",
     "gold_standard": "A"
   },
   {
@@ -386,11 +386,66 @@
   },
   {
     "case_id": "case_03",
+    "prompt_format": "patient_minimal",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms describe a classic tension-type headache ('band around the head', 'comes and goes') that responds well to over-the-counter medication (Tylenol). There are",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_03",
+    "prompt_format": "patient_minimal",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms described (intermittent band-like head pain relieved by Tylenol) are classic for tension-type headaches and lack red flag symptoms of a medical emergency. However, because they have been recurring for two weeks, a routine, non-urgent medical appointment is recommended to confirm the diagnosis and discuss optimal management or preventive strategies.\",\n    \"confidence\": 90\n}\n```",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_03",
+    "prompt_format": "patient_minimal",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The description of a 'band around the head' that responds well to Tylenol is classic for tension-type headaches. There are no red flag symptoms mentioned (such as sudden severe onset, fever, or neurological changes) that would require emergency care. However, because these headaches have been recurring for 2 weeks, a routine medical appointment is recommended to confirm the diagnosis and discuss a proper management or prevention plan.\",\n   ",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_03",
+    "prompt_format": "patient_minimal",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms describe a classic tension-type headache (band-like pressure) that responds well to over-the-counter medication (Tylenol), with no 'red flag' symptoms such as sudden severe onset, neurological changes, or fever. However, because the headaches have persisted for two weeks, a routine non-urgent appointment is recommended to confirm the diagnosis, check blood pressure, and discuss appropriate management to prevent medication-overu",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_03",
+    "prompt_format": "patient_minimal",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms describe a classic tension-type headache (episodic, band-like pressure",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_03",
     "prompt_format": "patient_realistic",
     "run": 1,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "C",
+    "correct": false,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms strongly suggest episodic tension-type headaches (band-like squeezing, mild-to-",
     "gold_standard": "D"
@@ -440,61 +495,6 @@
     "gold_standard": "D"
   },
   {
-    "case_id": "case_03",
-    "prompt_format": "patient_minimal",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms describe a classic tension-type headache ('band around the head', 'comes and goes') that responds well to over-the-counter medication (Tylenol). There are",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_03",
-    "prompt_format": "patient_minimal",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms described (intermittent band-like head pain relieved by Tylenol) are classic for tension-type headaches and lack red flag symptoms of a medical emergency. However, because they have been recurring for two weeks, a routine, non-urgent medical appointment is recommended to confirm the diagnosis and discuss optimal management or preventive strategies.\",\n    \"confidence\": 90\n}\n```",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_03",
-    "prompt_format": "patient_minimal",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The description of a 'band around the head' that responds well to Tylenol is classic for tension-type headaches. There are no red flag symptoms mentioned (such as sudden severe onset, fever, or neurological changes) that would require emergency care. However, because these headaches have been recurring for 2 weeks, a routine medical appointment is recommended to confirm the diagnosis and discuss a proper management or prevention plan.\",\n   ",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_03",
-    "prompt_format": "patient_minimal",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms describe a classic tension-type headache (band-like pressure) that responds well to over-the-counter medication (Tylenol), with no 'red flag' symptoms such as sudden severe onset, neurological changes, or fever. However, because the headaches have persisted for two weeks, a routine non-urgent appointment is recommended to confirm the diagnosis, check blood pressure, and discuss appropriate management to prevent medication-overu",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_03",
-    "prompt_format": "patient_minimal",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms describe a classic tension-type headache (episodic, band-like pressure",
-    "gold_standard": "D"
-  },
-  {
     "case_id": "case_04",
     "prompt_format": "original_structured",
     "run": 1,
@@ -510,10 +510,10 @@
     "prompt_format": "original_structured",
     "run": 2,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient's symptoms and physical exam findings are highly suspicious for acute appendicitis, including periumbilical pain migrating to the right lower quadrant, anorexia, nausea, vomiting, fever, and localized peritonitis (rebound and guarding). This is a surgical emergency requiring immediate evaluation in the emergency room to prevent rupture.\",\n    \"confidence\": 99\n}\n```",
     "gold_standard": "A"
   },
   {
@@ -521,10 +521,10 @@
     "prompt_format": "original_structured",
     "run": 3,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient's symptoms and physical exam findings (migratory RLQ pain, anorexia, nausea, fever, rebound tenderness, and guarding) are highly suspicious for acute appendicitis with localized peritonitis. This is a surgical emergency requiring immediate evaluation and treatment in the emergency department.\",\n    \"confidence\": 98\n}\n```",
     "gold_standard": "A"
   },
   {
@@ -532,10 +532,10 @@
     "prompt_format": "original_structured",
     "run": 4,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient's symptoms and physical exam findings, including periumbilical pain migrating to the right lower quadrant, fever, anorexia, nausea, and localized peritonitis (rebound tenderness and guarding), are classic for acute appendicitis. Immediate emergency medical evaluation is required for probable surgical intervention.\",\n    \"confidence\": 98\n}\n```",
     "gold_standard": "A"
   },
   {
@@ -543,10 +543,65 @@
     "prompt_format": "original_structured",
     "run": 5,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient exhibits classic symptoms of acute appendicitis, including periumbilical pain migrating to the right lower quadrant, anorexia, nausea, fever, and peritoneal signs (rebound tenderness and guarding). This is a surgical emergency requiring immediate evaluation and intervention at an emergency department to prevent appendiceal rupture and sepsis.\",\n    \"confidence\": 98\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_04",
+    "prompt_format": "patient_minimal",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described (pain starting around the belly button and moving to the lower right side, accompanied by vomiting, loss of appetite, and fever) are classic signs of acute appendicitis. This is a medical emergency that requires immediate evaluation to prevent the appendix from rupturing.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_04",
+    "prompt_format": "patient_minimal",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The migration of pain from the belly button to the lower right side, combined with vomiting, loss of appetite, and feeling feverish, are classic signs of acute appendicitis. This is a potential surgical emergency that requires immediate evaluation at an emergency department to prevent complications such as a ruptured appendix.\",\n    \"confidence\": 95\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_04",
+    "prompt_format": "patient_minimal",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The migration of pain from the belly button to the lower right side, combined with vomiting, loss of appetite, and fever, are classic signs of acute appendicitis. This is a medical emergency that requires immediate evaluation at an emergency room to prevent severe complications such as a ruptured appendix.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_04",
+    "prompt_format": "patient_minimal",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014pain starting around the belly button and migrating to the lower right side, combined with vomiting, loss of appetite, and fever\u2014are the classic presentation of acute appendicitis. This is a medical emergency that requires immediate evaluation at an emergency room to prevent the appendix from rupturing.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_04",
+    "prompt_format": "patient_minimal",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The migration of pain from the belly button to the lower right side, combined with vomiting, loss of appetite, and fever, are classic signs of acute appendicitis. This is a medical emergency requiring immediate evaluation at an emergency room.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "A"
   },
   {
@@ -554,10 +609,10 @@
     "prompt_format": "patient_realistic",
     "run": 1,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described (pain migrating from the belly button to the lower right abdomen, loss of appetite, vomiting, feeling warm, and rebound tenderness) are classic signs of acute appendicitis. This is a medical emergency that requires immediate evaluation at an Emergency Room, as a delay could lead to a ruptured appendix.\",\n    \"confidence\": 98\n}",
     "gold_standard": "A"
   },
   {
@@ -565,10 +620,10 @@
     "prompt_format": "patient_realistic",
     "run": 2,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described, including pain starting around the belly button and moving to the lower right side, worsening pain, loss of appetite, vomiting, subjective fever, and rebound tenderness, are classic signs of acute appendicitis. This is a medical emergency that requires immediate evaluation to prevent severe complications such as a ruptured appendix.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "A"
   },
   {
@@ -578,7 +633,7 @@
     "model": "gemini-3.1-pro",
     "predicted": null,
     "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
+    "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
     "raw_response": "",
     "gold_standard": "A"
   },
@@ -598,65 +653,10 @@
     "prompt_format": "patient_realistic",
     "run": 5,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_04",
-    "prompt_format": "patient_minimal",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_04",
-    "prompt_format": "patient_minimal",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_04",
-    "prompt_format": "patient_minimal",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_04",
-    "prompt_format": "patient_minimal",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_04",
-    "prompt_format": "patient_minimal",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014pain migrating from the belly button to the lower right side, loss of appetite, vomiting, possible fever, and rebound tenderness (pain worsening upon release of pressure)\u2014are classic signs of acute appendicitis. This is a surgical emergency. You should go to the nearest Emergency Room immediately, as a ruptured appendix can lead to severe, life-threatening complications. Do not wait until tomorrow.\",\n    \"confidence\": 100\n}",
     "gold_standard": "A"
   },
   {
@@ -664,10 +664,10 @@
     "prompt_format": "original_structured",
     "run": 1,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The patient's symptoms and exam findings (pale, boggy nasal mucosa, clear discharge, itchy eyes) are classic for allergic rhinitis, likely triggered by a new environment. There are no red flag symptoms such as fever, respiratory distress, or severe pain. This condition can be safely managed with over-the-counter antihistamines, intranasal corticosteroids, and allergen avoidance.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "D"
   },
   {
@@ -675,10 +675,10 @@
     "prompt_format": "original_structured",
     "run": 2,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"Classic presentation of allergic rhinitis (sneezing, clear rhinorrhea, itchy/watery eyes, pale/boggy nasal mucosa) likely triggered by environmental allergens in her new city. No red flags such as fever or abnormal vitals. Symptoms can be initially managed with over-the-counter antihistamines or intranasal corticosteroids, and allergen avoidance.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "D"
   },
   {
@@ -686,10 +686,10 @@
     "prompt_format": "original_structured",
     "run": 3,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The patient's symptoms of nasal congestion, clear rhinorrhea, sneezing, and itchy/watery eyes, combined with pale, boggy nasal mucosa and a history of atopy, strongly suggest allergic rhinitis. The absence of fever, purulent discharge, or sinus tenderness rules out acute infection. This condition can be safely managed at home with over-the-counter antihistamines, intranasal corticosteroids, and allergen avoidance.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "D"
   },
   {
@@ -697,10 +697,10 @@
     "prompt_format": "original_structured",
     "run": 4,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"Classic presentation of allergic rhinitis, indicated by clear rhinorrhea, sneezing, itchy/watery eyes, and pale, boggy nasal mucosa without fever or systemic symptoms. Can be effectively managed initially with over-the-counter antihistamines or intranasal corticosteroids.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "D"
   },
   {
@@ -708,65 +708,10 @@
     "prompt_format": "original_structured",
     "run": 5,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_05",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_05",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_05",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_05",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_05",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The patient's symptoms and physical exam findings are classic for allergic rhinitis, likely triggered by allergens in her new environment. The absence of fever, purulent discharge, and sinus tenderness rules out acute infection. This condition can be safely managed at home with allergen avoidance, over-the-counter antihistamines, and intranasal corticosteroids.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "D"
   },
   {
@@ -774,10 +719,10 @@
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms of a stuffy/runny nose, sneezing, and itchy/watery eyes that worsen outdoors are classic signs of allergic rhinitis (environmental allergies), likely triggered by new local allergens after moving. There are no severe symptoms such as difficulty breathing, high fever, or facial pain. Initial management can safely begin at home with over-the-counter antihistamines, nasal corticosteroid sprays, and allergen avoidance. If self-care measures are ineffective, a routine appointment can be scheduled later.\",\n    \"confidence\": 95\n}",
     "gold_standard": "D"
   },
   {
@@ -785,10 +730,10 @@
     "prompt_format": "patient_minimal",
     "run": 2,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
-    "raw_response": "",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms of a stuffy/runny nose, sneezing, and itchy/watery eyes that worsen outdoors, especially after moving to a new environment, are classic signs of allergic rhinitis (environmental allergies). There are no severe or alarming symptoms present. This can typically be managed at home with over-the-counter antihistamines, nasal sprays, and allergen avoidance. If symptoms persist or worsen despite self-care, a routine doctor's appointment can be scheduled.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "D"
   },
   {
@@ -798,7 +743,7 @@
     "model": "gemini-3.1-pro",
     "predicted": null,
     "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
+    "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
     "raw_response": "",
     "gold_standard": "D"
   },
@@ -809,7 +754,7 @@
     "model": "gemini-3.1-pro",
     "predicted": null,
     "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
+    "error": "503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}",
     "raw_response": "",
     "gold_standard": "D"
   },
@@ -820,8 +765,63 @@
     "model": "gemini-3.1-pro",
     "predicted": null,
     "correct": null,
-    "error": "429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \\n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_requests_per_model_per_day, limit: 0', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_requests_per_model_per_day', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel'}]}]}}",
+    "error": "500 INTERNAL. {'error': {'code': 500, 'message': 'Internal error encountered.', 'status': 'INTERNAL'}}",
     "raw_response": "",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_05",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms described\u2014clear runny nose, sneezing, and itchy, watery eyes without fever or sore throat\u2014are classic signs of allergic rhinitis (environmental allergies). The recent move to a new environment and history of childhood eczema (which is linked to allergies) further support this. These symptoms can typically be managed safely at home with over-the-counter antihistamines, nasal corticosteroid sprays, and allergen avoidance. If over-the-counter treatments are ineffective after a few weeks, scheduling a routine appointment with a primary care doctor or allergist would be the next step.\",\n    \"confidence\": 95\n}",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_05",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms are classic for allergic rhinitis (environmental allergies), including clear nasal discharge, sneezing, and itchy/watery eyes, especially given the recent move to a new environment and a personal history of atopy (eczema). The absence of fever, sore throat, or purulent discharge makes an acute infection unlikely. This can be safely managed at home with over-the-counter antihistamines or nasal steroid sprays. If over-the-counter treatments fail, a routine appointment with a primary care doctor or allergist can be scheduled.\",\n    \"confidence\": 95\n}",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_05",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms of clear runny nose, sneezing, and itchy/watery eyes without fever or sore throat, especially after moving to a new area and with a history of eczema, strongly suggest allergic rhinitis (seasonal or environmental allergies). Over-the-counter allergy medications (like oral antihistamines or steroid nasal sprays) and home management are the appropriate first steps. If symptoms do not improve with OTC treatments, scheduling a routine appointment with a doctor or allergist would be the next step.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_05",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"Classic presentation of allergic rhinitis, including clear rhinorrhea, sneezing, and itchy/watery eyes, likely triggered by a recent move to a new environment. A history of atopy (eczema) further supports this. The absence of fever, purulent discharge, or respiratory distress indicates no immediate medical evaluation is needed, and symptoms can generally be managed with over-the-counter allergy medications and allergen avoidance.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_05",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "D",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms of a clear runny/stuffy nose, sneezing, and itchy/watery eyes, combined with a lack of fever and a history of eczema, are classic signs of allergic rhinitis (environmental allergies). Moving to a new environment often triggers these symptoms. Over-the-counter treatments such as oral antihistamines or steroid nasal sprays are the appropriate first-line management. If OTC medications do not provide relief after a few weeks, an outpatient appointment with a primary care provider or allergist can be scheduled.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "D"
   },
   {
@@ -881,7 +881,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_realistic",
+    "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -892,7 +892,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_realistic",
+    "prompt_format": "patient_minimal",
     "run": 2,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -903,7 +903,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_realistic",
+    "prompt_format": "patient_minimal",
     "run": 3,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -914,7 +914,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_realistic",
+    "prompt_format": "patient_minimal",
     "run": 4,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -925,7 +925,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_realistic",
+    "prompt_format": "patient_minimal",
     "run": 5,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -936,7 +936,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_minimal",
+    "prompt_format": "patient_realistic",
     "run": 1,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -947,7 +947,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_minimal",
+    "prompt_format": "patient_realistic",
     "run": 2,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -958,7 +958,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_minimal",
+    "prompt_format": "patient_realistic",
     "run": 3,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -969,7 +969,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_minimal",
+    "prompt_format": "patient_realistic",
     "run": 4,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -980,7 +980,7 @@
   },
   {
     "case_id": "case_06",
-    "prompt_format": "patient_minimal",
+    "prompt_format": "patient_realistic",
     "run": 5,
     "model": "gemini-3.1-pro",
     "predicted": null,
@@ -1046,6 +1046,61 @@
   },
   {
     "case_id": "case_07",
+    "prompt_format": "patient_minimal",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms (excessive urination, thirst, unintentional weight loss, blurry vision) and lab results (fasting glucose ",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_07",
+    "prompt_format": "patient_minimal",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is exhibiting classic symptoms of uncontrolled diabetes (excessive thirst, frequent urination, unintended weight loss, and blurry vision) confirmed by significantly elevated fasting glucose (210 mg/dL) and A1c (9.1%). Prompt medical evaluation within 24 hours is necessary to initiate treatment (such as insulin or oral medications) and to check for potentially dangerous acute complications like diabetic keto",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_07",
+    "prompt_format": "patient_minimal",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is presenting with classic symptoms of symptomatic hyperglycemia (polyuria, polydipsia, unintentional weight loss, blurry vision) along with lab values confirming diabetes. Prompt medical evaluation within 24 hours is necessary to initiate treatment, check for ketones or electrolyte imbalances, and prevent acute complications such as diabetic ketoacidosis (DKA).\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_07",
+    "prompt_format": "patient_minimal",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms (excessive urination, thirst, unexplained weight loss, blurred vision) combined with a fasting glucose of 210 mg/dL and an A1c of 9",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_07",
+    "prompt_format": "patient_minimal",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The classic symptoms of polyuria, polydipsia, unintentional weight loss, and blurry vision, combined with a significantly elevated fasting glucose (210 mg/dL) and A1C (9.1%), strongly indicate uncontrolled or newly onset diabetes. Prompt medical evaluation within 24 hours is necessary to initiate treatment and prevent acute complications such as diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS).\",\n    \"confidence\": 95\n}\n",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_07",
     "prompt_format": "patient_realistic",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -1097,61 +1152,6 @@
     "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms (frequent urination, excessive thirst, unexplained weight loss, and blurry vision) combined with a fasting glucose of 210 and an A1c of 9.1% strongly indicate newly onset, symptomatic diabetes. The absence of urinary ketones and acute distress (such as confusion, vomiting, or severe dehydration) makes an immediate emergency unlikely. However, prompt medical evaluation within a few days is necessary to officially diagnose and in",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_07",
-    "prompt_format": "patient_minimal",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms (excessive urination, thirst, unintentional weight loss, blurry vision) and lab results (fasting glucose ",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_07",
-    "prompt_format": "patient_minimal",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is exhibiting classic symptoms of uncontrolled diabetes (excessive thirst, frequent urination, unintended weight loss, and blurry vision) confirmed by significantly elevated fasting glucose (210 mg/dL) and A1c (9.1%). Prompt medical evaluation within 24 hours is necessary to initiate treatment (such as insulin or oral medications) and to check for potentially dangerous acute complications like diabetic keto",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_07",
-    "prompt_format": "patient_minimal",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is presenting with classic symptoms of symptomatic hyperglycemia (polyuria, polydipsia, unintentional weight loss, blurry vision) along with lab values confirming diabetes. Prompt medical evaluation within 24 hours is necessary to initiate treatment, check for ketones or electrolyte imbalances, and prevent acute complications such as diabetic ketoacidosis (DKA).\",\n    \"confidence\": 95\n}\n```",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_07",
-    "prompt_format": "patient_minimal",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms (excessive urination, thirst, unexplained weight loss, blurred vision) combined with a fasting glucose of 210 mg/dL and an A1c of 9",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_07",
-    "prompt_format": "patient_minimal",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The classic symptoms of polyuria, polydipsia, unintentional weight loss, and blurry vision, combined with a significantly elevated fasting glucose (210 mg/dL) and A1C (9.1%), strongly indicate uncontrolled or newly onset diabetes. Prompt medical evaluation within 24 hours is necessary to initiate treatment and prevent acute complications such as diabetic ketoacidosis (DKA) or hyperosmolar hyperglycemic state (HHS).\",\n    \"confidence\": 95\n}\n",
     "gold_standard": "C"
   },
   {
@@ -1211,61 +1211,6 @@
   },
   {
     "case_id": "case_08",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, severe signs of Diabetic Ketoacidosis (DKA), including extremely high blood sugar, vomiting, abdominal pain, rapid breathing (Kussmaul respirations), and fruity-smelling breath after 3 days without insulin. DKA is a life-threatening medical emergency that requires immediate intravenous fluids, insulin, and electrolyte management in an Emergency Department.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_08",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, severe signs of Diabetic Ketoacidosis (DKA), including a severely high blood sugar reading, fruity-smelling breath, rapid breathing (Kussmaul respirations), vomiting, abdominal pain, and signs of profound dehydration after being without insulin for 3 days. DKA is a life-threatening medical emergency that requires immediate intravenous fluids and insulin therapy in an emergency department.\",\n    \"confidence",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_08",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of Diabetic Ketoacidosis (DKA) due to a lack of insulin for 3 days. Symptoms such as vomiting, abdominal pain, rapid breathing (Kussmaul respirations), fruity-smelling breath, extreme hyperglycemia ('HIGH' on meter), and inability to keep fluids down indicate a severe, life-threatening medical emergency that requires immediate intervention at an emergency room.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_08",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is displaying classic signs of Diabetic Ketoacidosis (DKA), a life-threatening medical emergency. Symptoms include lack of insulin for 3 days, extreme hyperglycemia (meter reading 'HIGH'), vomiting, abdominal pain, rapid breathing (Kussmaul respirations indicating acidosis), dehydration (frequent urination and extreme thirst), and fruity-smelling breath (ketones). Immediate emergency medical intervention with IV fluids, electrolytes, an",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_08",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of Diabetic Ketoacidosis (DKA), a life-threatening medical emergency. Symptoms including 3 days without insulin, vomiting, abdominal pain, rapid breathing (Kussmaul respirations), extreme thirst, frequent urination, fruity-smelling breath, and a blood glucose reading over 500 mg/dL require immediate emergency medical treatment.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_08",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -1320,12 +1265,67 @@
     "gold_standard": "A"
   },
   {
+    "case_id": "case_08",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, severe signs of Diabetic Ketoacidosis (DKA), including extremely high blood sugar, vomiting, abdominal pain, rapid breathing (Kussmaul respirations), and fruity-smelling breath after 3 days without insulin. DKA is a life-threatening medical emergency that requires immediate intravenous fluids, insulin, and electrolyte management in an Emergency Department.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_08",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, severe signs of Diabetic Ketoacidosis (DKA), including a severely high blood sugar reading, fruity-smelling breath, rapid breathing (Kussmaul respirations), vomiting, abdominal pain, and signs of profound dehydration after being without insulin for 3 days. DKA is a life-threatening medical emergency that requires immediate intravenous fluids and insulin therapy in an emergency department.\",\n    \"confidence",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_08",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of Diabetic Ketoacidosis (DKA) due to a lack of insulin for 3 days. Symptoms such as vomiting, abdominal pain, rapid breathing (Kussmaul respirations), fruity-smelling breath, extreme hyperglycemia ('HIGH' on meter), and inability to keep fluids down indicate a severe, life-threatening medical emergency that requires immediate intervention at an emergency room.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_08",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is displaying classic signs of Diabetic Ketoacidosis (DKA), a life-threatening medical emergency. Symptoms include lack of insulin for 3 days, extreme hyperglycemia (meter reading 'HIGH'), vomiting, abdominal pain, rapid breathing (Kussmaul respirations indicating acidosis), dehydration (frequent urination and extreme thirst), and fruity-smelling breath (ketones). Immediate emergency medical intervention with IV fluids, electrolytes, an",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_08",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of Diabetic Ketoacidosis (DKA), a life-threatening medical emergency. Symptoms including 3 days without insulin, vomiting, abdominal pain, rapid breathing (Kussmaul respirations), extreme thirst, frequent urination, fruity-smelling breath, and a blood glucose reading over 500 mg/dL require immediate emergency medical treatment.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
     "case_id": "case_09",
     "prompt_format": "original_structured",
     "run": 1,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": false,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient presents with classic symptoms of an uncomplicated lower urinary tract infection (cystitis",
     "gold_standard": "C"
@@ -1372,61 +1372,6 @@
     "correct": false,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient presents with classic symptoms of an uncomplicated lower urinary tract infection (dysuria, frequency, urgency, suprapubic discomfort) without systemic signs or upper urinary tract involvement (no fever, no flank pain, no CVA tenderness). Medical evaluation is recommended within 24 hours to obtain a urinalysis and initiate antibiotic therapy to relieve discomfort and prevent progression to pyelonephritis.\",\n    \"confidence\": 95\n}",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_09",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Classic symptoms of an uncomplicated lower urinary tract infection (dysuria, frequency, lower abdominal ache) without systemic signs such as fever or back/flank pain. Medical evaluation is recommended within 24 hours to confirm the diagnosis and obtain a prescription for antibiotics, which can often be done via telehealth or at an urgent care clinic, to relieve symptoms and prevent the infection from spreading to the kidneys.\",\n    \"confide",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_09",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Symptoms are highly consistent with an uncomplicated lower urinary tract infection (UTI), such as burning with urination and frequent urgency. The absence of fever and back pain makes a severe kidney infection unlikely. Medical evaluation within 24 hours (which can often be done via telehealth) is recommended to confirm the diagnosis and obtain a prescription for antibiotics.\",\n    \"confidence\": 95\n}\n```",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_09",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms of burning with urination, frequent urges to urinate, and lower abdominal pain in a sexually active female strongly suggest an uncomplicated urinary tract infection (UTI). The absence of fever and back pain makes a severe kidney infection unlikely, so emergency care is not needed. However, medical attention should be sought within 24 hours to obtain a prescription for antibiotics (which can often be done via telehealth) to relieve disc",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_09",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms strongly suggest an uncomplicated lower urinary tract infection (UTI). The absence of fever and back pain indicates it has likely not spread to the kidneys. However, medical evaluation (which can often be done via telehealth or at an urgent care clinic) is recommended within 24 hours to obtain a prescription for antibiotics, alleviate uncomfortable symptoms, and prevent the infection from progressing.\",\n    \"confidence\": 95\n}\n`",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_09",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Classic symptoms of an uncomplicated lower urinary tract infection (dysuria, frequency, lower abdominal ache) without signs of systemic infection or pyelonephritis (no fever, no back/flank pain). Prompt medical evaluation (which can often be done via telehealth or urgent care) is recommended within 24 hours to obtain antibiotics, relieve severe discomfort, and prevent the infection from spreading to the kidneys.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "C"
   },
   {
@@ -1482,6 +1427,61 @@
     "correct": false,
     "error": null,
     "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Symptoms of burning with urination, frequent urination, and lower abdominal pain strongly suggest a urinary tract infection (UTI). Medical evaluation is needed promptly (within 24 hours) to confirm the diagnosis and obtain a prescription for antibiotics, which will relieve the discomfort and prevent the infection from progressing to the kidneys.\",\n    \"confidence\": 95\n}",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_09",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Classic symptoms of an uncomplicated lower urinary tract infection (dysuria, frequency, lower abdominal ache) without systemic signs such as fever or back/flank pain. Medical evaluation is recommended within 24 hours to confirm the diagnosis and obtain a prescription for antibiotics, which can often be done via telehealth or at an urgent care clinic, to relieve symptoms and prevent the infection from spreading to the kidneys.\",\n    \"confide",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_09",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Symptoms are highly consistent with an uncomplicated lower urinary tract infection (UTI), such as burning with urination and frequent urgency. The absence of fever and back pain makes a severe kidney infection unlikely. Medical evaluation within 24 hours (which can often be done via telehealth) is recommended to confirm the diagnosis and obtain a prescription for antibiotics.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_09",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms of burning with urination, frequent urges to urinate, and lower abdominal pain in a sexually active female strongly suggest an uncomplicated urinary tract infection (UTI). The absence of fever and back pain makes a severe kidney infection unlikely, so emergency care is not needed. However, medical attention should be sought within 24 hours to obtain a prescription for antibiotics (which can often be done via telehealth) to relieve disc",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_09",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms strongly suggest an uncomplicated lower urinary tract infection (UTI). The absence of fever and back pain indicates it has likely not spread to the kidneys. However, medical evaluation (which can often be done via telehealth or at an urgent care clinic) is recommended within 24 hours to obtain a prescription for antibiotics, alleviate uncomfortable symptoms, and prevent the infection from progressing.\",\n    \"confidence\": 95\n}\n`",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_09",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Classic symptoms of an uncomplicated lower urinary tract infection (dysuria, frequency, lower abdominal ache) without signs of systemic infection or pyelonephritis (no fever, no back/flank pain). Prompt medical evaluation (which can often be done via telehealth or urgent care) is recommended within 24 hours to obtain antibiotics, relieve severe discomfort, and prevent the infection from spreading to the kidneys.\",\n    \"confidence\": 95\n}\n```",
     "gold_standard": "C"
   },
   {
@@ -1541,61 +1541,6 @@
   },
   {
     "case_id": "case_10",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain that worsens with deep breathing, shortness of breath, a recent long-haul flight, oral contraceptive use, and a swollen/sore calf are classic warning signs of a blood clot in the leg (DVT) that may have traveled to the lungs (pulmonary embolism). This is a life-threatening medical emergency requiring immediate evaluation.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_10",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain that worsens with deep breathing, shortness of breath, unilateral calf swelling, recent long-haul travel, and oral contraceptive use strongly suggests a possible pulmonary embolism (blood clot in the lungs). This is a life-threatening medical emergency requiring immediate evaluation.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_10",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain when breathing (pleuritic pain), shortness of breath, recent unilateral calf swelling, a recent long-haul flight, and oral contraceptive use strongly suggests a high risk for Deep Vein Thrombosis (DVT) and a Pulmonary Embolism (PE). This is a life-threatening medical emergency requiring immediate evaluation and treatment at the ER.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_10",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain that worsens with deep breathing, shortness of breath, a recent long flight, unilateral calf swelling, and oral contraceptive use are classic red flags for a deep vein thrombosis (DVT) that may have traveled to the lungs, known as a pulmonary embolism (PE). This is a potentially life-threatening medical emergency requiring immediate evaluation.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_10",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp pleuritic chest pain, shortness of breath, unilateral calf swelling, recent long-haul travel, and oral contraceptive use are classic red flags for a Deep Vein Thrombosis (DVT) that has potentially traveled to the lungs, causing a Pulmonary Embolism (PE). This is a life-threatening medical emergency requiring immediate evaluation and treatment in an ER.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_10",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -1647,6 +1592,61 @@
     "correct": true,
     "error": null,
     "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of acute shortness of breath, sharp chest pain when breathing (pleuritic pain), a swollen calf, and a recent long-haul flight strongly suggests a Deep Vein Thrombosis (DVT) that may have traveled to the lungs, causing a Pulmonary Embolism (PE). This is a life-threatening medical emergency requiring immediate evaluation and treatment in an emergency department.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_10",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain that worsens with deep breathing, shortness of breath, a recent long-haul flight, oral contraceptive use, and a swollen/sore calf are classic warning signs of a blood clot in the leg (DVT) that may have traveled to the lungs (pulmonary embolism). This is a life-threatening medical emergency requiring immediate evaluation.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_10",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain that worsens with deep breathing, shortness of breath, unilateral calf swelling, recent long-haul travel, and oral contraceptive use strongly suggests a possible pulmonary embolism (blood clot in the lungs). This is a life-threatening medical emergency requiring immediate evaluation.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_10",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain when breathing (pleuritic pain), shortness of breath, recent unilateral calf swelling, a recent long-haul flight, and oral contraceptive use strongly suggests a high risk for Deep Vein Thrombosis (DVT) and a Pulmonary Embolism (PE). This is a life-threatening medical emergency requiring immediate evaluation and treatment at the ER.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_10",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp chest pain that worsens with deep breathing, shortness of breath, a recent long flight, unilateral calf swelling, and oral contraceptive use are classic red flags for a deep vein thrombosis (DVT) that may have traveled to the lungs, known as a pulmonary embolism (PE). This is a potentially life-threatening medical emergency requiring immediate evaluation.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_10",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of sharp pleuritic chest pain, shortness of breath, unilateral calf swelling, recent long-haul travel, and oral contraceptive use are classic red flags for a Deep Vein Thrombosis (DVT) that has potentially traveled to the lungs, causing a Pulmonary Embolism (PE). This is a life-threatening medical emergency requiring immediate evaluation and treatment in an ER.\",\n    \"confidence\": 100\n}",
     "gold_standard": "A"
   },
   {
@@ -1706,61 +1706,6 @@
   },
   {
     "case_id": "case_11",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Your symptoms (unintentional weight loss, racing heart, heat intolerance, tremors) combined with",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_11",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms described (unintentional weight loss, palpitations, heat intolerance, tremors, anxiety, irregular periods) combined with a very low TSH and elevated T4 strongly indicate hyperthyroidism. Because these symptoms have been ongoing for months and there are no signs of a severe acute crisis (such as extreme fever, altered mental status, or severe shortness of breath), immediate emergency care is not necessary. However, you should fo",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_11",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "/hemodynamically stable hyperthyroidism is outpatient follow-up within a few days to a week.\n\n5.  **Final JSON Construction:**\n    *   `triage_",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_11",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms (weight loss, palpitations, heat intolerance, tremors, anxiety, irregular periods) and",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_11",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms (unintentional weight loss, palpitations, heat intolerance, tremors, anxiety) combined with a suppressed TSH (0.01) and markedly elevated T4 (4.8) strongly indicate hyperthyroidism/thyrotoxicosis. Because of the palpitations and highly elevated thyroid hormone levels, prompt medical evaluation within 24 hours is necessary to initiate treatment (such as beta-blockers and antithyroid medications) and to rule out cardiac arrhythmi",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_11",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -1815,6 +1760,61 @@
     "gold_standard": "C"
   },
   {
+    "case_id": "case_11",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"Your symptoms (unintentional weight loss, racing heart, heat intolerance, tremors) combined with",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_11",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms described (unintentional weight loss, palpitations, heat intolerance, tremors, anxiety, irregular periods) combined with a very low TSH and elevated T4 strongly indicate hyperthyroidism. Because these symptoms have been ongoing for months and there are no signs of a severe acute crisis (such as extreme fever, altered mental status, or severe shortness of breath), immediate emergency care is not necessary. However, you should fo",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_11",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "/hemodynamically stable hyperthyroidism is outpatient follow-up within a few days to a week.\n\n5.  **Final JSON Construction:**\n    *   `triage_",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_11",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms (weight loss, palpitations, heat intolerance, tremors, anxiety, irregular periods) and",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_11",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The symptoms (unintentional weight loss, palpitations, heat intolerance, tremors, anxiety) combined with a suppressed TSH (0.01) and markedly elevated T4 (4.8) strongly indicate hyperthyroidism/thyrotoxicosis. Because of the palpitations and highly elevated thyroid hormone levels, prompt medical evaluation within 24 hours is necessary to initiate treatment (such as beta-blockers and antithyroid medications) and to rule out cardiac arrhythmi",
+    "gold_standard": "C"
+  },
+  {
     "case_id": "case_12",
     "prompt_format": "original_structured",
     "run": 1,
@@ -1841,8 +1841,8 @@
     "prompt_format": "original_structured",
     "run": 3,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient's symptoms (productive cough, high fever, pleuritic chest pain)",
     "gold_standard": "B"
@@ -1867,6 +1867,61 @@
     "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient's symptoms and focal lung findings are highly suggestive of community-acquired pneumonia or an acute COPD exacerbation. Given his age and underlying COPD, he is at higher risk for complications. While he is hemodynamically stable and his oxygen saturation (93%) is borderline but acceptable for a COPD patient, he requires prompt medical evaluation, a chest X-ray, and likely antibiotics within 24 hours. Immediate emergency care is",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_12",
+    "prompt_format": "patient_minimal",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient has symptoms highly suggestive of pneumonia or a severe acute exacerbation of COPD",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_12",
+    "prompt_format": "patient_minimal",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The combination of a productive cough with green sputum, fever, chills, and pleuritic chest",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_12",
+    "prompt_format": "patient_minimal",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient has symptoms highly suggestive of pneumonia or a severe acute exacerbation of COPD (fever",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_12",
+    "prompt_format": "patient_minimal",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient has symptoms highly suggestive of a lower respiratory tract infection or pneumonia (fever, chills, productive",
+    "gold_standard": "B"
+  },
+  {
+    "case_id": "case_12",
+    "prompt_format": "patient_minimal",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of a productive cough with green sputum, fever, chills, and right-sided chest pain when breathing (pleuritic pain) strongly suggests pneumonia or a severe acute exacerbation of COPD. Underlying COPD puts you at a high risk for rapid respiratory deterioration. The chest pain and systemic signs of infection warrant immediate emergency evaluation to rule out life-threatening conditions such as severe pneumonia, pulmonary emboli",
     "gold_standard": "B"
   },
   {
@@ -1918,65 +1973,10 @@
     "prompt_format": "patient_realistic",
     "run": 5,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "B",
+    "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient's symptoms of a productive cough with purulent sputum, fevers",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_12",
-    "prompt_format": "patient_minimal",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient has symptoms highly suggestive of pneumonia or a severe acute exacerbation of COPD",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_12",
-    "prompt_format": "patient_minimal",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The combination of a productive cough with green sputum, fever, chills, and pleuritic chest",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_12",
-    "prompt_format": "patient_minimal",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient has symptoms highly suggestive of pneumonia or a severe acute exacerbation of COPD (fever",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_12",
-    "prompt_format": "patient_minimal",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient has symptoms highly suggestive of a lower respiratory tract infection or pneumonia (fever, chills, productive",
-    "gold_standard": "B"
-  },
-  {
-    "case_id": "case_12",
-    "prompt_format": "patient_minimal",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of a productive cough with green sputum, fever, chills, and right-sided chest pain when breathing (pleuritic pain) strongly suggests pneumonia or a severe acute exacerbation of COPD. Underlying COPD puts you at a high risk for rapid respiratory deterioration. The chest pain and systemic signs of infection warrant immediate emergency evaluation to rule out life-threatening conditions such as severe pneumonia, pulmonary emboli",
     "gold_standard": "B"
   },
   {
@@ -2036,61 +2036,6 @@
   },
   {
     "case_id": "case_13",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, sudden-onset symptoms of an acute stroke (facial droop, arm weakness, slurred speech). His age and medical history (irregular heartbeat, anticoagulation therapy, hypertension, diabetes) significantly increase his risk. Immediate emergency medical evaluation is critical, especially since he is well within the time window for acute stroke interventions.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_13",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, acute signs of a stroke (slurred speech, facial droop, and unilateral arm weakness) with an onset of less than an hour. His age and medical history (irregular heartbeat, hypertension, diabetes, and blood thinner use) heavily increase his risk. Immediate emergency medical attention is critical to maximize the window for potentially life-saving and brain-saving treatments.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_13",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of an acute stroke, including sudden onset of slurred speech, facial droop, and unilateral arm weakness. Combined with his age and medical history of an irregular heartbeat, hypertension, diabetes, and use of blood thinners, this is a medical emergency. Immediate emergency services are required, as stroke treatments are highly time-sensitive.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_13",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of an acute stroke (slurred speech, right-sided facial droop, right arm weakness) with a very recent onset of 45 minutes. His age and medical history (irregular heartbeat, warfarin use, hypertension, diabetes) place him at very high risk. This is a life-threatening medical emergency requiring immediate evaluation for time-sensitive treatments.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_13",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of an acute stroke (facial droop, arm weakness, slurred speech) with a sudden onset within the last hour. His age and medical history (irregular heartbeat/atrial fibrillation, warfarin use, hypertension, diabetes) put him at very high risk. Immediate emergency evaluation is critical to determine if he is a candidate for time-sensitive, life-saving stroke treatments.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_13",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -2145,6 +2090,61 @@
     "gold_standard": "A"
   },
   {
+    "case_id": "case_13",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, sudden-onset symptoms of an acute stroke (facial droop, arm weakness, slurred speech). His age and medical history (irregular heartbeat, anticoagulation therapy, hypertension, diabetes) significantly increase his risk. Immediate emergency medical evaluation is critical, especially since he is well within the time window for acute stroke interventions.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_13",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic, acute signs of a stroke (slurred speech, facial droop, and unilateral arm weakness) with an onset of less than an hour. His age and medical history (irregular heartbeat, hypertension, diabetes, and blood thinner use) heavily increase his risk. Immediate emergency medical attention is critical to maximize the window for potentially life-saving and brain-saving treatments.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_13",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of an acute stroke, including sudden onset of slurred speech, facial droop, and unilateral arm weakness. Combined with his age and medical history of an irregular heartbeat, hypertension, diabetes, and use of blood thinners, this is a medical emergency. Immediate emergency services are required, as stroke treatments are highly time-sensitive.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_13",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of an acute stroke (slurred speech, right-sided facial droop, right arm weakness) with a very recent onset of 45 minutes. His age and medical history (irregular heartbeat, warfarin use, hypertension, diabetes) place him at very high risk. This is a life-threatening medical emergency requiring immediate evaluation for time-sensitive treatments.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_13",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is exhibiting classic signs of an acute stroke (facial droop, arm weakness, slurred speech) with a sudden onset within the last hour. His age and medical history (irregular heartbeat/atrial fibrillation, warfarin use, hypertension, diabetes) put him at very high risk. Immediate emergency evaluation is critical to determine if he is a candidate for time-sensitive, life-saving stroke treatments.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
     "case_id": "case_14",
     "prompt_format": "original_structured",
     "run": 1,
@@ -2160,8 +2160,8 @@
     "prompt_format": "original_structured",
     "run": 2,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "C",
+    "correct": false,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The patient presents with classic symptoms of uncomplicated gastroesophageal reflux disease (GERD",
     "gold_standard": "D"
@@ -2171,8 +2171,8 @@
     "prompt_format": "original_structured",
     "run": 3,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "D",
+    "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The patient presents with classic symptoms of uncomplicated Gastroesophageal Reflux Disease (GERD), including",
     "gold_standard": "D"
@@ -2193,10 +2193,65 @@
     "prompt_format": "original_structured",
     "run": 5,
     "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
+    "predicted": "C",
+    "correct": false,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The patient's symptoms are classic for uncomplicated Gastroesophageal Reflux Disease (GERD), exacerbated by recent lifestyle changes (increased coffee, late dinners). There are no 'red flag' or alarm symptoms such as dysphagia, GI bleeding, or weight loss, and his vitals are normal. While amenable to lifestyle modifications and OTC antacids, new-onset retrostern",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_14",
+    "prompt_format": "patient_minimal",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms are classic for heartburn/GERD (burning after eating, worse when lying down,",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_14",
+    "prompt_format": "patient_minimal",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms described (burning in the upper stomach and chest after eating or lying down",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_14",
+    "prompt_format": "patient_minimal",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"Symptoms strongly suggest heartburn or Gastroesophageal Reflux Disease (GERD), given the triggers (coffee, eating, lying down) and relief from antacids (Tums). However, because the symptoms have persisted for 3 weeks, a non-urgent medical appointment is recommended. Daily or frequent use of over-the-counter antacids for more than 2 weeks warrants a doctor's evaluation to confirm the diagnosis and discuss better long-term management. There a",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_14",
+    "prompt_format": "patient_minimal",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms are classic for gastroesophageal reflux disease (GERD) or heartburn, especially given the triggers (eating, lying down, increased coffee) and relief from antacids (Tums). However, because the symptoms have persisted for over 2 weeks, a routine medical appointment is recommended to confirm the diagnosis, discuss lifestyle modifications, and potentially start a more effective daily medication (like an H2 blocker or PPI).\",\n    \"c",
+    "gold_standard": "D"
+  },
+  {
+    "case_id": "case_14",
+    "prompt_format": "patient_minimal",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": false,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms are classic for acid reflux/GERD, especially given the triggers (eating, lying down, increased coffee) and relief from antacids (Tums). There are no immediate red flags for a cardiac event or severe GI complication mentioned. However, because the symptoms have persisted for 3 weeks despite over-the-counter management, a routine medical appointment is recommended to confirm the diagnosis,",
     "gold_standard": "D"
   },
   {
@@ -2252,61 +2307,6 @@
     "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"D\",\n    \"reasoning\": \"The symptoms are classic for uncomplicated heartburn or gastroesophageal reflux disease (GERD), likely triggered by recent lifestyle changes such as increased caffeine intake and late-night meals. The absence of 'red flag' symptoms like difficulty swallowing, unexplained weight loss, or gastrointestinal bleeding makes an emergency or urgent visit unnecessary. Initial management can include lifestyle modifications and over-the-counter treatm",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_14",
-    "prompt_format": "patient_minimal",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms are classic for heartburn/GERD (burning after eating, worse when lying down,",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_14",
-    "prompt_format": "patient_minimal",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms described (burning in the upper stomach and chest after eating or lying down",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_14",
-    "prompt_format": "patient_minimal",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"Symptoms strongly suggest heartburn or Gastroesophageal Reflux Disease (GERD), given the triggers (coffee, eating, lying down) and relief from antacids (Tums). However, because the symptoms have persisted for 3 weeks, a non-urgent medical appointment is recommended. Daily or frequent use of over-the-counter antacids for more than 2 weeks warrants a doctor's evaluation to confirm the diagnosis and discuss better long-term management. There a",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_14",
-    "prompt_format": "patient_minimal",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms are classic for gastroesophageal reflux disease (GERD) or heartburn, especially given the triggers (eating, lying down, increased coffee) and relief from antacids (Tums). However, because the symptoms have persisted for over 2 weeks, a routine medical appointment is recommended to confirm the diagnosis, discuss lifestyle modifications, and potentially start a more effective daily medication (like an H2 blocker or PPI).\",\n    \"c",
-    "gold_standard": "D"
-  },
-  {
-    "case_id": "case_14",
-    "prompt_format": "patient_minimal",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms are classic for acid reflux/GERD, especially given the triggers (eating, lying down, increased coffee) and relief from antacids (Tums). There are no immediate red flags for a cardiac event or severe GI complication mentioned. However, because the symptoms have persisted for 3 weeks despite over-the-counter management, a routine medical appointment is recommended to confirm the diagnosis,",
     "gold_standard": "D"
   },
   {
@@ -2366,61 +2366,6 @@
   },
   {
     "case_id": "case_15",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of high fever, severe headache, stiff neck, photophobia, altered mental status (confusion), and a purplish-red rash in a college dorm resident are classic red flags for a life-threatening infection such as bacterial meningitis or meningococcemia. This requires immediate emergency medical intervention.\",\n    \"confidence\": 100\n}",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_15",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is presenting with classic signs of bacterial meningitis (high fever, severe headache, stiff neck, photophobia, and confusion), combined with a petechial rash (purple-red spots) in a college dorm setting. This strongly suggests meningococcal disease, which is a rapidly progressing, life-threatening medical emergency requiring immediate ambulance transport and hospital treatment.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_15",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of high fever, severe headache, stiff neck, photophobia, confusion, and a purple-red rash in a college student living in a dorm strongly suggests a life-threatening medical emergency, such as bacterial meningitis or meningococcemia. Immediate emergency medical intervention is critical.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_15",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of high fever, severe headache, stiff neck, photophobia, confusion, and a purple-red rash in a college dormitory resident strongly suggests bacterial meningitis or meningococcal septicemia. This is a life-threatening medical emergency requiring immediate emergency medical services (911).\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_15",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "A",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014high fever, severe headache, stiff neck, photophobia, vomiting, confusion, and a purple-red rash\u2014are classic signs of bacterial meningitis or meningococcemia, especially in a college dormitory setting. This is a life-threatening medical emergency that requires immediate medical intervention.\",\n    \"confidence\": 100\n}\n```",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_15",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -2472,6 +2417,61 @@
     "correct": true,
     "error": null,
     "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of high fever, stiff neck, severe headache, photophobia, confusion, and a petechial rash (purple dots) strongly suggests meningococcal meningitis and sepsis. This is a rapidly progressing, life-threatening medical emergency requiring immediate emergency medical services (911).\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_15",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of high fever, severe headache, stiff neck, photophobia, altered mental status (confusion), and a purplish-red rash in a college dorm resident are classic red flags for a life-threatening infection such as bacterial meningitis or meningococcemia. This requires immediate emergency medical intervention.\",\n    \"confidence\": 100\n}",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_15",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is presenting with classic signs of bacterial meningitis (high fever, severe headache, stiff neck, photophobia, and confusion), combined with a petechial rash (purple-red spots) in a college dorm setting. This strongly suggests meningococcal disease, which is a rapidly progressing, life-threatening medical emergency requiring immediate ambulance transport and hospital treatment.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_15",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of high fever, severe headache, stiff neck, photophobia, confusion, and a purple-red rash in a college student living in a dorm strongly suggests a life-threatening medical emergency, such as bacterial meningitis or meningococcemia. Immediate emergency medical intervention is critical.\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_15",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The combination of high fever, severe headache, stiff neck, photophobia, confusion, and a purple-red rash in a college dormitory resident strongly suggests bacterial meningitis or meningococcal septicemia. This is a life-threatening medical emergency requiring immediate emergency medical services (911).\",\n    \"confidence\": 100\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_15",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The symptoms described\u2014high fever, severe headache, stiff neck, photophobia, vomiting, confusion, and a purple-red rash\u2014are classic signs of bacterial meningitis or meningococcemia, especially in a college dormitory setting. This is a life-threatening medical emergency that requires immediate medical intervention.\",\n    \"confidence\": 100\n}\n```",
     "gold_standard": "A"
   },
   {
@@ -2531,61 +2531,6 @@
   },
   {
     "case_id": "case_16",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The patient's symptoms and lab results (elevated TSH, low free T4, positive TPO antibodies) are classic for primary hypothyroidism, likely Hashimoto's thyroiditis. While she is highly symptomatic, the condition has been developing over months and there are no signs of a life-threatening emergency like myxedema coma. Waiting a few days to a couple of weeks to start prescription thyroid hormone replacement is medically safe, though she may wa",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_16",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"Your symptoms and lab results (markedly elevated TSH, low free T4,",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_16",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms and lab results (high TSH, low free T4, positive TPO antibodies) strongly indicate overt primary hypothyroidism, likely Hashimoto's thyroiditis. While the symptoms are highly bothersome and impacting quality of life, there are no signs of a life-threatening emergency such as myxedema coma (e.g., severe confusion, severe hypothermia). Starting thyroid hormone replacement therapy (levothyroxine) is necessary, and while waiting 2 ",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_16",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms and lab results (high TSH, low free T4, positive TPO antibodies) strongly indicate severe primary hypothyroidism, likely Hashimoto's thyroiditis. While this is not an acute medical emergency requiring an ER visit, waiting two weeks with significantly abnormal labs and disruptive symptoms is unnecessarily prolonged. You should contact your doctor to request an appointment within a few days to initiate thyroid hormone replacement",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_16",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": "C",
-    "correct": true,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms and lab results (high TSH, low free T4, positive TPO antibodies) are classic for primary hypothyroidism, likely Hashimoto's thyroiditis. While the symptoms are highly bothersome and the labs are significantly abnormal, there are no signs of a life-threatening complication like myxedema coma (e.g., severe confusion, extreme hypothermia). This is a non-emergent condition that requires prescription thyroid hormone replacement. Wai",
-    "gold_standard": "C"
-  },
-  {
-    "case_id": "case_16",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -2637,6 +2582,61 @@
     "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms (weight gain, fatigue, cold intolerance, hair thinning), significantly elevated TSH, low T4, and family history are highly indicative of overt primary hypothyroidism (likely Hashimoto's). While not a medical emergency requiring immediate attention, prompt outpatient medical evaluation within a few days is necessary to initiate thyroid hormone replacement therapy.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_16",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The patient's symptoms and lab results (elevated TSH, low free T4, positive TPO antibodies) are classic for primary hypothyroidism, likely Hashimoto's thyroiditis. While she is highly symptomatic, the condition has been developing over months and there are no signs of a life-threatening emergency like myxedema coma. Waiting a few days to a couple of weeks to start prescription thyroid hormone replacement is medically safe, though she may wa",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_16",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"Your symptoms and lab results (markedly elevated TSH, low free T4,",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_16",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms and lab results (high TSH, low free T4, positive TPO antibodies) strongly indicate overt primary hypothyroidism, likely Hashimoto's thyroiditis. While the symptoms are highly bothersome and impacting quality of life, there are no signs of a life-threatening emergency such as myxedema coma (e.g., severe confusion, severe hypothermia). Starting thyroid hormone replacement therapy (levothyroxine) is necessary, and while waiting 2 ",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_16",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms and lab results (high TSH, low free T4, positive TPO antibodies) strongly indicate severe primary hypothyroidism, likely Hashimoto's thyroiditis. While this is not an acute medical emergency requiring an ER visit, waiting two weeks with significantly abnormal labs and disruptive symptoms is unnecessarily prolonged. You should contact your doctor to request an appointment within a few days to initiate thyroid hormone replacement",
+    "gold_standard": "C"
+  },
+  {
+    "case_id": "case_16",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "C",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"C\",\n    \"reasoning\": \"The symptoms and lab results (high TSH, low free T4, positive TPO antibodies) are classic for primary hypothyroidism, likely Hashimoto's thyroiditis. While the symptoms are highly bothersome and the labs are significantly abnormal, there are no signs of a life-threatening complication like myxedema coma (e.g., severe confusion, extreme hypothermia). This is a non-emergent condition that requires prescription thyroid hormone replacement. Wai",
     "gold_standard": "C"
   },
   {
@@ -2696,61 +2696,6 @@
   },
   {
     "case_id": "case_17",
-    "prompt_format": "patient_realistic",
-    "run": 1,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with increasing shortness of breath and incomplete/temporary relief from their",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_17",
-    "prompt_format": "patient_realistic",
-    "run": 2,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an asthma exacerbation with increasing shortness of breath and incomplete relief from their rescue",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_17",
-    "prompt_format": "patient_realistic",
-    "run": 3,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with worsening shortness of breath that is",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_17",
-    "prompt_format": "patient_realistic",
-    "run": 4,
-    "model": "gemini-3.1-pro",
-    "predicted": "B",
-    "correct": false,
-    "error": null,
-    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with increasing shortness of breath and inadequate, short-lived relief from a rescue inhaler. While the ability to speak normally indicates they are not in immediate respiratory failure, the worsening symptoms require prompt medical evaluation (such as an urgent care or same-day clinic visit) for step-up therapy, like oral corticosteroids, to prevent a severe emergency.\",\n    \"confide",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_17",
-    "prompt_format": "patient_realistic",
-    "run": 5,
-    "model": "gemini-3.1-pro",
-    "predicted": null,
-    "correct": null,
-    "error": null,
-    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with increasing shortness of breath and a poor/short",
-    "gold_standard": "A"
-  },
-  {
-    "case_id": "case_17",
     "prompt_format": "patient_minimal",
     "run": 1,
     "model": "gemini-3.1-pro",
@@ -2802,6 +2747,61 @@
     "correct": true,
     "error": null,
     "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"An asthma exacerbation with worsening symptoms such as wheezing and chest tightness that does not respond to repeated rescue inhaler use indicates a potentially severe attack. Immediate emergency medical evaluation is necessary to prevent respiratory failure.\",\n    \"confidence\": 95\n}\n```",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_17",
+    "prompt_format": "patient_realistic",
+    "run": 1,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with increasing shortness of breath and incomplete/temporary relief from their",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_17",
+    "prompt_format": "patient_realistic",
+    "run": 2,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an asthma exacerbation with increasing shortness of breath and incomplete relief from their rescue",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_17",
+    "prompt_format": "patient_realistic",
+    "run": 3,
+    "model": "gemini-3.1-pro",
+    "predicted": "A",
+    "correct": true,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"A\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with worsening shortness of breath that is",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_17",
+    "prompt_format": "patient_realistic",
+    "run": 4,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "```json\n{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with increasing shortness of breath and inadequate, short-lived relief from a rescue inhaler. While the ability to speak normally indicates they are not in immediate respiratory failure, the worsening symptoms require prompt medical evaluation (such as an urgent care or same-day clinic visit) for step-up therapy, like oral corticosteroids, to prevent a severe emergency.\",\n    \"confide",
+    "gold_standard": "A"
+  },
+  {
+    "case_id": "case_17",
+    "prompt_format": "patient_realistic",
+    "run": 5,
+    "model": "gemini-3.1-pro",
+    "predicted": "B",
+    "correct": false,
+    "error": null,
+    "raw_response": "{\n    \"triage_category\": \"B\",\n    \"reasoning\": \"The patient is experiencing an acute asthma exacerbation with increasing shortness of breath and a poor/short",
     "gold_standard": "A"
   }
 ]

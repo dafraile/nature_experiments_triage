@@ -33,6 +33,12 @@ from config import (
     MODELS, NUM_RUNS, TEMPERATURE, MAX_TOKENS, TIMEOUT_SECONDS,
     PROMPT_FORMATS, TRIAGE_CATEGORIES, DATA_DIR, RESULTS_DIR,
 )
+from llm_utils import (
+    extract_google_text,
+    google_visible_output_tokens,
+    infer_free_text_triage,
+    parse_structured_response,
+)
 
 # ═══════════════════════════════════════════════
 # SYSTEM PROMPT — Identical for all models
@@ -166,7 +172,8 @@ def call_google(model_id: str, system_prompt: str, user_message: str,
     config_kwargs = dict(
         system_instruction=system_prompt,
         temperature=TEMPERATURE,
-        max_output_tokens=MAX_TOKENS,
+        max_output_tokens=google_visible_output_tokens(model_id, MAX_TOKENS),
+        http_options=types.HttpOptions(timeout=TIMEOUT_SECONDS * 1000),
     )
 
     if thinking_level:
@@ -179,7 +186,7 @@ def call_google(model_id: str, system_prompt: str, user_message: str,
         contents=user_message,
         config=types.GenerateContentConfig(**config_kwargs),
     )
-    return response.text
+    return extract_google_text(response)
 
 
 PROVIDER_DISPATCH = {
@@ -198,34 +205,10 @@ def parse_triage_response(raw: str) -> dict:
     Extract triage_category, reasoning, and confidence from LLM response.
     Handles JSON responses and also tries to extract from free text.
     """
-    result = {"triage_category": None, "reasoning": None, "confidence": None}
-
-    # Try JSON parse first
-    try:
-        # Find JSON block in response (might be wrapped in markdown code fences)
-        json_match = re.search(r'\{[^{}]*"triage_category"[^{}]*\}', raw, re.DOTALL)
-        if json_match:
-            parsed = json.loads(json_match.group())
-            result["triage_category"] = str(parsed.get("triage_category", "")).strip().upper()[:1]
-            result["reasoning"] = parsed.get("reasoning", "")
-            conf = parsed.get("confidence")
-            if conf is not None:
-                result["confidence"] = float(conf)
-            if result["triage_category"] in TRIAGE_CATEGORIES:
-                return result
-    except (json.JSONDecodeError, ValueError):
-        pass
-
-    # Fallback: regex extraction
-    cat_match = re.search(r'(?:triage[_ ]?category|category|triage)\s*[":=]\s*["\']?([A-Da-d])', raw, re.IGNORECASE)
-    if cat_match:
-        result["triage_category"] = cat_match.group(1).upper()
-
-    conf_match = re.search(r'(?:confidence)\s*[":=]\s*(\d+(?:\.\d+)?)', raw, re.IGNORECASE)
-    if conf_match:
-        result["confidence"] = float(conf_match.group(1))
-
-    return result
+    parsed = parse_structured_response(raw or "")
+    if not parsed["triage_category"]:
+        parsed["triage_category"] = infer_free_text_triage(raw or "")
+    return parsed
 
 
 # ═══════════════════════════════════════════════
@@ -327,6 +310,7 @@ def run_experiment(
     models: list[str],
     formats: list[str],
     num_runs: int,
+    case_ids: Optional[list[str]] = None,
     dry_run: bool = False,
 ) -> list[TrialResult]:
     """Run the full experiment matrix."""
@@ -335,6 +319,9 @@ def run_experiment(
     vignettes_path = Path(__file__).parent / DATA_DIR / "vignettes.json"
     with open(vignettes_path) as f:
         cases = json.load(f)
+    if case_ids:
+        allowed = set(case_ids)
+        cases = [case for case in cases if case["id"] in allowed]
 
     results = []
     total = len(models) * len(cases) * len(formats) * num_runs
@@ -448,19 +435,35 @@ def main():
                         help="Print prompts without calling APIs")
     parser.add_argument("--tag", type=str, default="",
                         help="Tag for output filenames")
+    parser.add_argument("--cases", nargs="+", default=None,
+                        help="Optional list of case ids to run (for targeted verification)")
     args = parser.parse_args()
+
+    vignettes_path = Path(__file__).parent / DATA_DIR / "vignettes.json"
+    with open(vignettes_path) as f:
+        all_cases = json.load(f)
+    if args.cases:
+        allowed = set(args.cases)
+        selected_cases = [case for case in all_cases if case["id"] in allowed]
+        missing = sorted(allowed - {case["id"] for case in selected_cases})
+        if missing:
+            raise SystemExit(f"Unknown case ids: {', '.join(missing)}")
+    else:
+        selected_cases = all_cases
 
     print(f"\n{'='*70}")
     print(f"  TRIAGE REPLICATION EXPERIMENT")
     print(f"{'='*70}")
     print(f"  Models:  {', '.join(args.models)}")
     print(f"  Formats: {', '.join(args.formats)}")
+    if args.cases:
+        print(f"  Cases:   {', '.join(args.cases)}")
     print(f"  Runs:    {args.runs}")
-    print(f"  Total trials: {len(args.models) * 16 * len(args.formats) * args.runs}")
+    print(f"  Total trials: {len(args.models) * len(selected_cases) * len(args.formats) * args.runs}")
     print(f"  Dry run: {args.dry_run}")
     print(f"{'='*70}\n")
 
-    results = run_experiment(args.models, args.formats, args.runs, args.dry_run)
+    results = run_experiment(args.models, args.formats, args.runs, args.cases, args.dry_run)
 
     if not args.dry_run:
         save_results(results, args.tag)
