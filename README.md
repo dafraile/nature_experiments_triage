@@ -6,14 +6,22 @@ This repository accompanies our Matters Arising response to Ramaswamy et al. (*N
 
 ## Key Findings
 
-Across the full **1,275-cell main experiment matrix** (currently **1,252 scored**; **23 unresolved Gemini 3.1 Pro rows** remain), we find:
+The main headline result is now the matched naturalistic re-test:
+
+- **Natural user-only interaction outperforms the constrained paper-style protocol** across the matched four-model comparison: **69.6% vs. 61.5%** (**+8.2 percentage points**)
+- **This gain is significant in paired analyses** (Wilcoxon signed-rank across 136 matched model-case-format cells: **p = 0.0034**)
+- **Inter-rater agreement for natural free-text adjudication is high**: **94.3% agreement**, **Cohen's κ = 0.914**
+- **DKA remains 100% in both conditions** (40/40 matched rows under constrained evaluation; 40/40 under natural interaction), consistent with the original DKA miss being a product/evaluation-layer artifact rather than a stable model limitation
+- **Asthma improves materially under natural interaction**: **31/40 → 38/40** overall, with the realistic patient prompt improving **11/20 → 18/20** (**55% → 90%**)
+
+Across the full **1,275-cell main constrained experiment matrix** (currently **1,252 scored**; **23 unresolved Gemini 3.1 Pro rows** remain), we find:
 
 - **Prompt format significantly affects triage accuracy** in the reconciled main dataset (χ² = 6.93, p = 0.0312)
 - **DKA (diabetic ketoacidosis)**: 100% correct emergency triage in every scored trial so far (74/74)
 - **Asthma exacerbation**: The pattern is mixed, not uniformly "fixed" by naturalistic phrasing. The minimal patient prompt reaches 100% (25/25), the realistic patient prompt reaches 48% (12/25), and the structured clinical format reaches 40% (10/25)
 - **Confidence scores** vary by 15+ percentage points for identical clinical content in different formats, confirming these are generated text artefacts, not calibrated probabilities
 
-The unresolved main rows are now entirely Gemini 3.1 Pro API failures.
+The unresolved main rows are now entirely Gemini 3.1 Pro failures. The codebase now supports both the Gemini Developer API and a Vertex Express fallback path for targeted Google retries.
 
 ## Motivation
 
@@ -85,6 +93,12 @@ python run_experiment.py --models gpt-5.2-thinking-high claude-sonnet-4.6
 
 # Quick test (1 run)
 python run_experiment.py --runs 1 --tag quick_test
+
+# Naturalistic user-only run (separate experiment family)
+python run_natural_interaction.py --models gpt-5.2-thinking-high claude-sonnet-4.6 claude-opus-4.6 gemini-3-flash --runs 5
+
+# Retry missing Gemini Pro rows through Vertex Express
+python run_gemini_pro.py --vertex --cases case_06 case_07 --formats patient_realistic patient_minimal original_structured --runs 1 2 3 4 5
 ```
 
 ### 4. Analyze results
@@ -94,7 +108,7 @@ python reconcile_results.py --write
 python analyze_results.py results/main_experiment_reconciled.csv
 ```
 
-This produces accuracy tables, per-case breakdowns, statistical tests (chi-squared, McNemar's, Cohen's kappa), and publication-quality figures.
+This produces accuracy tables, per-case breakdowns, statistical tests (chi-squared, McNemar's, Cohen's kappa, Wilcoxon signed-rank), and publication-quality figures.
 
 ## Key Figures
 

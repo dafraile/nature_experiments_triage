@@ -8,13 +8,14 @@ import time
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from config import GOOGLE_API_KEY, MODELS, MAX_TOKENS, RESULTS_DIR, PROMPT_FORMATS, TIMEOUT_SECONDS
+from config import GOOGLE_API_KEY, VERTEX_AI_KEY, MODELS, MAX_TOKENS, RESULTS_DIR, PROMPT_FORMATS, TIMEOUT_SECONDS
 from llm_utils import (
     extract_google_text,
     extract_triage_category,
     google_visible_output_tokens,
     infer_free_text_triage,
     is_retryable_error,
+    make_google_client,
 )
 
 OUTFILE = Path(__file__).parent / RESULTS_DIR / "results_gemini_pro_resumed.json"
@@ -30,6 +31,10 @@ parser.add_argument("--retry-wait", type=float, default=30.0,
                     help="Seconds to wait after retryable API errors (default: 30)")
 parser.add_argument("--timeout-seconds", type=float, default=TIMEOUT_SECONDS,
                     help=f"Per-request timeout for Gemini calls (default: {TIMEOUT_SECONDS})")
+parser.add_argument("--call-wait", type=float, default=20.0,
+                    help="Seconds to wait between API calls (default: 20)")
+parser.add_argument("--vertex", action="store_true",
+                    help="Use Vertex Express instead of the Gemini developer API")
 args = parser.parse_args()
 
 selected_case_ids = set(args.cases) if args.cases else None
@@ -90,16 +95,16 @@ Respond in the following JSON format:
 }"""
 
 def call_gemini(user_message):
-    from google import genai
     from google.genai import types
-    client = genai.Client(api_key=GOOGLE_API_KEY)
+    client = make_google_client(GOOGLE_API_KEY, VERTEX_AI_KEY, use_vertex=args.vertex)
     cfg = MODELS["gemini-3.1-pro"]
     config_kwargs = dict(
         temperature=0.7,
-        max_output_tokens=google_visible_output_tokens(cfg["model_id"], MAX_TOKENS),
+        max_output_tokens=google_visible_output_tokens(cfg["model_id"], MAX_TOKENS, use_vertex=args.vertex),
         system_instruction=SYSTEM_PROMPT,
-        http_options=types.HttpOptions(timeout=request_timeout_ms),
     )
+    if not args.vertex:
+        config_kwargs["http_options"] = types.HttpOptions(timeout=request_timeout_ms)
     if cfg.get("thinking_level"):
         config_kwargs["thinking_config"] = types.ThinkingConfig(thinking_level=cfg["thinking_level"])
     response = client.models.generate_content(
@@ -129,6 +134,8 @@ if selected_runs:
     print(f"Filtered runs: {', '.join(str(run) for run in sorted(selected_runs))}")
 print(f"Retry wait: {args.retry_wait:g}s")
 print(f"Request timeout: {request_timeout_ms / 1000:g}s")
+print(f"Between-call wait: {args.call_wait:g}s")
+print(f"Endpoint: {'Vertex Express' if args.vertex else 'Gemini Developer API'}")
 print("")
 
 for case in cases:
@@ -183,7 +190,8 @@ for case in cases:
                 print(f"  Retryable API error, waiting {args.retry_wait:g}s...")
                 time.sleep(args.retry_wait)
 
-            time.sleep(1.5)
+            if args.call_wait > 0:
+                time.sleep(args.call_wait)
 
 print(f"\nDone. New trials: {total_new}, Errors: {errors}, Total: {len(results)}")
 print(f"Results saved to {OUTFILE}")

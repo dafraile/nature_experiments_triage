@@ -71,14 +71,27 @@ def extract_google_text(response: Any) -> str:
     return fallback.strip()
 
 
-def google_visible_output_tokens(model_id: str, base_tokens: int) -> int:
-    """Give Gemini Flash extra visible-token headroom to reduce truncated replies.
+def make_google_client(api_key: str, vertex_api_key: str = "", use_vertex: bool = False) -> Any:
+    """Create a Google GenAI client for the developer API or Vertex Express."""
+    from google import genai
+
+    if use_vertex:
+        return genai.Client(vertexai=True, api_key=vertex_api_key or api_key)
+    return genai.Client(api_key=api_key)
+
+
+def google_visible_output_tokens(model_id: str, base_tokens: int, use_vertex: bool = False) -> int:
+    """Give Gemini enough visible-token headroom to reduce truncated replies.
 
     In practice, Flash is the Google model most likely to return a short visible
     answer after consuming hidden thinking tokens. Raising the cap does not force
-    longer outputs; it only removes an avoidable ceiling.
+    longer outputs; it only removes an avoidable ceiling. Vertex Express appears
+    to count hidden thinking more aggressively against max_output_tokens, so we
+    also raise the cap for Pro there to preserve a comparable visible budget.
     """
     if "flash" in model_id:
+        return max(base_tokens, 2048)
+    if use_vertex:
         return max(base_tokens, 2048)
     return base_tokens
 
@@ -201,9 +214,11 @@ def is_retryable_error(message: str | None) -> bool:
     upper = message.upper()
     return (
         "429" in upper
+        or "500" in upper
         or "503" in upper
         or "504" in upper
         or "RESOURCE_EXHAUSTED" in upper
+        or "INTERNAL" in upper
         or "RATE LIMIT" in upper
         or "UNAVAILABLE" in upper
         or "DEADLINE_EXCEEDED" in upper
