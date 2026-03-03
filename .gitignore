@@ -5,6 +5,7 @@
 # Manuscript drafts (not for public repo)
 *.docx
 *.tex
+*.swp
 
 # Scoring sheets (contain regenerated API responses)
 clinician_scoring_sheet.xlsx
@@ -23,3 +24,26 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Internal scratch outputs (not part of the public dataset)
+run_log.txt
+*_output.txt
+COMPREHENSIVE_VERIFICATION_REPORT.md
+INDEX_VERIFICATION_DOCUMENTS.md
+VERIFICATION_RESULTS.txt
+verify_*.py
+data/vignettes_backup.json
+data/vignettes_case17_only.json
+figures/figures/
+results/README_VERIFICATION.md
+results/VERIFICATION_REPORT.txt
+results/VERIFICATION_SUMMARY.txt
+results/results_smoke_*.csv
+results/results_smoke_*.json
+results/results_verify_key_cases_*.csv
+results/results_verify_key_cases_*.json
+results/results_gemini_flash_case06_retry_*.csv
+results/results_gemini_flash_case06_retry_*.json
+results/natural_interaction_*.csv
+results/natural_interaction_*.json
+!results/natural_interaction_5run_all_models_adjudicated.csv

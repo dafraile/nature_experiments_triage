@@ -1,0 +1,197 @@
+{
+  "comparison_scope": {
+    "models": [
+      "gpt-5.2-thinking-high",
+      "claude-sonnet-4.6",
+      "claude-opus-4.6",
+      "gemini-3-flash",
+      "gemini-3.1-pro"
+    ],
+    "prompt_formats": [
+      "patient_realistic",
+      "patient_minimal"
+    ],
+    "n_row_pairs": 850,
+    "n_cell_pairs": 170,
+    "natural_scoring_primary": "Mean of two adjudicators per response (0, 0.5, or 1), aggregated to matched cell accuracies over 5 runs."
+  },
+  "overall": {
+    "structured_accuracy": 0.6364705882352941,
+    "natural_gpt_accuracy": 0.7129411764705882,
+    "natural_opus_accuracy": 0.6882352941176471,
+    "natural_mean_accuracy": 0.7005882352941176,
+    "judge_disagreements": 45
+  },
+  "by_model": {
+    "gpt-5.2-thinking-high": {
+      "n": 170,
+      "structured_accuracy": 0.6411764705882353,
+      "natural_gpt_accuracy": 0.6941176470588235,
+      "natural_opus_accuracy": 0.6705882352941176,
+      "natural_mean_accuracy": 0.6823529411764706,
+      "judge_disagreements": 10
+    },
+    "claude-sonnet-4.6": {
+      "n": 170,
+      "structured_accuracy": 0.5647058823529412,
+      "natural_gpt_accuracy": 0.7352941176470589,
+      "natural_opus_accuracy": 0.6882352941176471,
+      "natural_mean_accuracy": 0.711764705882353,
+      "judge_disagreements": 8
+    },
+    "claude-opus-4.6": {
+      "n": 170,
+      "structured_accuracy": 0.6176470588235294,
+      "natural_gpt_accuracy": 0.7352941176470589,
+      "natural_opus_accuracy": 0.711764705882353,
+      "natural_mean_accuracy": 0.7235294117647059,
+      "judge_disagreements": 18
+    },
+    "gemini-3-flash": {
+      "n": 170,
+      "structured_accuracy": 0.6352941176470588,
+      "natural_gpt_accuracy": 0.6705882352941176,
+      "natural_opus_accuracy": 0.6647058823529411,
+      "natural_mean_accuracy": 0.6676470588235294,
+      "judge_disagreements": 3
+    },
+    "gemini-3.1-pro": {
+      "n": 170,
+      "structured_accuracy": 0.7235294117647059,
+      "natural_gpt_accuracy": 0.7294117647058823,
+      "natural_opus_accuracy": 0.7058823529411765,
+      "natural_mean_accuracy": 0.7176470588235294,
+      "judge_disagreements": 6
+    }
+  },
+  "by_model_and_format": {
+    "gpt-5.2-thinking-high::patient_realistic": {
+      "n": 85,
+      "structured_accuracy": 0.6705882352941176,
+      "natural_gpt_accuracy": 0.6941176470588235,
+      "natural_opus_accuracy": 0.7058823529411765,
+      "natural_mean_accuracy": 0.7,
+      "judge_disagreements": 1
+    },
+    "gpt-5.2-thinking-high::patient_minimal": {
+      "n": 85,
+      "structured_accuracy": 0.611764705882353,
+      "natural_gpt_accuracy": 0.6941176470588235,
+      "natural_opus_accuracy": 0.6352941176470588,
+      "natural_mean_accuracy": 0.6647058823529411,
+      "judge_disagreements": 9
+    },
+    "claude-sonnet-4.6::patient_realistic": {
+      "n": 85,
+      "structured_accuracy": 0.5882352941176471,
+      "natural_gpt_accuracy": 0.7294117647058823,
+      "natural_opus_accuracy": 0.6823529411764706,
+      "natural_mean_accuracy": 0.7058823529411765,
+      "judge_disagreements": 4
+    },
+    "claude-sonnet-4.6::patient_minimal": {
+      "n": 85,
+      "structured_accuracy": 0.5411764705882353,
+      "natural_gpt_accuracy": 0.7411764705882353,
+      "natural_opus_accuracy": 0.6941176470588235,
+      "natural_mean_accuracy": 0.7176470588235294,
+      "judge_disagreements": 4
+    },
+    "claude-opus-4.6::patient_realistic": {
+      "n": 85,
+      "structured_accuracy": 0.6470588235294118,
+      "natural_gpt_accuracy": 0.7764705882352941,
+      "natural_opus_accuracy": 0.7529411764705882,
+      "natural_mean_accuracy": 0.7647058823529411,
+      "judge_disagreements": 6
+    },
+    "claude-opus-4.6::patient_minimal": {
+      "n": 85,
+      "structured_accuracy": 0.5882352941176471,
+      "natural_gpt_accuracy": 0.6941176470588235,
+      "natural_opus_accuracy": 0.6705882352941176,
+      "natural_mean_accuracy": 0.6823529411764706,
+      "judge_disagreements": 12
+    },
+    "gemini-3-flash::patient_realistic": {
+      "n": 85,
+      "structured_accuracy": 0.6470588235294118,
+      "natural_gpt_accuracy": 0.7058823529411765,
+      "natural_opus_accuracy": 0.7058823529411765,
+      "natural_mean_accuracy": 0.7058823529411765,
+      "judge_disagreements": 2
+    },
+    "gemini-3-flash::patient_minimal": {
+      "n": 85,
+      "structured_accuracy": 0.6235294117647059,
+      "natural_gpt_accuracy": 0.6352941176470588,
+      "natural_opus_accuracy": 0.6235294117647059,
+      "natural_mean_accuracy": 0.6294117647058823,
+      "judge_disagreements": 1
+    },
+    "gemini-3.1-pro::patient_realistic": {
+      "n": 85,
+      "structured_accuracy": 0.7529411764705882,
+      "natural_gpt_accuracy": 0.7411764705882353,
+      "natural_opus_accuracy": 0.7058823529411765,
+      "natural_mean_accuracy": 0.7235294117647059,
+      "judge_disagreements": 3
+    },
+    "gemini-3.1-pro::patient_minimal": {
+      "n": 85,
+      "structured_accuracy": 0.6941176470588235,
+      "natural_gpt_accuracy": 0.7176470588235294,
+      "natural_opus_accuracy": 0.7058823529411765,
+      "natural_mean_accuracy": 0.711764705882353,
+      "judge_disagreements": 3
+    }
+  },
+  "wilcoxon": {
+    "natural_mean_vs_structured": {
+      "field": "natural_mean_accuracy",
+      "n_cells": 170,
+      "n_positive": 36,
+      "n_negative": 17,
+      "n_zero": 117,
+      "mean_delta": 0.06411764705882353,
+      "statistic": 440.0,
+      "p_value": 0.014576051706826371
+    },
+    "natural_gpt_vs_structured": {
+      "field": "natural_gpt_accuracy",
+      "n_cells": 170,
+      "n_positive": 36,
+      "n_negative": 15,
+      "n_zero": 119,
+      "mean_delta": 0.07647058823529412,
+      "statistic": 361.0,
+      "p_value": 0.0044966689059782175
+    },
+    "natural_opus_vs_structured": {
+      "field": "natural_opus_accuracy",
+      "n_cells": 170,
+      "n_positive": 33,
+      "n_negative": 15,
+      "n_zero": 122,
+      "mean_delta": 0.05176470588235295,
+      "statistic": 399.0,
+      "p_value": 0.05179892102071944
+    }
+  },
+  "mcnemar_exact_row_level": {
+    "natural_gpt_vs_structured": {
+      "field": "natural_gpt_correct",
+      "b_structured_only": 46,
+      "c_natural_only": 111,
+      "discordant_total": 157,
+      "exact_p_value": 2.215948407640852e-07
+    },
+    "natural_opus_vs_structured": {
+      "field": "natural_opus_correct",
+      "b_structured_only": 50,
+      "c_natural_only": 94,
+      "discordant_total": 144,
+      "exact_p_value": 0.00030772251187278116
+    }
+  }
+}

@@ -2,7 +2,7 @@
 
 ## Matters Arising: Ramaswamy et al. (2026) — Nature Medicine
 
-This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total: **2,690 planned cells** across five experiment phases; **2,630 are currently scored** in the reconciled or adjudicated datasets.
+This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total: **2,860 planned cells** across five experiment phases; **2,856 are currently scored** in the reconciled or adjudicated primary datasets.
 
 ---
 
@@ -12,14 +12,14 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 ---
 
-## 2. Experiment 1: Main Replication (1,275 planned; 1,252 scored)
+## 2. Experiment 1: Main Replication (1,275 planned; 1,275 scored)
 
 **Goal:** Test whether triage accuracy depends on prompt format (structured vs. naturalistic vs. minimal).
 
 **Design:**
 - 5 models × 17 clinical vignettes × 3 prompt formats × 5 runs = 1,275 planned trials
-- 1,252 currently scored in the reconciled canonical dataset
-- 23 rows remain unresolved: all are Gemini 3.1 Pro API failures
+- 1,275 currently scored in the reconciled canonical dataset
+- No unresolved rows remain in the main constrained dataset
 
 **Models tested:**
 
@@ -39,7 +39,7 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 **Decision rationale:** Three formats test the ecological validity argument. The structured format mirrors the paper's methodology; the realistic format adds access barriers and hedging language (matching real patient behaviour); the minimal format tests whether models can triage from sparse information.
 
-**Key result:** Prompt format significantly affected triage accuracy in the reconciled dataset (χ² = 6.93, p = 0.0312). For DKA, every scored trial is correct (74/74). For asthma, the effect is mixed rather than uniformly rescued by "realistic" wording: structured = 40% (10/25), patient_realistic = 48% (12/25), patient_minimal = 100% (25/25). The defensible claim is that prompt format materially changes outcomes, not that any naturalistic rewrite automatically fixes the case.
+**Key result:** Once the Gemini 3.1 Pro backlog is completed, the pooled five-model prompt-format effect is no longer conventionally significant in the full constrained dataset (χ² = 4.65, p = 0.0980). For DKA, every constrained trial is correct (75/75). For asthma, the effect remains mixed rather than uniformly rescued by "realistic" wording: structured = 40% (10/25), patient_realistic = 48% (12/25), patient_minimal = 100% (25/25). The defensible claim is now heterogeneity across models and cases, not a stable pooled main effect in the five-model constrained aggregate.
 
 **Canonical files:** `reconcile_results.py`, `results/main_experiment_reconciled.csv`, `results/main_experiment_reconciled.json`
 
@@ -102,13 +102,13 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 **Decision rationale:** The initial ablation used n=5 per cell, which a reviewer could dismiss as underpowered. We scaled to n=25 to enable Fisher's exact test with strong p-values. We focused on asthma because it drives the paper's headline finding (81-94% under-triage across asthma prompt variants).
 
-**Status:** 369/375 rows are currently scored. Six Gemini `all_constraints` outputs (three Flash, three Pro) remain too truncated or non-committal to score. The Fisher's exact tests use the fully scored forced-choice vs. free-text cells, so those p-values are unchanged.
+**Status:** 372/375 rows are currently scored. Three Gemini 3 Flash `all_constraints` outputs remain too truncated or non-committal to score. Gemini 3.1 Pro is now fully scored in this experiment. The Fisher's exact tests use the fully scored forced-choice vs. free-text cells, so those p-values are unchanged.
 
 **Results:**
 
 | Model | Forced-choice | Free-text | All constraints | Fisher's p |
 |-------|:---:|:---:|:---:|:---:|
-| Gemini 3.1 Pro | **0/25 (0%)** | 25/25 (100%) | 0/22 scored (0%); 3 unresolved | **1.58 × 10⁻¹⁴** |
+| Gemini 3.1 Pro | **0/25 (0%)** | 25/25 (100%) | 0/25 (0%) | **1.58 × 10⁻¹⁴** |
 | GPT-5.2 | 4/25 (16%) | 25/25 (100%) | 1/25 (4%) | 3.76 × 10⁻¹⁰ |
 | Gemini 3 Flash | 6/25 (24%) | 25/25 (100%) | 12/22 scored (55%); 3 unresolved | 1.16 × 10⁻⁸ |
 | Claude Sonnet 4.6 | 25/25 (100%) | 25/25 (100%) | 23/25 (92%) | 1.00 |
@@ -120,27 +120,28 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 ---
 
-## 6. Experiment 5: Natural-Interaction Re-test (680 trials; 680 adjudicated)
+## 6. Experiment 5: Natural-Interaction Re-test (850 trials; 850 adjudicated)
 
 **Goal:** Test the paper's clinical scenarios under a closer approximation to normal use: patient-like messages only, no system prompt, and no manual decoding overrides.
 
 **Design:**
-- 4 overlapping models × 17 clinical vignettes × 2 patient-like formats × 5 runs = 680 planned trials
-- Models: GPT-5.2, Claude Sonnet 4.6, Claude Opus 4.6, Gemini 3 Flash
+- 5 models × 17 clinical vignettes × 2 patient-like formats × 5 runs = 850 planned trials
+- Models: GPT-5.2, Claude Sonnet 4.6, Claude Opus 4.6, Gemini 3 Flash, Gemini 3.1 Pro
 - Formats: `patient_realistic`, `patient_minimal`
 - Raw responses are unconstrained free text rather than forced A/B/C/D labels
 
 **Scoring design:**
 - First-pass heuristic labeling is stored for debugging only and is not the primary analysis
 - Primary scoring uses two independent adjudicators (`gpt-5.2-thinking-high` and `claude-opus-4.6`) instructed to classify the *primary recommendation* while ignoring contingency red-flag advice unless it is the main recommendation
-- Agreement across the full 680-row dataset: 94.3%; Cohen's κ = 0.914
-- Primary outcome is the **two-judge mean correctness** per row (0, 0.5, or 1), avoiding arbitrary tie-breaks on disagreement rows
+- Agreement across the full 850-row dataset: 94.7%; Cohen's κ = 0.921
+- Primary outcome is the **two-judge mean correctness** per row (0, 0.5, or 1), avoiding arbitrary tie-breaks on disagreement rows rather than forcing a majority/tie-break label
+- The final five-model naturalistic set contains 45 judge disagreements out of 850 rows; those are concentrated in clinically interpretable boundary cases (mostly adjacent B/C distinctions)
 
-**Key finding:** In the matched four-model comparison, natural user-only interaction outperforms the constrained protocol: 69.6% vs. 61.5% (+8.2 percentage points). This difference is significant in paired analysis (Wilcoxon signed-rank across 136 matched model-case-format cells: p = 0.0034). DKA remains perfect in both conditions (40/40 matched rows in each), while asthma improves from 31/40 to 38/40 overall, with the realistic asthma prompt improving from 11/20 (55%) to 18/20 (90%).
+**Key finding:** In the matched five-model comparison, natural user-only interaction outperforms the constrained protocol: 70.1% vs. 63.6% (+6.4 percentage points). This difference remains significant in paired analysis (Wilcoxon signed-rank across 170 matched model-case-format cells: p = 0.0146). DKA remains perfect in both conditions (50/50 matched rows in each), while asthma improves from 37/50 to 45/50 overall, with the realistic asthma prompt improving from 12/25 (48%) to 20/25 (80%). This remains the strongest positive result in the repository even after the five-model constrained aggregate loses pooled significance.
 
 **Interpretation:** This is now the strongest empirical result in the repository. The constrained replication and ablations remain important because they identify the mechanism, but the natural-interaction experiment is the most direct test of what happens under a user-like interaction pattern.
 
-**Canonical files:** `run_natural_interaction.py`, `adjudicate_natural_interaction.py`, `compare_natural_vs_structured.py`, `results/natural_interaction_5run_combined_adjudicated.csv`, `results/natural_vs_structured_comparison.json`
+**Canonical files:** `run_natural_interaction.py`, `adjudicate_natural_interaction.py`, `compare_natural_vs_structured.py`, `results/natural_interaction_5run_all_models_adjudicated.csv`, `results/natural_vs_structured_comparison.json`
 
 ---
 
@@ -157,7 +158,7 @@ Two implementation details matter:
 1. Vertex Express works in this repository via `genai.Client(vertexai=True, api_key=VERTEX_AI)`, not the project-scoped OAuth/ADC path.
 2. Vertex counts hidden thinking more aggressively against `max_output_tokens`, so the Google helper now raises the visible-output cap for Pro to preserve a comparable answer budget.
 
-This fallback removed the prior `500 INTERNAL` failure mode in canary tests, but the current key is still subject to `429 RESOURCE_EXHAUSTED`, so unresolved Gemini Pro rows may still need staggered retry windows.
+This fallback ultimately cleared the previously unresolved main Gemini 3.1 Pro rows and the remaining Gemini Pro high-power ablation rows. The key can still hit `429 RESOURCE_EXHAUSTED`, so staggered retry windows remain useful, but the Vertex REST path is operational and was sufficient to finish the old Gemini Pro backlog.
 
 ---
 

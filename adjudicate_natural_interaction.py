@@ -362,12 +362,13 @@ def main() -> None:
             case = cases_by_id[normalized["case_id"]]
             normalized["source_user_message"] = case[normalized["prompt_format"]]
         source_rows.append(normalized)
+    all_source_rows = list(source_rows)
     source_rows = filter_source_rows(source_rows, args)
     if not source_rows:
         raise SystemExit("No rows matched the requested filters.")
 
     json_path, csv_path = prepare_output_paths(source_path)
-    output_rows = load_or_initialize_output(source_rows, args.adjudicators, json_path)
+    output_rows = load_or_initialize_output(all_source_rows, args.adjudicators, json_path)
 
     print("Natural-interaction adjudication")
     print(f"Source file: {source_path}")

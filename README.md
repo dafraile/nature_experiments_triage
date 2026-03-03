@@ -8,20 +8,21 @@ This repository accompanies our Matters Arising response to Ramaswamy et al. (*N
 
 The main headline result is now the matched naturalistic re-test:
 
-- **Natural user-only interaction outperforms the constrained paper-style protocol** across the matched four-model comparison: **69.6% vs. 61.5%** (**+8.2 percentage points**)
-- **This gain is significant in paired analyses** (Wilcoxon signed-rank across 136 matched model-case-format cells: **p = 0.0034**)
-- **Inter-rater agreement for natural free-text adjudication is high**: **94.3% agreement**, **Cohen's κ = 0.914**
-- **DKA remains 100% in both conditions** (40/40 matched rows under constrained evaluation; 40/40 under natural interaction), consistent with the original DKA miss being a product/evaluation-layer artifact rather than a stable model limitation
-- **Asthma improves materially under natural interaction**: **31/40 → 38/40** overall, with the realistic patient prompt improving **11/20 → 18/20** (**55% → 90%**)
+- **Natural user-only interaction outperforms the constrained paper-style protocol** across the matched five-model comparison: **70.1% vs. 63.6%** (**+6.4 percentage points**)
+- **This gain is significant in paired analyses** (Wilcoxon signed-rank across 170 matched model-case-format cells: **p = 0.0146**)
+- **Inter-rater agreement for natural free-text adjudication is high**: **94.7% agreement**, **Cohen's κ = 0.921**
+- **DKA remains 100% in both conditions** (50/50 matched rows under constrained evaluation; 50/50 under natural interaction), consistent with the original DKA miss being a product/evaluation-layer artifact rather than a stable model limitation
+- **Asthma improves materially under natural interaction**: **37/50 → 45/50** overall, with the realistic patient prompt improving **12/25 → 20/25** (**48% → 80%**)
+- **Disagreement handling is explicit rather than arbitrary**: the primary naturalistic score is the two-judge mean correctness per row (0, 0.5, or 1), not a forced tie-break
 
-Across the full **1,275-cell main constrained experiment matrix** (currently **1,252 scored**; **23 unresolved Gemini 3.1 Pro rows** remain), we find:
+Across the full **1,275-cell main constrained experiment matrix** (now **fully scored**), we find:
 
-- **Prompt format significantly affects triage accuracy** in the reconciled main dataset (χ² = 6.93, p = 0.0312)
-- **DKA (diabetic ketoacidosis)**: 100% correct emergency triage in every scored trial so far (74/74)
+- **The pooled five-model prompt-format effect is no longer conventionally significant once the Gemini 3.1 Pro backlog is completed** (χ² = 4.65, p = 0.0980)
+- **DKA (diabetic ketoacidosis)**: 100% correct emergency triage in every constrained trial (75/75)
 - **Asthma exacerbation**: The pattern is mixed, not uniformly "fixed" by naturalistic phrasing. The minimal patient prompt reaches 100% (25/25), the realistic patient prompt reaches 48% (12/25), and the structured clinical format reaches 40% (10/25)
 - **Confidence scores** vary by 15+ percentage points for identical clinical content in different formats, confirming these are generated text artefacts, not calibrated probabilities
 
-The unresolved main rows are now entirely Gemini 3.1 Pro failures. The codebase now supports both the Gemini Developer API and a Vertex Express fallback path for targeted Google retries.
+The main constrained dataset is now complete. The codebase now supports both the Gemini Developer API and a Vertex Express fallback path for targeted Google retries; that fallback was used to finish the previously unresolved Gemini 3.1 Pro rows.
 
 ## Motivation
 
@@ -94,11 +95,17 @@ python run_experiment.py --models gpt-5.2-thinking-high claude-sonnet-4.6
 # Quick test (1 run)
 python run_experiment.py --runs 1 --tag quick_test
 
-# Naturalistic user-only run (separate experiment family)
+# Naturalistic user-only run (four-model core set)
 python run_natural_interaction.py --models gpt-5.2-thinking-high claude-sonnet-4.6 claude-opus-4.6 gemini-3-flash --runs 5
+
+# Gemini 3.1 Pro naturalistic extension (Vertex Express)
+python run_natural_interaction.py --models gemini-3.1-pro --runs 5 --google-vertex
 
 # Retry missing Gemini Pro rows through Vertex Express
 python run_gemini_pro.py --vertex --cases case_06 case_07 --formats patient_realistic patient_minimal original_structured --runs 1 2 3 4 5
+
+# Final five-model naturalistic comparison (reads the adjudicated 850-row dataset)
+python compare_natural_vs_structured.py
 ```
 
 ### 4. Analyze results

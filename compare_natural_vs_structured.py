@@ -14,13 +14,14 @@ from scipy.stats import binomtest, wilcoxon
 
 RESULTS_DIR = Path(__file__).parent / "results"
 STRUCTURED_PATH = RESULTS_DIR / "main_experiment_reconciled.csv"
-NATURAL_PATH = RESULTS_DIR / "natural_interaction_5run_combined_adjudicated.csv"
+NATURAL_PATH = RESULTS_DIR / "natural_interaction_5run_all_models_adjudicated.csv"
 
 TARGET_MODELS = [
     "gpt-5.2-thinking-high",
     "claude-sonnet-4.6",
     "claude-opus-4.6",
     "gemini-3-flash",
+    "gemini-3.1-pro",
 ]
 TARGET_FORMATS = ["patient_realistic", "patient_minimal"]
 
@@ -282,7 +283,7 @@ def main() -> None:
     print(f"  natural (two-judge mean): {100 * report['overall']['natural_mean_accuracy']:.1f}%")
     print(f"  judge disagreements: {report['overall']['judge_disagreements']}/{len(comparisons)}")
 
-    print("\nWilcoxon (136 matched model x case x format cells)")
+    print(f"\nWilcoxon ({len(cell_rows)} matched model x case x format cells)")
     for label, stats in report["wilcoxon"].items():
         print(
             f"  {label}: mean delta {stats['mean_delta']:+.3f}, "
