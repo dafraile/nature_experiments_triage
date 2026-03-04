@@ -131,7 +131,8 @@ def call_openai(model_id: str, system_prompt: str, user_message: str,
         kwargs["reasoning_effort"] = reasoning_effort
     else:
         # No reasoning: temperature is supported
-        kwargs["temperature"] = TEMPERATURE
+        if (model_config or {}).get("supports_temperature_override", True):
+            kwargs["temperature"] = TEMPERATURE
 
     response = client.chat.completions.create(**kwargs)
     return response.choices[0].message.content

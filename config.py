@@ -33,6 +33,14 @@ MODELS = {
         "model_id": "gpt-5.2",
         "reasoning_effort": "high",      # enables thinking; temperature NOT supported with reasoning
     },
+    "gpt-5.3-instant": {
+        "provider": "openai",
+        "model_id": "gpt-5.3-chat-latest",
+        # Intentionally omit reasoning_effort: this model does not expose a
+        # visible thinking toggle in the product UI, and the API rejects
+        # reasoning_effort="high".
+        "supports_temperature_override": False,
+    },
     # gpt-5.2-pro omitted for now (expensive) — uncomment to add:
     # "gpt-5.2-pro": {
     #     "provider": "openai",

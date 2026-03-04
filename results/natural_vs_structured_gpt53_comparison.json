@@ -1,0 +1,79 @@
+{
+  "source_model": "gpt-5.3-instant",
+  "n_rows": 170,
+  "n_cells": 34,
+  "structured_accuracy": 0.7294117647058823,
+  "natural_gpt_accuracy": 0.8294117647058824,
+  "natural_opus_accuracy": 0.8,
+  "natural_mean_accuracy": 0.8147058823529412,
+  "judge_disagreements": 17,
+  "judge_agreement": 0.9,
+  "wilcoxon": {
+    "natural_mean": {
+      "field": "natural_mean_accuracy",
+      "n_cells": 34,
+      "n_positive": 8,
+      "n_negative": 6,
+      "n_zero": 20,
+      "mean_delta": 0.08529411764705883,
+      "statistic": 30.0,
+      "p_value": 0.15729920705028516
+    },
+    "natural_gpt": {
+      "field": "natural_gpt_accuracy",
+      "n_cells": 34,
+      "n_positive": 8,
+      "n_negative": 4,
+      "n_zero": 22,
+      "mean_delta": 0.1,
+      "statistic": 19.0,
+      "p_value": 0.11441083401735379
+    },
+    "natural_opus": {
+      "field": "natural_opus_accuracy",
+      "n_cells": 34,
+      "n_positive": 7,
+      "n_negative": 6,
+      "n_zero": 21,
+      "mean_delta": 0.07058823529411766,
+      "statistic": 30.0,
+      "p_value": 0.27501339825750315
+    }
+  },
+  "exact_mcnemar": {
+    "natural_gpt_correct": {
+      "field": "natural_gpt_correct",
+      "b_structured_only": 10,
+      "c_natural_only": 27,
+      "discordant_total": 37,
+      "exact_p_value": 0.007632078602910042
+    },
+    "natural_opus_correct": {
+      "field": "natural_opus_correct",
+      "b_structured_only": 13,
+      "c_natural_only": 25,
+      "discordant_total": 38,
+      "exact_p_value": 0.07295138851623051
+    }
+  },
+  "cell_improvement_counts": {
+    "improved": 8,
+    "worsened": 6,
+    "unchanged": 20
+  },
+  "constrained_original_structured_accuracy": 0.8705882352941177,
+  "constrained_patient_realistic_accuracy": 0.7529411764705882,
+  "constrained_patient_minimal_accuracy": 0.7058823529411765,
+  "case_08_structured_accuracy": 1.0,
+  "case_08_natural_mean_accuracy": 1.0,
+  "case_08_patient_realistic_structured_accuracy": 1.0,
+  "case_08_patient_realistic_natural_mean_accuracy": 1.0,
+  "case_08_patient_minimal_structured_accuracy": 1.0,
+  "case_08_patient_minimal_natural_mean_accuracy": 1.0,
+  "case_17_structured_accuracy": 0.9,
+  "case_17_natural_mean_accuracy": 0.65,
+  "case_17_patient_realistic_structured_accuracy": 0.8,
+  "case_17_patient_realistic_natural_mean_accuracy": 0.3,
+  "case_17_patient_minimal_structured_accuracy": 1.0,
+  "case_17_patient_minimal_natural_mean_accuracy": 1.0
+}
