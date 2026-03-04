@@ -10,6 +10,7 @@ The main headline result is now the matched naturalistic re-test:
 
 - **Natural user-only interaction outperforms the constrained paper-style protocol** across the matched five-model comparison: **70.1% vs. 63.6%** (**+6.4 percentage points**)
 - **This gain is significant in paired analyses** (Wilcoxon signed-rank across 170 matched model-case-format cells: **p = 0.0146**)
+- **A separate post hoc GPT-5.3 extension does not reverse that pattern**: GPT-5.3 alone improves **72.9% → 81.5%** (**+8.5 points**), and the exploratory six-model pooled aggregate improves **65.2% → 72.0%** (**+6.8 points**, Wilcoxon **p = 0.0043**)
 - **Inter-rater agreement for natural free-text adjudication is high**: **94.7% agreement**, **Cohen's κ = 0.921**
 - **DKA remains 100% in both conditions** (50/50 matched rows under constrained evaluation; 50/50 under natural interaction), consistent with the original DKA miss being a product/evaluation-layer artifact rather than a stable model limitation
 - **Asthma improves materially under natural interaction**: **37/50 → 45/50** overall, with the realistic patient prompt improving **12/25 → 20/25** (**48% → 80%**)
@@ -23,6 +24,8 @@ Across the full **1,275-cell main constrained experiment matrix** (now **fully s
 - **Confidence scores** vary by 15+ percentage points for identical clinical content in different formats, confirming these are generated text artefacts, not calibrated probabilities
 
 The main constrained dataset is now complete. The codebase now supports both the Gemini Developer API and a Vertex Express fallback path for targeted Google retries; that fallback was used to finish the previously unresolved Gemini 3.1 Pro rows.
+
+The **five-model** matched comparison remains the canonical manuscript result. The GPT-5.3 benchmark and six-model pooled figure are documented in `results/natural_vs_structured_gpt53_comparison.json` and `results/natural_vs_structured_6model_exploratory.json` as an explicit post hoc extension.
 
 ## Motivation
 

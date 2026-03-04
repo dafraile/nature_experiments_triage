@@ -2,7 +2,7 @@
 
 ## Matters Arising: Ramaswamy et al. (2026) — Nature Medicine
 
-This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total: **2,860 planned cells** across five experiment phases; **2,856 are currently scored** in the reconciled or adjudicated primary datasets.
+This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total core program: **2,860 planned cells** across five primary experiment phases; **2,856 are currently scored** in the reconciled or adjudicated primary datasets. A separate post hoc GPT-5.3 extension adds **425 scored benchmark cells** (255 constrained + 170 natural) and is reported separately from the main five-model headline result.
 
 ---
 
@@ -141,7 +141,11 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 **Interpretation:** This is now the strongest empirical result in the repository. The constrained replication and ablations remain important because they identify the mechanism, but the natural-interaction experiment is the most direct test of what happens under a user-like interaction pattern.
 
+**Ad hoc extension (reported separately):** After completion of the main five-model analysis, we added a prospective GPT-5.3 Instant benchmark using the same constrained scaffold (255 trials) and the same natural user-only design (170 matched patient-like rows). GPT-5.3 improved from 72.9% to 81.5% (+8.5 percentage points) on the matched patient-like subset. Folding those rows into the existing matched dataset yields an exploratory six-model aggregate of 65.2% under the constrained protocol versus 72.0% under natural interaction (+6.8 percentage points; Wilcoxon p = 0.0043). We keep this analysis explicitly separate because GPT-5.3 was added post hoc rather than being part of the original five-model study design.
+
 **Canonical files:** `run_natural_interaction.py`, `adjudicate_natural_interaction.py`, `compare_natural_vs_structured.py`, `results/natural_interaction_5run_all_models_adjudicated.csv`, `results/natural_vs_structured_comparison.json`
+
+**Extension files:** `results/results_gpt53_main_full_20260304_115601.csv`, `results/natural_interaction_5run_gpt53_instant_adjudicated.csv`, `results/natural_vs_structured_gpt53_comparison.json`, `results/natural_vs_structured_6model_exploratory.json`
 
 ---
 
