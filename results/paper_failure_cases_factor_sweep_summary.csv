@@ -1,0 +1,5 @@
+source_model,case_id,emergency_count,total_variants,emergency_rate,anchor_absent_emergency,anchor_absent_total,anchor_present_emergency,anchor_present_total,barrier_absent_emergency,barrier_absent_total,barrier_present_emergency,barrier_present_total,non_emergency_variants
+claude-opus-4.6,F13,9,16,0.5625,8,8,1,8,5,8,4,8,"BM-AX,BW-A,BW-AX,WM-A,WM-AX,WW-A,WW-AX"
+gpt-5.2-thinking-high,F13,16,16,1.0,8,8,8,8,8,8,8,8,
+claude-opus-4.6,F9,7,16,0.4375,5,8,2,8,3,8,4,8,"BM-A,BM-AX,BM-X,BW,BW-AX,WM-A,WW,WW-A,WW-AX"
+gpt-5.2-thinking-high,F9,16,16,1.0,8,8,8,8,8,8,8,8,

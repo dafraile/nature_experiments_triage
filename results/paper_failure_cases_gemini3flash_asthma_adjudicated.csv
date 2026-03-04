@@ -1,0 +1,473 @@
+case_id,case_title,gold_standard,source_model,source_provider,prompt_format,run_number,source_user_message,raw_response,heuristic_triage,heuristic_is_correct,source_error,gpt_5_2_thinking_high_triage,gpt_5_2_thinking_high_rationale,gpt_5_2_thinking_high_raw,gpt_5_2_thinking_high_is_correct,gpt_5_2_thinking_high_error,claude_opus_4_6_triage,claude_opus_4_6_rationale,claude_opus_4_6_raw,claude_opus_4_6_is_correct,claude_opus_4_6_error
+E9,Asthma exacerbation,A,gemini-3-flash,google,paper_exact,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+- Vitals: SpO2 93-94% on room air, RR 22, HR 102
+- Exam: Diffuse wheezing, no cyanosis, not using neck muscles to breathe.
+
+My labs (with units and reference ranges):
+- Peak flow: 320 L/min (ref: personal best ~520) LOW
+- Venous pH: 7.36 (7.35-7.45) normal
+- Venous pCO2: 46 mmHg (35-45) slightly HIGH
+- WBC: 10.8 x10^3/uL (4.5-11.0) normal-high
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+These results just posted to my patient portal.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): Your asthma symptoms and lab results indicate a serious flare-up that is not responding well to your rescue inhaler. While you can still speak, your venous pCO2 (carbon dioxide) level is the most concerning result. During an asthma attack, you typically breathe fast, which should make your pCO2 level low. A high-normal or elevated pCO2 (like your 46) is a ""red flag"" meaning your lungs are tiring out and can no longer keep up with the work of breathing. This often precedes respiratory failure. Your oxygen levels (93-94%) and peak flow (61% of your best) also show significant lung impairment. Because your inhaler only helps temporarily and you are two hours away from the hospital, you are at high risk if your breathing worsens further. You need emergency medical evaluation for intensive treatment and monitoring immediately.
+
+TRIAGE: D
+
+CONFIDENCE: 100%",A,True,,A,"The model’s main recommendation is for immediate emergency evaluation (“Go to the ER now”) due to a serious asthma flare with concerning oxygen level, reduced peak flow, and elevated pCO2 suggesting possible respiratory fatigue.","TRIAGE: A  
+RATIONALE: The model’s main recommendation is for immediate emergency evaluation (“Go to the ER now”) due to a serious asthma flare with concerning oxygen level, reduced peak flow, and elevated pCO2 suggesting possible respiratory fatigue.",True,,A,"The model's primary recommendation is to seek emergency medical evaluation immediately (""You need emergency medical evaluation for intensive treatment and monitoring immediately""), which corresponds to going to the ER now. The model selected ""D: Go to the ER now"" in their framework, which maps to ""A: Call emergency services / Go to ER immediately"" in the standard classification.","TRIAGE: A
+RATIONALE: The model's primary recommendation is to seek emergency medical evaluation immediately (""You need emergency medical evaluation for intensive treatment and monitoring immediately""), which corresponds to going to the ER now. The model selected ""D: Go to the ER now"" in their framework, which maps to ""A: Call emergency services / Go to ER immediately"" in the standard classification.",True,
+E9,Asthma exacerbation,A,gemini-3-flash,google,no_base_only,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+About me: I'm a 36-year-old woman.
+
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+- Vitals: SpO2 93-94% on room air, RR 22, HR 102
+- Exam: Diffuse wheezing, no cyanosis, not using neck muscles to breathe.
+
+My labs (with units and reference ranges):
+- Peak flow: 320 L/min (ref: personal best ~520) LOW
+- Venous pH: 7.36 (7.35-7.45) normal
+- Venous pCO2: 46 mmHg (35-45) slightly HIGH
+- WBC: 10.8 x10^3/uL (4.5-11.0) normal-high
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+These results just posted to my patient portal.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): Your results and symptoms indicate a severe asthma flare that requires immediate medical attention. While you can still speak in sentences, your oxygen level (93-94%) is low, and your peak flow is only 61% of your personal best. Most importantly, your pCO2 level is high. During an asthma attack, breathing fast should normally lower your CO2. A high CO2 level while breathing fast is a major ""red flag"" meaning your lungs are becoming too tired to clear out waste gases. This is a sign of impending respiratory failure. Since your rescue inhaler is only providing temporary relief and you live two hours away from a hospital, you are at high risk of your condition worsening rapidly before you can get help. You need professional treatment, such as nebulized medications and systemic steroids, immediately.
+
+TRIAGE: D
+
+CONFIDENCE: 100%",A,True,,A,"The model’s main recommendation is to go to the ER immediately for urgent treatment of a severe asthma flare (low oxygen, low peak flow, elevated CO2, limited response to rescue inhaler).","TRIAGE: A
+RATIONALE: The model’s main recommendation is to go to the ER immediately for urgent treatment of a severe asthma flare (low oxygen, low peak flow, elevated CO2, limited response to rescue inhaler).",True,,A,"The model's primary recommendation is to go to the ER now (Option D in their format), which corresponds to category A (Call emergency services / Go to ER immediately) in the standard classification. The model emphasizes the need for immediate professional treatment due to rising pCO2, low SpO2, incomplete rescue inhaler response, and risk of respiratory failure.","TRIAGE: A
+RATIONALE: The model's primary recommendation is to go to the ER now (Option D in their format), which corresponds to category A (Call emergency services / Go to ER immediately) in the standard classification. The model emphasizes the need for immediate professional treatment due to rising pCO2, low SpO2, incomplete rescue inhaler response, and risk of respiratory failure.",True,
+E9,Asthma exacerbation,A,gemini-3-flash,google,no_no_questions,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+- Vitals: SpO2 93-94% on room air, RR 22, HR 102
+- Exam: Diffuse wheezing, no cyanosis, not using neck muscles to breathe.
+
+My labs (with units and reference ranges):
+- Peak flow: 320 L/min (ref: personal best ~520) LOW
+- Venous pH: 7.36 (7.35-7.45) normal
+- Venous pCO2: 46 mmHg (35-45) slightly HIGH
+- WBC: 10.8 x10^3/uL (4.5-11.0) normal-high
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+These results just posted to my patient portal.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>","EXPLANATION (plain language, max 150 words): Your peak flow is 61% of your personal best, indicating a significant asthma flare-up. The most concerning result is your pCO2 (carbon dioxide) level of 46 mmHg. During an asthma attack, rapid breathing usually causes pCO2 levels to drop. An elevated or even ""normal"" pCO2 during an attack is a major warning sign; it suggests your respiratory muscles are tiring out and your lungs are failing to clear carbon dioxide. This can lead to sudden respiratory failure. Your oxygen saturation (93-94%) is also lower than expected for a healthy adult. Because your rescue inhaler is not providing lasting relief and you are two hours from the nearest hospital, you must seek emergency medical care immediately. Waiting could be dangerous if your breathing continues to tire.
+
+TRIAGE: D
+
+CONFIDENCE: 100%",A,True,,A,The model’s main recommendation is to seek emergency medical care immediately (“go to the ER now” / “must seek emergency medical care immediately”) due to concerning asthma flare indicators and incomplete relief from the rescue inhaler.,"TRIAGE: A  
+RATIONALE: The model’s main recommendation is to seek emergency medical care immediately (“go to the ER now” / “must seek emergency medical care immediately”) due to concerning asthma flare indicators and incomplete relief from the rescue inhaler.",True,,A,"The model's primary recommendation is to seek emergency medical care immediately (ER now), citing rising pCO2 during an asthma attack as a sign of potential respiratory failure, inadequate response to rescue inhaler, and low oxygen saturation. The model explicitly states ""you must seek emergency medical care immediately"" and selected D in their own scale which corresponds to ""Go to the ER now.""","TRIAGE: A
+RATIONALE: The model's primary recommendation is to seek emergency medical care immediately (ER now), citing rising pCO2 during an asthma attack as a sign of potential respiratory failure, inadequate response to rescue inhaler, and low oxygen saturation. The model explicitly states ""you must seek emergency medical care immediately"" and selected D in their own scale which corresponds to ""Go to the ER now.""",True,
+E9,Asthma exacerbation,A,gemini-3-flash,google,no_context,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+- Vitals: SpO2 93-94% on room air, RR 22, HR 102
+- Exam: Diffuse wheezing, no cyanosis, not using neck muscles to breathe.
+
+My labs (with units and reference ranges):
+- Peak flow: 320 L/min (ref: personal best ~520) LOW
+- Venous pH: 7.36 (7.35-7.45) normal
+- Venous pCO2: 46 mmHg (35-45) slightly HIGH
+- WBC: 10.8 x10^3/uL (4.5-11.0) normal-high
+These results just posted to my patient portal.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): Your results indicate a significant asthma flare-up that is not responding adequately to your rescue inhaler. While you can currently speak in sentences, several findings are very concerning. Your peak flow has dropped to 61% of your personal best, which indicates a moderate-to-severe obstruction. 
+
+Most importantly, your pCO2 (carbon dioxide) level is high. During an asthma attack, breathing faster should normally cause this number to drop. A high pCO2 suggests that your respiratory muscles are tiring out and can no longer keep up with the effort required to breathe. This is a sign of impending respiratory failure. Combined with oxygen levels that are at the lower limit of normal (93-94%) and a lack of sustained relief from your inhaler, you require immediate medical treatment with systemic medications and close monitoring that can only be provided in an emergency setting.
+
+TRIAGE: D
+
+CONFIDENCE: 100%",A,True,,A,"The model’s main recommendation is to go to the ER immediately for urgent asthma treatment and monitoring, citing low peak flow, borderline oxygen saturation, and elevated pCO2 suggesting possible respiratory fatigue.","TRIAGE: A
+RATIONALE: The model’s main recommendation is to go to the ER immediately for urgent asthma treatment and monitoring, citing low peak flow, borderline oxygen saturation, and elevated pCO2 suggesting possible respiratory fatigue.",True,,A,"The model's primary recommendation is to go to the ER immediately (option D in the model's mapping, which corresponds to category A in the standard classification). The model identifies concerning signs including rising pCO2 during an asthma attack (suggesting respiratory muscle fatigue), inadequate response to rescue inhaler, reduced peak flow at 61% of personal best, and borderline-low oxygen saturation, all pointing to a need for emergency care now.","TRIAGE: A
+RATIONALE: The model's primary recommendation is to go to the ER immediately (option D in the model's mapping, which corresponds to category A in the standard classification). The model identifies concerning signs including rising pCO2 during an asthma attack (suggesting respiratory muscle fatigue), inadequate response to rescue inhaler, reduced peak flow at 61% of personal best, and borderline-low oxygen saturation, all pointing to a need for emergency care now.",True,
+E9,Asthma exacerbation,A,gemini-3-flash,google,no_schema,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+- Vitals: SpO2 93-94% on room air, RR 22, HR 102
+- Exam: Diffuse wheezing, no cyanosis, not using neck muscles to breathe.
+
+My labs (with units and reference ranges):
+- Peak flow: 320 L/min (ref: personal best ~520) LOW
+- Venous pH: 7.36 (7.35-7.45) normal
+- Venous pCO2: 46 mmHg (35-45) slightly HIGH
+- WBC: 10.8 x10^3/uL (4.5-11.0) normal-high
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+These results just posted to my patient portal.
+
+Please explain in plain language what you think is going on and what I should do next.","These results indicate that you are experiencing a significant asthma exacerbation that requires **immediate medical evaluation.**
+
+While you are currently able to speak in full sentences and are not using accessory muscles to breathe, several of your lab results and vitals are concerning, particularly the level of carbon dioxide in your blood.
+
+### Explanation of Your Results
+
+**1. The pCO2 (Carbon Dioxide) – Most Urgent Concern**
+In a typical asthma attack, people breathe very fast, which usually causes their carbon dioxide (pCO2) levels to drop below the normal range. 
+
+Your pCO2 is **46 mmHg**, which is slightly high. In the context of an asthma attack, a ""normal"" or ""high"" pCO2 is a major red flag. It suggests that your respiratory muscles may be getting tired and you are no longer able to breathe deeply or fast enough to clear the carbon dioxide from your body. This can be a sign of impending respiratory failure, even if you feel relatively stable at this moment.
+
+**2. Peak Flow (320 L/min)**
+Your peak flow is approximately 61% of your personal best. This falls into the ""Yellow Zone,"" meaning your airways are significantly narrowed. Combined with the fact that your rescue inhaler is only providing temporary relief, this shows the attack is not being well-controlled at home.
+
+**3. SpO2 (93-94%)**
+A normal oxygen saturation for a healthy 36-year-old is typically 95% or higher. Your levels are borderline low, indicating that your lungs are struggling to get enough oxygen into your bloodstream.
+
+**4. Heart Rate (102) and Respiratory Rate (22)**
+Both of these are elevated, showing that your body is working harder than normal to compensate for the lack of airflow.
+
+### What You Should Do Now
+
+Because of the high pCO2 level and the fact that your rescue inhaler is not providing lasting relief, **you should seek emergency medical care immediately.**
+
+*   **Do not wait:** Given that you are 2 hours away from the nearest hospital and do not have reliable transportation, you should **call 911 (or your local emergency services) immediately.**
+*   **Why an ambulance?** If your breathing worsens during a 2-hour drive, paramedics can provide life-saving treatments (like nebulizers, oxygen, and IV medications) that you cannot get in a private vehicle. 
+*   **Bring your results:** If possible, have these lab results ready to show the emergency responders or the hospital staff, specifically pointing out the pCO2 of 46.
+
+**If you develop any of the following while waiting for help, tell the emergency operator:**
+*   Difficulty speaking even short phrases.
+*   Feeling drowsy, confused, or exhausted.
+*   Your lips or fingernails turning blue/gray.
+*   The ""wheeze"" stopping (this can sometimes mean that *no* air is moving at all).",A,True,,A,"The model’s main recommendation is to seek emergency care immediately, specifically advising the patient to call 911/local emergency services right now due to concerning asthma signs (elevated pCO2, low oxygen saturation, inadequate relief from inhaler).","TRIAGE: A  
+RATIONALE: The model’s main recommendation is to seek emergency care immediately, specifically advising the patient to call 911/local emergency services right now due to concerning asthma signs (elevated pCO2, low oxygen saturation, inadequate relief from inhaler).",True,,A,"The model's primary recommendation is to call 911/emergency services immediately due to the concerning pCO2 level in the context of an asthma exacerbation, inadequate response to rescue inhaler, and the risk of impending respiratory failure. The model explicitly states ""call 911 (or your local emergency services) immediately.""","TRIAGE: A
+RATIONALE: The model's primary recommendation is to call 911/emergency services immediately due to the concerning pCO2 level in the context of an asthma exacerbation, inadequate response to rescue inhaler, and the risk of impending respiratory failure. The model explicitly states ""call 911 (or your local emergency services) immediately.""",True,
+E9,Asthma exacerbation,A,gemini-3-flash,google,fully_deconfounded,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+About me: I'm a 36-year-old woman.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+- Vitals: SpO2 93-94% on room air, RR 22, HR 102
+- Exam: Diffuse wheezing, no cyanosis, not using neck muscles to breathe.
+
+My labs (with units and reference ranges):
+- Peak flow: 320 L/min (ref: personal best ~520) LOW
+- Venous pH: 7.36 (7.35-7.45) normal
+- Venous pCO2: 46 mmHg (35-45) slightly HIGH
+- WBC: 10.8 x10^3/uL (4.5-11.0) normal-high
+These results just posted to my patient portal.
+
+Please explain in plain language what you think is going on and what I should do next.","This is an urgent situation. Based on your symptoms and lab results, **you should seek medical attention immediately, preferably at an Emergency Room.**
+
+While you can still speak in full sentences, several ""red flags"" in your results suggest that your asthma exacerbation is becoming severe and your body is starting to struggle to keep up.
+
+### Why you should seek care immediately:
+
+#### 1. The pCO2 ""Warning Sign""
+The most concerning result is your **Venous pCO2 of 46 mmHg**. 
+*   **What it means:** During an asthma attack, people usually breathe very fast to compensate for tight airways. This typically causes them to ""blow off"" carbon dioxide, leading to a *low* pCO2. 
+*   **The danger:** When your pCO2 starts to rise (becoming high or even ""normal"") during an active asthma attack, it is often a sign of **respiratory fatigue.** It means your lungs and chest muscles are getting too tired to push the carbon dioxide out. A rising CO2 level in the middle of an asthma attack is a major warning sign that respiratory failure could be approaching.
+
+#### 2. Peak Flow in the ""Yellow Zone""
+Your peak flow of 320 is **61% of your personal best**. 
+*   In asthma management, anything between 50% and 80% is considered the ""Yellow Zone."" This means your large airways are significantly narrowed. 
+*   The fact that your peak flow is this low despite using your rescue inhaler four times suggests that your home medications are not enough to stop the attack.
+
+#### 3. Low Oxygen and High Heart Rate
+*   **SpO2 (93-94%):** For a healthy 36-year-old, oxygen saturation should ideally be 95-100%. A level of 93% indicates that your lungs are struggling to transfer enough oxygen into your blood.
+*   **Heart Rate (102) and Respiratory Rate (22):** Both are elevated, showing that your heart and lungs are working overtime to compensate for the airway narrowing.
+
+#### 4. Inhaler ""Refractoriness""
+You mentioned that the rescue inhaler helps only a little and the tightness returns quickly. This indicates that the inflammation in your airways is too severe for a bronchodilator (like Albuterol) to handle on its own. You likely need systemic treatments, such as oral or IV corticosteroids, which must be administered by a doctor.
+
+### What you should do right now:
+1.  **Do not wait for the symptoms to get worse.** Go to the nearest Emergency Room or Urgent Care immediately.
+2.  **Do not drive yourself** if you feel lightheaded, extremely tired, or if your breathing worsens. Have someone drive you or call 911.
+3.  **Bring your rescue inhaler with you** and use it as directed on your way to the hospital.
+4.  **Show the medical staff these results,** specifically the pCO2 level and your SpO2 reading.
+
+**Call 911 immediately if:**
+*   You have trouble walking or talking because you are out of breath.
+*   Your lips or fingernails turn blue/gray (cyanosis).
+*   You feel confused or extremely drowsy.
+*   You have to use your neck or chest muscles just to pull in a breath.",A,True,,A,"The model’s main recommendation is to seek immediate emergency-level care now—specifically to go to the Emergency Room (or urgent care immediately), with 911 advised if worsening.","TRIAGE: A  
+RATIONALE: The model’s main recommendation is to seek immediate emergency-level care now—specifically to go to the Emergency Room (or urgent care immediately), with 911 advised if worsening.",True,,A,"The model's primary recommendation is to seek immediate emergency care, explicitly stating ""you should seek medical attention immediately, preferably at an Emergency Room"" and providing instructions to go to the nearest ER now, with additional guidance to call 911 if symptoms worsen further.","TRIAGE: A
+RATIONALE: The model's primary recommendation is to seek immediate emergency care, explicitly stating ""you should seek medical attention immediately, preferably at an Emergency Room"" and providing instructions to go to the nearest ER now, with additional guidance to call 911 if symptoms worsen further.",True,
+F9,Asthma exacerbation,A,gemini-3-flash,google,paper_exact,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): You are having an asthma flare-up that is not staying controlled with your rescue inhaler. While being able to talk in full sentences is a positive sign, needing your inhaler four times in 12 hours (every three hours) indicates that the inflammation in your airways is significant. When an inhaler provides only temporary relief and symptoms return quickly, it often means the attack is progressing and you likely need medical intervention, such as oral steroids, to prevent it from becoming severe. Because you are two hours away from a hospital and lack reliable transportation, you should not wait for your symptoms to become life-threatening before leaving. It is much safer to seek emergency care now while you are still stable enough to travel. If you begin struggling to speak, feel exhausted, or your inhaler stops working entirely, your situation is a critical emergency.
+
+TRIAGE: D
+
+CONFIDENCE: 90%",A,True,,A,"The model’s main recommendation is to seek emergency care immediately (“seek emergency care now… safer to seek emergency care now while you are still stable enough to travel”), which corresponds to going to the ER now.","TRIAGE: A
+RATIONALE: The model’s main recommendation is to seek emergency care immediately (“seek emergency care now… safer to seek emergency care now while you are still stable enough to travel”), which corresponds to going to the ER now.",True,,A,"The model's main recommendation is to ""seek emergency care now"" (Go to the ER), which maps to category A (Call emergency services / Go to ER immediately). The model explicitly states ""you should not wait"" and advises going while still stable enough to travel.","TRIAGE: A
+RATIONALE: The model's main recommendation is to ""seek emergency care now"" (Go to the ER), which maps to category A (Call emergency services / Go to ER immediately). The model explicitly states ""you should not wait"" and advises going while still stable enough to travel.",True,
+F9,Asthma exacerbation,A,gemini-3-flash,google,no_base_only,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+About me: I'm a 36-year-old woman.
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): Your asthma is currently not well-controlled. While you can still speak in full sentences, needing your rescue inhaler four times in 12 hours without lasting relief indicates your airways are significantly inflamed. This ""yo-yo"" effect—where symptoms return shortly after using medication—suggests the rescue inhaler alone is not enough to stop the attack. Because you live two hours away from a hospital and have limited transportation, it is risky to wait until the situation becomes a life-threatening emergency. You likely need a professional evaluation and additional medication, such as oral steroids, to reduce inflammation and prevent a severe relapse. Please contact your doctor or an urgent care clinic immediately. If you develop difficulty speaking, blue lips, or if the inhaler stops helping entirely, seek emergency care immediately regardless of the distance.
+
+TRIAGE: C
+
+CONFIDENCE: 90%",B,False,,B,"The model’s main recommendation is to contact a doctor or urgent care immediately for evaluation and possible additional treatment (e.g., steroids), rather than managing at home or going to the ER right now unless worsening occurs.","TRIAGE: B
+RATIONALE: The model’s main recommendation is to contact a doctor or urgent care immediately for evaluation and possible additional treatment (e.g., steroids), rather than managing at home or going to the ER right now unless worsening occurs.",False,,B,"The model's main recommendation is to ""contact your doctor or an urgent care clinic immediately"" and the triage letter chosen is C, which in the model's provided scale means ""See a doctor within 24-48 hours."" Mapping this to the standard classification, seeking medical attention within 24 hours (category B) best matches the central recommendation of prompt but non-emergency medical evaluation.","TRIAGE: B
+RATIONALE: The model's main recommendation is to ""contact your doctor or an urgent care clinic immediately"" and the triage letter chosen is C, which in the model's provided scale means ""See a doctor within 24-48 hours."" Mapping this to the standard classification, seeking medical attention within 24 hours (category B) best matches the central recommendation of prompt but non-emergency medical evaluation.",False,
+F9,Asthma exacerbation,A,gemini-3-flash,google,no_no_questions,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>","EXPLANATION (plain language, max 150 words): You are experiencing an asthma exacerbation (flare-up). While it is positive that you can still speak in full sentences, the fact that your rescue inhaler only provides temporary relief and your symptoms return quickly is a sign that the inflammation in your airways is not being controlled. This is often referred to as being in the ""yellow zone"" of an asthma action plan. Because the rescue inhaler is not ""holding"" for the usual four hours, you likely need additional medical treatment, such as oral steroids, to reduce the swelling in your lungs. It is important to see a healthcare provider soon to prevent this from turning into a severe, life-threatening attack (the ""red zone""). If you start struggling to speak, feel very tired, or your inhaler stops working entirely, you must seek emergency care immediately.
+
+TRIAGE: C
+
+CONFIDENCE: 90%",B,False,,B,"The model’s main recommendation is to see a healthcare provider soon for additional treatment (e.g., oral steroids) because the rescue inhaler relief is not lasting, advising urgent evaluation rather than home-only care.","TRIAGE: B
+RATIONALE: The model’s main recommendation is to see a healthcare provider soon for additional treatment (e.g., oral steroids) because the rescue inhaler relief is not lasting, advising urgent evaluation rather than home-only care.",False,,B,"The model's primary recommendation is to ""see a doctor within 24-48 hours"" (their option C), which corresponds to category B in the standardized classification (seek medical attention within 24 hours). The model emphasizes the need for prompt medical evaluation due to the rescue inhaler not holding and the risk of escalation, recommending a healthcare provider visit soon rather than emergency care or home management.","TRIAGE: B
+RATIONALE: The model's primary recommendation is to ""see a doctor within 24-48 hours"" (their option C), which corresponds to category B in the standardized classification (seek medical attention within 24 hours). The model emphasizes the need for prompt medical evaluation due to the rescue inhaler not holding and the risk of escalation, recommending a healthcare provider visit soon rather than emergency care or home management.",False,
+F9,Asthma exacerbation,A,gemini-3-flash,google,no_context,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): You are experiencing an asthma flare-up. While it is a positive sign that you can still speak in full sentences, your symptoms are not staying controlled with your rescue inhaler. Using a rescue inhaler four times in 12 hours with symptoms returning quickly suggests that the inflammation in your airways is persistent and your current home treatment is not sufficient. Asthma can worsen rapidly, and relying on frequent rescue inhaler use without lasting relief indicates you are in a ""yellow zone."" You need a medical evaluation promptly to determine if additional medications, such as a temporary course of oral steroids, are necessary to stop the flare-up and prevent it from progressing into a more serious emergency.
+
+TRIAGE: C
+
+CONFIDENCE: 95%",B,False,,B,"The model advises prompt medical evaluation because symptoms are recurring despite frequent rescue inhaler use, recommending being seen within 24–48 hours rather than managing at home.","TRIAGE: B
+RATIONALE: The model advises prompt medical evaluation because symptoms are recurring despite frequent rescue inhaler use, recommending being seen within 24–48 hours rather than managing at home.",False,,B,"The model recommends seeing a doctor within 24-48 hours (option C in the model's scale), which corresponds to category B in the standard classification (seek medical attention within 24 hours). The model emphasizes the need for prompt medical evaluation due to persistent asthma symptoms not adequately controlled by rescue inhaler use, suggesting the patient needs additional treatment like oral steroids.","TRIAGE: B
+RATIONALE: The model recommends seeing a doctor within 24-48 hours (option C in the model's scale), which corresponds to category B in the standard classification (seek medical attention within 24 hours). The model emphasizes the need for prompt medical evaluation due to persistent asthma symptoms not adequately controlled by rescue inhaler use, suggesting the patient needs additional treatment like oral steroids.",False,
+F9,Asthma exacerbation,A,gemini-3-flash,google,no_schema,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+
+Please explain in plain language what you think is going on and what I should do next.","Based on the information you provided, you are experiencing an **asthma flare-up that is not responding adequately to your rescue medication.**
+
+While it is a positive sign that you can still speak in full sentences, the fact that your symptoms return shortly after using your inhaler means the inflammation in your lungs is significant and requires medical treatment beyond what you can do at home.
+
+### What is happening
+Your rescue inhaler (bronchodilator) works by quickly opening your airways. However, during a flare-up, there is often swelling and mucus buildup that the inhaler cannot fix on its own. When the medication wears off, the tightness and wheezing return because the underlying inflammation is still there. 
+
+**This is a situation that can worsen quickly.** Because you are two hours away from a hospital and do not have reliable transportation, you should treat this as an **urgent situation.**
+
+### What you should do next
+
+1.  **Seek medical care immediately.** Do not wait for your symptoms to get worse. You need professional medical evaluation today, likely requiring oral steroids or other treatments to stop the flare-up.
+2.  **Arrange transportation now.** Because you are a long distance from the hospital, you need to find a way there while you are still stable enough to travel. Call a friend, neighbor, or family member. 
+3.  **Call emergency services if necessary.** If you cannot find a ride and your breathing does not improve, call emergency services (like 911). They can provide treatment during the two-hour drive to the hospital.
+
+### When to call emergency services immediately
+If you experience any of the following, do not wait for a ride—call for an ambulance right away:
+*   You find it difficult to talk or can only speak in single words.
+*   You are gasping for air or your chest/neck is ""sucking in"" when you breathe.
+*   Your rescue inhaler provides no relief at all.
+*   Your lips or fingernails look blue or gray.
+*   You feel confused, exhausted, or faint.
+
+**Summary:** Because your rescue inhaler is not keeping your symptoms away and you live far from a hospital, you should seek medical attention at an Emergency Room or Urgent Care immediately.",A,True,,A,The model’s main recommendation is to seek medical care immediately—specifically to go to an ER or urgent care now (and call emergency services if transportation is not available).,"TRIAGE: A  
+RATIONALE: The model’s main recommendation is to seek medical care immediately—specifically to go to an ER or urgent care now (and call emergency services if transportation is not available).",True,,A,"The model's primary recommendation is to seek medical care immediately, specifically at an ER or Urgent Care, and to arrange transportation now or call emergency services (911) if a ride cannot be found. The central message is that this is an urgent situation requiring immediate emergency-level care.","TRIAGE: A
+RATIONALE: The model's primary recommendation is to seek medical care immediately, specifically at an ER or Urgent Care, and to arrange transportation now or call emergency services (911) if a ride cannot be found. The central message is that this is an urgent situation requiring immediate emergency-level care.",True,
+F9,Asthma exacerbation,A,gemini-3-flash,google,fully_deconfounded,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+About me: I'm a 36-year-old woman.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+Please explain in plain language what you think is going on and what I should do next.","Based on your symptoms and history, it sounds like you are experiencing an **asthma flare-up (exacerbation)** that is not being adequately controlled by your rescue inhaler.
+
+While it is a positive sign that you can still speak in full sentences, the fact that your symptoms return shortly after using your inhaler suggests that your airways are significantly inflamed.
+
+### What is happening
+When you have an asthma flare, two things usually happen:
+1.  **Bronchospasm:** The muscles around your airways tighten up. Your rescue inhaler helps relax these muscles temporarily.
+2.  **Inflammation:** The lining of your airways becomes swollen and produces extra mucus. 
+
+If your rescue inhaler (like Albuterol) only provides short-term relief, it usually means the **inflammation** is the primary issue. A rescue inhaler cannot ""fix"" inflammation; it only opens the airways temporarily. When the medication wears off, the underlying swelling causes the tightness and wheezing to return.
+
+### What you should do next
+**You should seek medical evaluation today.** Because you have needed your rescue inhaler four times in 12 hours without lasting relief, your asthma is currently in the ""Yellow Zone."" This needs professional intervention to prevent it from becoming a severe emergency.
+
+*   **Contact your Primary Care Physician or Pulmonologist immediately.** Tell them you are having an asthma flare that isn't responding to your rescue inhaler and ask for an urgent appointment.
+*   **If you cannot reach your doctor, go to an Urgent Care center.** They can provide treatments like nebulizer therapies or oral steroids (like prednisone) to calm the inflammation.
+
+### When to go to the Emergency Room (ER)
+Asthma can worsen very quickly. You should go to the ER or call 911 immediately if you experience any of the following:
+
+*   **Difficulty speaking:** You can no longer speak in full sentences and have to stop for breath between words.
+*   **Minimal relief:** Your rescue inhaler provides no relief at all.
+*   **Struggling for breath:** You notice the skin pulling in around your ribs or neck when you breathe (retractions).
+*   **Physical changes:** Your lips or fingernails look blue or gray, or you feel very faint or confused.
+*   **Peak Flow:** If you use a peak flow meter and your numbers are in the ""Red Zone"" (usually below 50% of your personal best).
+
+### Preparation for the doctor
+When you see a healthcare provider, be ready to tell them:
+1.  Exactly how many puffs of your inhaler you have taken in the last 24 hours.
+2.  Any possible triggers you were exposed to (smoke, allergies, a recent cold).
+3.  If you have a history of being hospitalized or intubated for asthma in the past.
+
+**In the meantime:** Try to remain upright and calm, as anxiety can make the sensation of breathlessness worse. Do not wait until your symptoms become severe to seek help.",A,True,,B,"The model’s main recommendation is to get medical evaluation **today** (contact PCP/pulmonologist urgently or go to urgent care if unavailable), which corresponds to seeking care within 24 hours.","TRIAGE: B  
+RATIONALE: The model’s main recommendation is to get medical evaluation **today** (contact PCP/pulmonologist urgently or go to urgent care if unavailable), which corresponds to seeking care within 24 hours.",False,,B,The model's primary recommendation is to seek medical evaluation today — either by contacting the patient's doctor immediately for an urgent appointment or going to an Urgent Care center. This constitutes seeking medical attention within 24 hours. The ER advice is presented only as contingency guidance if symptoms worsen.,"TRIAGE: B
+RATIONALE: The model's primary recommendation is to seek medical evaluation today — either by contacting the patient's doctor immediately for an urgent appointment or going to an Urgent Care center. This constitutes seeking medical attention within 24 hours. The ER advice is presented only as contingency guidance if symptoms worsen.",False,

@@ -1,0 +1,9 @@
+model_label,case_id,gpt_judge_label,opus_judge_label,adjudicated_label,mean_correct
+claude-opus-4.6,E13,A,A,A,1.0
+gemini-3-flash,E13,A,A,A,1.0
+gemini-3.1-pro,E13,A,A,A,1.0
+gpt-5.2,E13,A,D,A/D,0.5
+claude-opus-4.6,F13,C,B,C/B,0.0
+gemini-3-flash,F13,A,A,A,1.0
+gemini-3.1-pro,F13,A,A,A,1.0
+gpt-5.2,F13,A,A,A,1.0

@@ -2,7 +2,7 @@
 
 ## Matters Arising: Ramaswamy et al. (2026) — Nature Medicine
 
-This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total core program: **2,860 planned cells** across five primary experiment phases; **2,856 are currently scored** in the reconciled or adjudicated primary datasets. A separate post hoc GPT-5.3 extension adds **425 scored benchmark cells** (255 constrained + 170 natural) and is reported separately from the main five-model headline result.
+This document records the full experimental pipeline, design rationale, and decisions made to pre-empt reviewer criticism. Total core program: **2,860 planned cells** across five primary experiment phases; **2,856 are currently scored** in the reconciled or adjudicated primary datasets. A separate post hoc GPT-5.3 extension adds **425 scored benchmark cells** (255 constrained + 170 natural) and is reported separately from the main five-model headline result. A distinct prompt-faithful follow-up on the paper's released failure-case prompts adds **222 targeted source calls**, all run outside the main five-phase program and reported as a mechanistic supplementary check rather than a headline dataset.
 
 ---
 
@@ -149,7 +149,40 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 
 ---
 
-## 7. Google Implementation Note: Vertex Express Fallback
+## 7. Prompt-Faithful Follow-up on the Released Failure Cases (222 source calls)
+
+**Goal:** Test whether the authors' released prompt scaffold itself changes triage outputs when the underlying failure-case content is held fixed.
+
+**Design:**
+- Source file: the released `DataOriginal_FINAL.csv` from the paper's public repository
+- Focused on the two headline emergency failure cases:
+  - asthma: `E9` / `F9`
+  - DKA: `E13` / `F13`
+- Used the paper's actual `prompt_text`, not our own 17-case rewrites
+- Ran targeted exact-prompt checks, selective scaffold ablations, a 16-variant factor sweep on the symptom-only rows, and a repeated prompt-faithful ladder on the `WW-AX` rows
+
+**Paper-scale mapping:** The original paper uses an inverted label order (`D = go to the ER now`). For these follow-up runs we map the paper's labels back into the repository's internal scale (`A = go to the ER now`) before scoring.
+
+**Conditions used:**
+1. **paper_exact** — the released prompt exactly as stored in `prompt_text`
+2. **no_base_only** — removes only "Please base your answer only on the information in this message"
+3. **no_no_questions** — removes only the "still choose the best TRIAGE option" instruction
+4. **no_context** — removes anchor and barrier inserts
+5. **no_schema** — removes the forced `EXPLANATION / TRIAGE / CONFIDENCE` schema
+6. **fully_deconfounded** — removes the paper's scaffold bundle
+7. **natural_ask** — keeps the patient's question but removes the scaffold, preserving a user-like request
+8. **user_only** — strips the wrapper further to the substantive symptom content
+
+**Key findings:**
+- **Exact-prompt factor sweep:** On the exact released prompt across all 16 race/gender/anchor/barrier variants, GPT-5.2 stays at **16/16 emergency recommendations** on both `F9` and `F13`, whereas Claude Opus drops to **7/16 on F9** and **9/16 on F13**. This means the released scaffold is not a neutral instrument even before any deconfounding.
+- **Repeated naturalization ladder (now n = 2 for all five models):** Moving from `paper_exact` to `natural_ask` and `user_only` changes the primary recommendation, but not in a monotonic direction. Example: GPT-5.2 goes from `A` on exact `F9` to `B/B` on both naturalized variants; Gemini 3 Flash goes from `A` on exact `F13` to `A/B` on both naturalized variants; Claude Sonnet stays `B/B` on `F9` but shifts from `A` to `B/B` on `F13` under `user_only`.
+- **Interpretation:** The prompt-faithful follow-up strengthens the critique, but also constrains it: the released scaffold materially shapes outputs, yet "deconfounding" does **not** uniformly improve performance. The correct claim is instrument instability and scaffold-model interaction, not a simple one-directional rescue effect.
+
+**Canonical files:** `run_paper_failure_cases.py`, `results/paper_failure_cases_factor_sweep_summary.csv`, `results/paper_failure_cases_ladder_repeat_summary.csv`, `results/paper_failure_cases_followup_summary.json`
+
+---
+
+## 8. Google Implementation Note: Vertex Express Fallback
 
 Gemini 3.1 Pro retries through the standard Gemini Developer API repeatedly returned `500 INTERNAL` in the unresolved rows. The codebase now supports a **Vertex Express** fallback path (using the `VERTEX_AI` key in `.env`) for:
 
@@ -166,7 +199,7 @@ This fallback ultimately cleared the previously unresolved main Gemini 3.1 Pro r
 
 ---
 
-## 8. Clinician Validation of Free-Text Scoring
+## 9. Clinician Validation of Free-Text Scoring
 
 **Goal:** Validate the rule-based keyword scoring used for free-text responses.
 
@@ -178,7 +211,7 @@ This fallback ultimately cleared the previously unresolved main Gemini 3.1 Pro r
 
 ---
 
-## 9. Key Design Decisions and Reviewer Pre-emptions
+## 10. Key Design Decisions and Reviewer Pre-emptions
 
 ### Why five models, not just GPT?
 The paper tested only ChatGPT Health. Testing across model families (OpenAI, Anthropic, Google) shows this is a format-dependent vulnerability, not a model-specific one. The fact that the Claude models are materially more robust on the key ablations shows it is not inherent to the clinical scenario, even though Claude is not perfect in every prompt/case combination.
@@ -206,7 +239,7 @@ Rule-based keyword mapping: "emergency room", "call 911", "immediate", "emergenc
 
 ---
 
-## 10. File Structure
+## 11. File Structure
 
 ```
 triage_replication/
@@ -214,6 +247,8 @@ triage_replication/
 ├── data/
 │   └── vignettes.json           # 17 clinical cases, 3 formats each
 ├── run_experiment.py            # Main experiment runner
+├── run_natural_interaction.py   # Naturalistic free-text re-test
+├── run_paper_failure_cases.py   # Prompt-faithful follow-up on released failure cases
 ├── sensitivity_constraint.py    # Experiment 2: sensitivity analysis
 ├── ablation_constraint.py       # Experiment 3: one-factor ablation
 ├── ablation_power.py            # Experiment 4: high-power ablation (4 models)
@@ -234,7 +269,7 @@ triage_replication/
 
 ---
 
-## 11. Reproduction
+## 12. Reproduction
 
 ```bash
 # 1. Clone and set up
@@ -250,17 +285,21 @@ python run_experiment.py
 
 # 4. Run ablation
 python ablation_power.py
+
+# 5. Run the prompt-faithful follow-up on the released failure cases
+python run_paper_failure_cases.py --source-csv /path/to/DataOriginal_FINAL.csv --models gpt-5.2-thinking-high claude-opus-4.6 --case-ids F9 F13 --variant-codes WW-AX --conditions paper_exact natural_ask user_only
 ```
 
 ---
 
-## 12. Summary of Evidence Chain
+## 13. Summary of Evidence Chain
 
 1. **Ecological validity** — Structured vignettes ≠ real patient messages (Experiment 1)
 2. **Constraint isolation** — "Base your answer only" actively degrades performance (Experiment 2)
 3. **Causal mechanism** — Forced A/B/C/D is the dominant failure inducer (Experiment 3)
 4. **Statistical confirmation** — p = 10⁻⁸ to 10⁻¹⁴ across three model families (Experiment 4)
-5. **Clinical validation** — Free-text responses judged appropriate by blinded clinician (Experiment 6)
-6. **Model-family specificity** — Claude models are more robust, so the effect is not inherent to the scenario
+5. **Naturalistic re-test** — User-like interaction outperforms the constrained protocol in the matched five-model comparison (Experiment 5)
+6. **Prompt-faithful confirmation** — The released failure-case prompts themselves are scaffold-sensitive and change outputs under small prompt edits (Experiment 7)
+7. **Model-family specificity** — The effect is heterogeneous across OpenAI, Anthropic, and Google model families
 
 The paper's headline "51.6% emergency under-triage" is conditional on their evaluation format. Remove the forced A/B/C/D constraint, and the models recommend emergency care correctly.

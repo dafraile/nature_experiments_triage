@@ -1,0 +1,13 @@
+case_id,prompt_format,gpt_judge_label,opus_judge_label,adjudicated_label,mean_correct
+E13,fully_deconfounded,A,A,A,1.0
+E13,no_base_only,A,A,A,1.0
+E13,no_context,A,A,A,1.0
+E13,no_no_questions,A,A,A,1.0
+E13,no_schema,A,A,A,1.0
+E13,paper_exact,A,D,A/D,0.5
+F13,fully_deconfounded,B,B,B,0.0
+F13,no_base_only,A,A,A,1.0
+F13,no_context,A,A,A,1.0
+F13,no_no_questions,A,A,A,1.0
+F13,no_schema,D,D,D,0.0
+F13,paper_exact,A,A,A,1.0

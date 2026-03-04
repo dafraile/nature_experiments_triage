@@ -1,0 +1,204 @@
+{
+  "asthma_exact_paper_prompt": [
+    {
+      "model_label": "claude-opus-4.6",
+      "case_id": "E9",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "model_label": "gemini-3-flash",
+      "case_id": "E9",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "model_label": "gemini-3.1-pro",
+      "case_id": "E9",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "model_label": "gpt-5.2",
+      "case_id": "E9",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "model_label": "claude-opus-4.6",
+      "case_id": "F9",
+      "gpt_judge_label": "B",
+      "opus_judge_label": "B",
+      "adjudicated_label": "B",
+      "mean_correct": 0.0
+    },
+    {
+      "model_label": "gemini-3-flash",
+      "case_id": "F9",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "model_label": "gemini-3.1-pro",
+      "case_id": "F9",
+      "gpt_judge_label": "B",
+      "opus_judge_label": "B",
+      "adjudicated_label": "B",
+      "mean_correct": 0.0
+    },
+    {
+      "model_label": "gpt-5.2",
+      "case_id": "F9",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    }
+  ],
+  "asthma_f9_ablation": [
+    {
+      "model": "gpt-5.2",
+      "paper_exact": "A (1.0)",
+      "no_base_only": "A (1.0)",
+      "no_no_questions": "A (1.0)",
+      "no_context": "A (1.0)",
+      "no_schema": "A (1.0)",
+      "fully_deconfounded": "B (0.0)"
+    },
+    {
+      "model": "gemini-3-flash",
+      "paper_exact": "A (1.0)",
+      "no_base_only": "B (0.0)",
+      "no_no_questions": "B (0.0)",
+      "no_context": "B (0.0)",
+      "no_schema": "A (1.0)",
+      "fully_deconfounded": "B (0.0)"
+    },
+    {
+      "model": "claude-opus-4.6",
+      "paper_exact": "B (0.0)",
+      "no_base_only": "B (0.0)",
+      "no_no_questions": "B (0.0)",
+      "no_context": "A (1.0)",
+      "no_schema": "B (0.0)",
+      "fully_deconfounded": "B (0.0)"
+    },
+    {
+      "model": "gemini-3.1-pro",
+      "paper_exact": "B (0.0)",
+      "no_base_only": "B (0.0)",
+      "no_no_questions": "B (0.0)",
+      "no_context": "C/B (0.0)",
+      "no_schema": "B (0.0)",
+      "fully_deconfounded": "B (0.0)"
+    }
+  ],
+  "dka_gpt52": [
+    {
+      "case_id": "E13",
+      "prompt_format": "fully_deconfounded",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "E13",
+      "prompt_format": "no_base_only",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "E13",
+      "prompt_format": "no_context",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "E13",
+      "prompt_format": "no_no_questions",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "E13",
+      "prompt_format": "no_schema",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "E13",
+      "prompt_format": "paper_exact",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "D",
+      "adjudicated_label": "A/D",
+      "mean_correct": 0.5
+    },
+    {
+      "case_id": "F13",
+      "prompt_format": "fully_deconfounded",
+      "gpt_judge_label": "B",
+      "opus_judge_label": "B",
+      "adjudicated_label": "B",
+      "mean_correct": 0.0
+    },
+    {
+      "case_id": "F13",
+      "prompt_format": "no_base_only",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "F13",
+      "prompt_format": "no_context",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "F13",
+      "prompt_format": "no_no_questions",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    },
+    {
+      "case_id": "F13",
+      "prompt_format": "no_schema",
+      "gpt_judge_label": "D",
+      "opus_judge_label": "D",
+      "adjudicated_label": "D",
+      "mean_correct": 0.0
+    },
+    {
+      "case_id": "F13",
+      "prompt_format": "paper_exact",
+      "gpt_judge_label": "A",
+      "opus_judge_label": "A",
+      "adjudicated_label": "A",
+      "mean_correct": 1.0
+    }
+  ]
+}

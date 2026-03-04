@@ -210,6 +210,11 @@ def save_rows(rows: list[dict], json_path: Path, csv_path: Path) -> None:
 def filter_source_rows(rows: list[dict], args: argparse.Namespace) -> list[dict]:
     filtered: list[dict] = []
     for row in rows:
+        source_error = row.get("error")
+        if source_error is None:
+            source_error = row.get("source_error")
+        if str(source_error).strip() and str(source_error).strip().lower() != "nan":
+            continue
         if args.case_ids and row["case_id"] not in set(args.case_ids):
             continue
         if args.source_models and row["source_model"] not in set(args.source_models):

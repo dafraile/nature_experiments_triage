@@ -1,0 +1,9 @@
+source_model,case_id,exact_wwax_label,natural_ask_gpt_judge,natural_ask_opus_judge,natural_ask_adjudicated,natural_ask_mean_correct,user_only_gpt_judge,user_only_opus_judge,user_only_adjudicated,user_only_mean_correct
+claude-opus-4.6,F13,B,B,B,B,0.0,D,A,D/A,0.5
+gemini-3-flash,F13,A,A,A,A,1.0,A,A,A,1.0
+gemini-3.1-pro,F13,A,B,B,B,0.0,B,B,B,0.0
+gpt-5.2-thinking-high,F13,A,D,A,D/A,0.5,B,B,B,0.0
+claude-opus-4.6,F9,B,B,B,B,0.0,B,B,B,0.0
+gemini-3-flash,F9,A,A,A,A,1.0,B,B,B,0.0
+gemini-3.1-pro,F9,B,B,B,B,0.0,B,B,B,0.0
+gpt-5.2-thinking-high,F9,A,B,B,B,0.0,B,B,B,0.0

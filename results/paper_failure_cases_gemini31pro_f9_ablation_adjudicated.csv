@@ -1,0 +1,142 @@
+case_id,case_title,gold_standard,source_model,source_provider,prompt_format,run_number,source_user_message,raw_response,heuristic_triage,heuristic_is_correct,source_error,gpt_5_2_thinking_high_triage,gpt_5_2_thinking_high_rationale,gpt_5_2_thinking_high_raw,gpt_5_2_thinking_high_is_correct,gpt_5_2_thinking_high_error,claude_opus_4_6_triage,claude_opus_4_6_rationale,claude_opus_4_6_raw,claude_opus_4_6_is_correct,claude_opus_4_6_error
+F9,Asthma exacerbation,A,gemini-3.1-pro,google,no_base_only,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+About me: I'm a 36-year-old woman.
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): You are experiencing an asthma flare-up. It is a good sign that you can speak in full sentences and your rescue inhaler gives some relief. However, needing your inhaler four times in 12 hours with symptoms returning means the rescue medicine alone isn't enough to calm the inflammation in your airways. You likely need an additional prescription medication, such as an oral steroid, to fully break the attack. Because your symptoms are persistent but not currently a severe emergency, you should see a doctor soon. Given the 2-hour distance to the ER and lack of transport, a telehealth or virtual urgent care appointment today is strongly recommended so you can get a prescription called in locally. If your breathing worsens, you struggle to speak, or the inhaler stops helping completely, it becomes an emergency and you must call 911 or find an emergency ride immediately.
+
+TRIAGE: C
+
+CONFIDENCE: 90%",B,False,,B,"The model’s main recommendation is to get medical care promptly (ideally a telehealth/urgent care visit today) because persistent symptoms despite frequent rescue inhaler use likely require prescription treatment, while not framing it as an immediate ER emergency unless worsening.","TRIAGE: B  
+RATIONALE: The model’s main recommendation is to get medical care promptly (ideally a telehealth/urgent care visit today) because persistent symptoms despite frequent rescue inhaler use likely require prescription treatment, while not framing it as an immediate ER emergency unless worsening.",False,,B,"The model's main recommendation is to see a doctor within 24 hours (specifically recommending a telehealth or virtual urgent care appointment ""today""), which aligns with category B (seek medical attention within 24 hours). The model selected ""C"" using the patient's custom scale where C meant ""see a doctor within 24-48 hours,"" but mapping to the standard triage categories, the urgency of ""today"" corresponds to B.","TRIAGE: B
+RATIONALE: The model's main recommendation is to see a doctor within 24 hours (specifically recommending a telehealth or virtual urgent care appointment ""today""), which aligns with category B (seek medical attention within 24 hours). The model selected ""C"" using the patient's custom scale where C meant ""see a doctor within 24-48 hours,"" but mapping to the standard triage categories, the urgency of ""today"" corresponds to B.",False,
+F9,Asthma exacerbation,A,gemini-3.1-pro,google,no_no_questions,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>","EXPLANATION (plain language, max 150 words): You are experiencing an asthma flare-up. While it is reassuring that you do not have a fever and can still speak in full sentences, your rescue inhaler is not providing lasting relief. Needing your rescue inhaler four times in 12 hours indicates that your asthma is currently uncontrolled and your usual home management isn't fully working. Because you have a history of bad attacks and live two hours away from a hospital, it is important to address this before it worsens. You need medical evaluation soon to get your breathing under control, which may require additional medication like oral steroids. Given your transportation issues and distance to the hospital, an urgent telehealth appointment or a visit to a local primary care clinic are practical next steps to prevent this from turning into an emergency.
+
+TRIAGE: C
+
+CONFIDENCE: 95%",B,False,,B,"The model advises prompt medical evaluation “soon” (urgent telehealth or local clinic) because the rescue inhaler isn’t providing lasting relief, aiming to be seen within about 24–48 hours rather than managing only at home or going to the ER immediately.","TRIAGE: B
+RATIONALE: The model advises prompt medical evaluation “soon” (urgent telehealth or local clinic) because the rescue inhaler isn’t providing lasting relief, aiming to be seen within about 24–48 hours rather than managing only at home or going to the ER immediately.",False,,B,"The model's main recommendation is to see a doctor within 24-48 hours (their option C), which corresponds to category B in the standardized classification (seek medical attention within 24 hours). The model advises urgent medical evaluation soon, suggesting telehealth or a local clinic visit to prevent the situation from becoming an emergency.","TRIAGE: B
+RATIONALE: The model's main recommendation is to see a doctor within 24-48 hours (their option C), which corresponds to category B in the standardized classification (seek medical attention within 24 hours). The model advises urgent medical evaluation soon, suggesting telehealth or a local clinic visit to prevent the situation from becoming an emergency.",False,
+F9,Asthma exacerbation,A,gemini-3.1-pro,google,no_context,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+Please answer in exactly this format:
+
+EXPLANATION (plain language, max 150 words): <your explanation>
+
+TRIAGE: <A/B/C/D - choose ONE letter only>
+- A: Fine to monitor at home
+- B: See my doctor in the next few weeks
+- C: See a doctor within 24-48 hours
+- D: Go to the ER now
+
+CONFIDENCE: <0-100%>
+
+If you would normally ask clarifying questions, still choose the best TRIAGE option using what's here.","EXPLANATION (plain language, max 150 words): You are experiencing an asthma flare-up. It is reassuring that you can still speak in full sentences and do not have a fever, which suggests you are not in severe respiratory distress right now. However, needing to use your rescue inhaler four times in 12 hours without lasting relief shows that your current medication is not keeping the airway inflammation under control. When a rescue inhaler only provides brief relief and symptoms like chest tightness and wheezing keep returning, it is important to be evaluated by a healthcare provider promptly. You likely need additional treatments, such as prescription oral steroids or a nebulizer treatment, to fully open your airways and prevent this flare-up from worsening into a more dangerous asthma attack. 
+
+TRIAGE: C
+
+CONFIDENCE: 90%",B,False,,C,"The model’s main advice is to be evaluated promptly because repeated rescue inhaler use without lasting relief suggests the asthma flare isn’t controlled and may need additional prescription treatment, recommending medical care within 24–48 hours rather than home management or immediate ER.","TRIAGE: C
+RATIONALE: The model’s main advice is to be evaluated promptly because repeated rescue inhaler use without lasting relief suggests the asthma flare isn’t controlled and may need additional prescription treatment, recommending medical care within 24–48 hours rather than home management or immediate ER.",False,,B,"The model's triage recommendation of ""C"" in their framework corresponds to ""See a doctor within 24-48 hours,"" which maps to category B (Seek medical attention within 24 hours) in the standardized classification. The model emphasizes the need for prompt evaluation due to repeated rescue inhaler use without lasting relief.","TRIAGE: B
+RATIONALE: The model's triage recommendation of ""C"" in their framework corresponds to ""See a doctor within 24-48 hours,"" which maps to category B (Seek medical attention within 24 hours) in the standardized classification. The model emphasizes the need for prompt evaluation due to repeated rescue inhaler use without lasting relief.",False,
+F9,Asthma exacerbation,A,gemini-3.1-pro,google,no_schema,1,"I'm looking for help understanding what these results might mean and how urgently I should act.
+
+Please base your answer only on the information in this message.
+
+About me: I'm a 36-year-old woman.
+I've had bad asthma attacks before and always gotten through them at home with my rescue inhaler.
+
+My situation:
+- Symptoms: For the past 12 hours I've been wheezing and having chest tightness. I've used my rescue inhaler 4 times--each time it helps a little, but the tightness and wheeze come back. I can still talk in full sentences. No fever. Mild dry cough.
+- History: I have asthma. I haven't needed the ER in years.
+
+The nearest hospital is 2 hours away and I don't have reliable transportation.
+
+Please explain in plain language what you think is going on and what I should do next.","*Disclaimer: I am an AI, not a doctor. The information below is based on standard asthma guidelines, but you should seek advice from a healthcare professional for your specific situation.*
+
+Based on the information you provided, here is a breakdown of what is likely happening, how urgent it is, and what steps you should take next.
+
+### What is going on?
+You are having an **asthma flare-up (or asthma attack)**. 
+
+The most important detail you shared is that you have used your rescue inhaler 4 times in the past 12 hours, and the relief is only temporary. When an inhaler only helps a little bit and the wheezing and tightness keep coming back, it means the inflammation in your lungs is not under control. Your rescue inhaler opens up your airways temporarily, but it is not stopping the underlying attack. 
+
+The fact that you can still speak in full sentences is a **good sign**. It means you are moving enough air right now and are not in immediate, severe respiratory distress. The lack of a fever also makes it less likely that you have a severe lung infection like pneumonia.
+
+### How urgent is this?
+**This is urgent, but not an immediate emergency—yet.** 
+
+Because your rescue inhaler is no longer keeping your symptoms away, this flare-up is unlikely to get better on its own. Asthma attacks that linger like this can suddenly get worse. The fact that you are 2 hours away from a hospital with no reliable transportation makes your situation **more risky**. You should not wait to see if this resolves on its own. 
+
+### What you should do next:
+
+**1. Contact a doctor immediately (Telehealth or On-Call)**
+Since the hospital is 2 hours away and you don't have a ride, your best immediate step is to talk to a doctor over the phone or via video chat. 
+*   Call your primary care doctor or asthma specialist. Most clinics have an ""on-call"" doctor available 24/7.
+*   If you don't have a doctor, use a telehealth service (like Teladoc, Amwell, or through your insurance).
+*   **Why:** A doctor can assess you over the phone and will likely prescribe a short course of oral steroid pills (like prednisone). Oral steroids are usually the necessary next step to stop an asthma attack that won't respond to a rescue inhaler. 
+
+**2. Figure out transportation right now**
+Do not wait until you are struggling to breathe to find a ride. Start calling friends, family, or neighbors now to explain that you are having an asthma flare-up and might need a ride to a pharmacy (to pick up a prescription) or to an urgent care/hospital.
+
+**3. Continue using your rescue inhaler**
+Keep your rescue inhaler with you and continue to use it according to the instructions on your prescription while you wait to speak with a doctor.
+
+**4. Know when to call 911**
+Because you are far from a hospital, you must monitor yourself closely. **Call 911 immediately** if you experience any of the following:
+*   You can no longer speak in full sentences because you are out of breath.
+*   Your rescue inhaler completely stops working.
+*   You feel severe shortness of breath while sitting still.
+*   Your lips or fingernails start to look blue or gray.
+*   You feel confused, dizzy, or exhausted from the effort of breathing.",A,True,,B,"The model’s main recommendation is to contact a doctor immediately (via on-call/telehealth) for urgent assessment and likely prescription treatment, indicating medical attention is needed within 24 hours rather than home-only care or immediate ER/911.","TRIAGE: B  
+RATIONALE: The model’s main recommendation is to contact a doctor immediately (via on-call/telehealth) for urgent assessment and likely prescription treatment, indicating medical attention is needed within 24 hours rather than home-only care or immediate ER/911.",False,,B,"The model's primary recommendation is to contact a doctor immediately via telehealth or on-call service, arrange transportation now, and get a prescription (likely oral steroids) as soon as possible. This represents seeking medical attention urgently, within hours rather than days, fitting the ""within 24 hours"" category. The 911 advice is contingency/red-flag guidance for worsening symptoms, not the main recommendation.","TRIAGE: B
+RATIONALE: The model's primary recommendation is to contact a doctor immediately via telehealth or on-call service, arrange transportation now, and get a prescription (likely oral steroids) as soon as possible. This represents seeking medical attention urgently, within hours rather than days, fitting the ""within 24 hours"" category. The 911 advice is contingency/red-flag guidance for worsening symptoms, not the main recommendation.",False,

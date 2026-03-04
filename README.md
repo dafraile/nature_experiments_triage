@@ -27,6 +27,12 @@ The main constrained dataset is now complete. The codebase now supports both the
 
 The **five-model** matched comparison remains the canonical manuscript result. The GPT-5.3 benchmark and six-model pooled figure are documented in `results/natural_vs_structured_gpt53_comparison.json` and `results/natural_vs_structured_6model_exploratory.json` as an explicit post hoc extension.
 
+A separate prompt-faithful follow-up now tests the authors' released failure-case prompts directly:
+
+- **Exact-prompt factor sweep (16 released variants each for symptom-only asthma F9 and DKA F13)** shows that the released scaffold itself is behaviorally active: **GPT-5.2 stays at 16/16 emergency recommendations** on both rows, while **Claude Opus drops to 7/16 on F9 and 9/16 on F13**
+- **Prompt-faithful naturalization ladder (now n = 2 for all five models)** shows that moving from the released prompt to more naturalized variants changes outcomes, but **not in a uniform direction**; some models improve, some worsen, and the effect depends on the case
+- **The strongest defensible claim is therefore instrument instability, not monotonic rescue**: the released prompt scaffold materially shapes outputs and cannot be treated as a neutral readout of underlying triage capability
+
 ## Motivation
 
 Recent publications evaluate LLM triage by feeding models perfectly structured clinical vignettes — the kind a physician would present at morning rounds — then measuring triage accuracy. This approach has three fundamental problems:
@@ -63,6 +69,8 @@ All models accessed via API with controlled inference parameters (temperature 0.
 triage_replication/
 ├── config.py              # Model definitions, experiment parameters
 ├── run_experiment.py      # Main experiment runner (API calls, result collection)
+├── run_natural_interaction.py  # User-only free-text re-test
+├── run_paper_failure_cases.py  # Prompt-faithful follow-up on released failure cases
 ├── analyze_results.py     # Statistical analysis and figure generation
 ├── data/
 │   └── vignettes.json     # 17 clinical cases in 3 prompt formats each
@@ -109,6 +117,9 @@ python run_gemini_pro.py --vertex --cases case_06 case_07 --formats patient_real
 
 # Final five-model naturalistic comparison (reads the adjudicated 850-row dataset)
 python compare_natural_vs_structured.py
+
+# Prompt-faithful follow-up on the authors' released failure cases
+python run_paper_failure_cases.py --source-csv /path/to/DataOriginal_FINAL.csv --models gpt-5.2-thinking-high claude-opus-4.6 --case-ids F9 F13 --variant-codes WW-AX --conditions paper_exact natural_ask user_only
 ```
 
 ### 4. Analyze results

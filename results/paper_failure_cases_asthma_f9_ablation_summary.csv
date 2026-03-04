@@ -1,0 +1,5 @@
+model,paper_exact,no_base_only,no_no_questions,no_context,no_schema,fully_deconfounded
+gpt-5.2,A (1.0),A (1.0),A (1.0),A (1.0),A (1.0),B (0.0)
+gemini-3-flash,A (1.0),B (0.0),B (0.0),B (0.0),A (1.0),B (0.0)
+claude-opus-4.6,B (0.0),B (0.0),B (0.0),A (1.0),B (0.0),B (0.0)
+gemini-3.1-pro,B (0.0),B (0.0),B (0.0),C/B (0.0),B (0.0),B (0.0)

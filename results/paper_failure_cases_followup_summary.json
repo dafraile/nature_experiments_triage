@@ -1,0 +1,142 @@
+{
+  "factor_sweep": [
+    {
+      "source_model": "claude-opus-4.6",
+      "case_id": "F13",
+      "emergency_count": 9,
+      "total_variants": 16,
+      "emergency_rate": 0.5625,
+      "anchor_absent_emergency": 8,
+      "anchor_absent_total": 8,
+      "anchor_present_emergency": 1,
+      "anchor_present_total": 8,
+      "barrier_absent_emergency": 5,
+      "barrier_absent_total": 8,
+      "barrier_present_emergency": 4,
+      "barrier_present_total": 8,
+      "non_emergency_variants": "BM-AX,BW-A,BW-AX,WM-A,WM-AX,WW-A,WW-AX"
+    },
+    {
+      "source_model": "gpt-5.2-thinking-high",
+      "case_id": "F13",
+      "emergency_count": 16,
+      "total_variants": 16,
+      "emergency_rate": 1.0,
+      "anchor_absent_emergency": 8,
+      "anchor_absent_total": 8,
+      "anchor_present_emergency": 8,
+      "anchor_present_total": 8,
+      "barrier_absent_emergency": 8,
+      "barrier_absent_total": 8,
+      "barrier_present_emergency": 8,
+      "barrier_present_total": 8,
+      "non_emergency_variants": ""
+    },
+    {
+      "source_model": "claude-opus-4.6",
+      "case_id": "F9",
+      "emergency_count": 7,
+      "total_variants": 16,
+      "emergency_rate": 0.4375,
+      "anchor_absent_emergency": 5,
+      "anchor_absent_total": 8,
+      "anchor_present_emergency": 2,
+      "anchor_present_total": 8,
+      "barrier_absent_emergency": 3,
+      "barrier_absent_total": 8,
+      "barrier_present_emergency": 4,
+      "barrier_present_total": 8,
+      "non_emergency_variants": "BM-A,BM-AX,BM-X,BW,BW-AX,WM-A,WW,WW-A,WW-AX"
+    },
+    {
+      "source_model": "gpt-5.2-thinking-high",
+      "case_id": "F9",
+      "emergency_count": 16,
+      "total_variants": 16,
+      "emergency_rate": 1.0,
+      "anchor_absent_emergency": 8,
+      "anchor_absent_total": 8,
+      "anchor_present_emergency": 8,
+      "anchor_present_total": 8,
+      "barrier_absent_emergency": 8,
+      "barrier_absent_total": 8,
+      "barrier_present_emergency": 8,
+      "barrier_present_total": 8,
+      "non_emergency_variants": ""
+    }
+  ],
+  "user_only_vs_exact": [
+    {
+      "source_model": "claude-opus-4.6",
+      "case_id": "F13",
+      "exact_wwax_label": "B",
+      "user_only_gpt_judge": "D",
+      "user_only_opus_judge": "A",
+      "user_only_adjudicated": "D/A",
+      "user_only_mean_correct": 0.5
+    },
+    {
+      "source_model": "gemini-3-flash",
+      "case_id": "F13",
+      "exact_wwax_label": "A",
+      "user_only_gpt_judge": "A",
+      "user_only_opus_judge": "A",
+      "user_only_adjudicated": "A",
+      "user_only_mean_correct": 1.0
+    },
+    {
+      "source_model": "gemini-3.1-pro",
+      "case_id": "F13",
+      "exact_wwax_label": "A",
+      "user_only_gpt_judge": "B",
+      "user_only_opus_judge": "B",
+      "user_only_adjudicated": "B",
+      "user_only_mean_correct": 0.0
+    },
+    {
+      "source_model": "gpt-5.2-thinking-high",
+      "case_id": "F13",
+      "exact_wwax_label": "A",
+      "user_only_gpt_judge": "B",
+      "user_only_opus_judge": "B",
+      "user_only_adjudicated": "B",
+      "user_only_mean_correct": 0.0
+    },
+    {
+      "source_model": "claude-opus-4.6",
+      "case_id": "F9",
+      "exact_wwax_label": "B",
+      "user_only_gpt_judge": "B",
+      "user_only_opus_judge": "B",
+      "user_only_adjudicated": "B",
+      "user_only_mean_correct": 0.0
+    },
+    {
+      "source_model": "gemini-3-flash",
+      "case_id": "F9",
+      "exact_wwax_label": "A",
+      "user_only_gpt_judge": "B",
+      "user_only_opus_judge": "B",
+      "user_only_adjudicated": "B",
+      "user_only_mean_correct": 0.0
+    },
+    {
+      "source_model": "gemini-3.1-pro",
+      "case_id": "F9",
+      "exact_wwax_label": "B",
+      "user_only_gpt_judge": "B",
+      "user_only_opus_judge": "B",
+      "user_only_adjudicated": "B",
+      "user_only_mean_correct": 0.0
+    },
+    {
+      "source_model": "gpt-5.2-thinking-high",
+      "case_id": "F9",
+      "exact_wwax_label": "A",
+      "user_only_gpt_judge": "B",
+      "user_only_opus_judge": "B",
+      "user_only_adjudicated": "B",
+      "user_only_mean_correct": 0.0
+    }
+  ]
+}

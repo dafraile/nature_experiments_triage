@@ -1,0 +1,11 @@
+source_model,case_id,exact_wwax_label,natural_ask_labels_by_repeat,natural_ask_mean_correct_avg,natural_ask_n_repeats,user_only_labels_by_repeat,user_only_mean_correct_avg,user_only_n_repeats
+claude-opus-4.6,F13,B,r1=B; r2=B,0.0,2,r1=D/A; r2=B,0.25,2
+claude-sonnet-4.6,F13,A,r1=A; r2=A,1.0,2,r1=B; r2=B,0.0,2
+gemini-3-flash,F13,A,r1=A; r2=B,0.5,2,r1=A; r2=B,0.5,2
+gemini-3.1-pro,F13,A,r1=B; r2=B,0.0,2,r1=B; r2=B,0.0,2
+gpt-5.2-thinking-high,F13,A,r1=D/A; r2=B,0.25,2,r1=B; r2=D/A,0.25,2
+claude-opus-4.6,F9,B,r1=B; r2=B,0.0,2,r1=B; r2=B,0.0,2
+claude-sonnet-4.6,F9,B,r1=B; r2=B,0.0,2,r1=B; r2=B,0.0,2
+gemini-3-flash,F9,A,r1=A; r2=B,0.5,2,r1=B; r2=B,0.0,2
+gemini-3.1-pro,F9,B,r1=B; r2=B,0.0,2,r1=B; r2=B,0.0,2
+gpt-5.2-thinking-high,F9,A,r1=B; r2=B,0.0,2,r1=B; r2=B,0.0,2
