@@ -143,9 +143,10 @@ This produces accuracy tables, per-case breakdowns, statistical tests (chi-squar
 
 ## Design Notes
 
-- **System prompt varies by format**: Structured cases use a clinical system prompt; patient-language cases use a natural health-assistant prompt. This reflects reality — a real triage chatbot would not use the same system prompt as a medical exam.
 - **Temperature = 0.7**: Matches typical chatbot deployment settings. Stochastic variation across runs is intentional.
 - **API calls, not web interfaces**: Unlike the original paper, we use direct API access with controlled parameters. Results are reproducible.
+- **Prompt authoring**: All 17 scenarios and prompt variants were generated using LLMs (Claude Opus 4.6, GPT Codex 5.3) under clinical direction from D.F.N. They were reviewed for clinical accuracy but were not independently authored by human investigators. See METHODS_AND_DECISIONS.md for full details.
+- **System prompt varies by format**: Structured cases use a clinical system prompt; patient-language cases use a natural health-assistant prompt. This means the constrained condition bundles two changes (user message format + system prompt). This reflects reality — a real triage chatbot would not use the same system prompt as a medical exam — but is a confound that should be noted.
 
 ## License
 
