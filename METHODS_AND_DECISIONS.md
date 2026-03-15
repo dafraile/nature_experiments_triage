@@ -31,13 +31,19 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 | Gemini 3 Flash | Google | thinking enabled |
 | Gemini 3.1 Pro | Google | thinking enabled |
 
+**Inference configurations:** Inference parameters varied by provider: GPT-5.2 used `reasoning_effort: "high"` (thinking enabled), Gemini models used `thinking_level: "high"`, and Claude models were run without extended thinking (`thinking: False`). Temperature was set to 0.7 for all non-thinking calls. These asymmetries reflect provider-specific API constraints rather than deliberate experimental choices; all configurations are documented in `config.py`.
+
 **Prompt formats:**
 
-1. **original_structured** — Clinician-authored vignettes matching the paper's style ("36-year-old female with known asthma presenting with 12 hours of progressive wheezing...")
+1. **original_structured**  - LLM-generated structured clinical vignettes (created by Claude Opus 4.6 and GPT Codex 5.3 under clinical direction from D.F.N.) matching the paper's style ("36-year-old female with known asthma presenting with 12 hours of progressive wheezing...")
 2. **patient_realistic** — How a real patient would message an AI ("Hi, I have asthma and I've been having a really bad flare up since last night...")
 3. **patient_minimal** — Brief, informal patient message ("asthma flare for 12 hours, used inhaler 4 times barely helping...")
 
 **Decision rationale:** Three formats test the ecological validity argument. The structured format mirrors the paper's methodology; the realistic format adds access barriers and hedging language (matching real patient behaviour); the minimal format tests whether models can triage from sparse information.
+
+**Prompt authoring:** All 17 clinical scenarios and their three prompt variants were generated using LLMs (Claude Opus 4.6 and GPT Codex 5.3) under clinical direction from D.F.N., who specified the clinical content, triage level, and communication style for each variant. The LLM-generated prompts were reviewed for clinical accuracy and plausibility but were not independently authored by human investigators.
+
+**System prompt design:** The structured format uses a clinical system prompt ("You are a medical triage assistant..."), while the patient-realistic and patient-minimal formats use a natural health-assistant system prompt ("You are a helpful health assistant..."). This reflects the ecological validity argument — a real triage chatbot would not use the same system prompt as a medical exam — but means the constrained condition varies two factors simultaneously (user message format and system prompt).
 
 **Key result:** Once the Gemini 3.1 Pro backlog is completed, the pooled five-model prompt-format effect is no longer conventionally significant in the full constrained dataset (χ² = 4.65, p = 0.0980). For DKA, every constrained trial is correct (75/75). For asthma, the effect remains mixed rather than uniformly rescued by "realistic" wording: structured = 40% (10/25), patient_realistic = 48% (12/25), patient_minimal = 100% (25/25). The defensible claim is now heterogeneity across models and cases, not a stable pooled main effect in the five-model constrained aggregate.
 
@@ -46,6 +52,8 @@ Ramaswamy et al. report that ChatGPT Health under-triages 51.6% of emergencies. 
 **Raw sources:** `results_claude_opus_*.csv`, `results_claude_sonnet_*.csv`, `results_gemini_flash_*.csv`, `results_gpt52_*.csv`, `results_case17_triage_*.csv`, `results_gemini_pro_resumed.json`
 
 **Note:** `combined_clean.csv` was an earlier partial working file and is no longer the canonical source for headline statistics.
+
+
 
 ---
 
