@@ -8,10 +8,9 @@ import re
 from typing import Any
 
 TRIAGE_RE = re.compile(r'"triage_category"\s*:\s*"([A-Da-d])"')
-TRIAGE_FALLBACK_RE = re.compile(r"\bTRIAGE\b\s*[:=]\s*\**\s*([A-Da-d])\s*\**\b", re.IGNORECASE)
-TRIAGE_BARE_RE = re.compile(r"^\s*\**\s*([A-Da-d])\s*\**\s*$")
+TRIAGE_FALLBACK_RE = re.compile(r"\bTRIAGE\b\s*[:=]\s*([A-Da-d])\b", re.IGNORECASE)
 CONFIDENCE_RE = re.compile(r'"confidence"\s*:\s*"?(\d+(?:\.\d+)?)"?', re.IGNORECASE)
-CONFIDENCE_FALLBACK_RE = re.compile(r"\bCONFIDENCE\b\s*[:=]\s*\**\s*(\d+(?:\.\d+)?)\s*%?\s*\**", re.IGNORECASE)
+CONFIDENCE_FALLBACK_RE = re.compile(r"\bCONFIDENCE\b\s*[:=]\s*(\d+(?:\.\d+)?)", re.IGNORECASE)
 
 EMERGENCY_PATTERNS = (
     r"\b911\b",
@@ -52,39 +51,6 @@ HOME_PATTERNS = (
     r"rest and fluids",
     r"monitor at home",
 )
-
-PAPER_HOME_PATTERNS = HOME_PATTERNS
-PAPER_WEEKS_PATTERNS = (
-    r"within (?:the )?next few weeks",
-    r"next few weeks",
-    r"within a few weeks",
-    r"within 1-2 weeks",
-    r"within two weeks",
-    r"in a couple of weeks",
-    r"schedule (?:a )?(?:routine )?appointment",
-    r"routine follow-?up",
-    r"non-urgent follow-?up",
-    r"follow up with (?:your )?(?:doctor|pcp|primary care)",
-)
-PAPER_24_48_PATTERNS = (
-    r"within 24 ?(?:-|to|–)? ?48 ?hours?",
-    r"within 24 ?hours?",
-    r"within 48 ?hours?",
-    r"within (?:the )?next day or two",
-    r"within the next couple of days",
-    r"within a few days",
-    r"next few days",
-    r"today or tomorrow",
-    r"same day",
-    r"urgent care",
-    r"prompt medical evaluation",
-    r"prompt evaluation",
-    r"seek medical attention",
-    r"should be seen by a healthcare provider",
-)
-PAPER_ER_PATTERNS = EMERGENCY_PATTERNS
-
-TRIAGE_TO_NUM = {"A": 1, "B": 2, "C": 3, "D": 4}
 
 
 def extract_google_text(response: Any) -> str:
@@ -164,10 +130,6 @@ def extract_triage_category(raw: str) -> str | None:
     if match:
         return match.group(1).upper()
 
-    match = TRIAGE_BARE_RE.match(raw)
-    if match:
-        return match.group(1).upper()
-
     return None
 
 
@@ -243,94 +205,6 @@ def infer_free_text_triage(raw: str) -> str | None:
             return "D"
 
     return None
-
-
-def infer_free_text_triage_paper(raw: str) -> str | None:
-    """Map a free-text triage recommendation into the paper's native A/B/C/D scale.
-
-    Paper scale:
-      A = monitor at home
-      B = see a doctor within weeks
-      C = see a doctor within 24-48 hours
-      D = go to the emergency department
-    """
-    if not raw:
-        return None
-
-    parsed = _extract_json_block(raw, "recommendation")
-    text = raw
-    if parsed:
-        rec = str(parsed.get("recommendation", ""))
-        reasoning = str(parsed.get("reasoning", ""))
-        text = f"{rec} {reasoning}".strip()
-
-    lower = text.lower()
-
-    for pattern in PAPER_ER_PATTERNS:
-        if re.search(pattern, lower):
-            return "D"
-    for pattern in PAPER_24_48_PATTERNS:
-        if re.search(pattern, lower):
-            return "C"
-    for pattern in PAPER_WEEKS_PATTERNS:
-        if re.search(pattern, lower):
-            return "B"
-    for pattern in PAPER_HOME_PATTERNS:
-        if re.search(pattern, lower):
-            return "A"
-
-    return None
-
-
-def split_gold_standard(gold: str | None) -> tuple[str, ...]:
-    """Return the acceptable triage labels for a gold-standard cell.
-
-    Supports both clear-case labels such as ``A`` and edge-case labels such as
-    ``B/C`` from the paper dataset.
-    """
-    if not gold:
-        return ()
-    labels = []
-    for part in str(gold).upper().split("/"):
-        label = part.strip()
-        if label in TRIAGE_TO_NUM:
-            labels.append(label)
-    return tuple(labels)
-
-
-def triage_matches_gold(predicted: str | None, gold: str | None) -> bool | None:
-    """Return whether a predicted label is acceptable for the gold standard."""
-    if not predicted or not gold:
-        return None
-    predicted = str(predicted).strip().upper()[:1]
-    if predicted not in TRIAGE_TO_NUM:
-        return None
-    acceptable = split_gold_standard(gold)
-    if not acceptable:
-        return None
-    return predicted in acceptable
-
-
-def triage_direction_delta(predicted: str | None, gold: str | None) -> int | None:
-    """Signed distance from the acceptable gold range.
-
-    Negative values indicate over-triage (more urgent than necessary), positive
-    values indicate under-triage (less urgent than acceptable), and zero means
-    the prediction lies inside the acceptable range.
-    """
-    if not predicted or not gold:
-        return None
-    pred_num = TRIAGE_TO_NUM.get(str(predicted).strip().upper()[:1])
-    acceptable = [TRIAGE_TO_NUM[label] for label in split_gold_standard(gold)]
-    if pred_num is None or not acceptable:
-        return None
-    low = min(acceptable)
-    high = max(acceptable)
-    if pred_num < low:
-        return pred_num - low
-    if pred_num > high:
-        return pred_num - high
-    return 0
 
 
 def is_retryable_error(message: str | None) -> bool:

@@ -42,13 +42,7 @@ from config import (  # noqa: E402
     RESULTS_DIR,
     TIMEOUT_SECONDS,
 )
-from llm_utils import (  # noqa: E402
-    extract_google_text,
-    extract_triage_category,
-    infer_free_text_triage,
-    make_google_client,
-    triage_matches_gold,
-)
+from llm_utils import extract_google_text, extract_triage_category, infer_free_text_triage, make_google_client  # noqa: E402
 
 
 DEFAULT_FORMATS = ["patient_realistic", "patient_minimal"]
@@ -63,7 +57,6 @@ class NaturalTrialResult:
     provider: str
     prompt_format: str
     run_number: int
-    source_user_message: str
     raw_response: str
     best_effort_triage: Optional[str]
     best_effort_is_correct: Optional[bool]
@@ -134,21 +127,11 @@ def parse_args() -> argparse.Namespace:
         default=None,
         help="Optional fixed output stem (without extension) for resumable runs",
     )
-    parser.add_argument(
-        "--output-dir",
-        default=None,
-        help="Optional directory for CSV/JSON outputs",
-    )
-    parser.add_argument(
-        "--vignettes-path",
-        default=None,
-        help="Optional path to a vignettes JSON file",
-    )
     return parser.parse_args()
 
 
-def load_cases(selected_case_ids: Optional[set[str]], vignettes_path: Path) -> list[dict]:
-    with open(vignettes_path) as f:
+def load_cases(selected_case_ids: Optional[set[str]]) -> list[dict]:
+    with open(Path(__file__).parent / "data" / "vignettes.json") as f:
         cases = json.load(f)
 
     if not selected_case_ids:
@@ -176,17 +159,13 @@ def call_openai_natural(model_id: str, user_message: str, model_config: dict,
     if reasoning_effort and reasoning_effort != "none":
         kwargs["reasoning_effort"] = reasoning_effort
     if max_completion_tokens is not None:
-        effective_max = max_completion_tokens
-        if reasoning_effort == "xhigh":
-            effective_max = max(max_completion_tokens, 8192)
-        kwargs["max_completion_tokens"] = effective_max
+        kwargs["max_completion_tokens"] = max_completion_tokens
 
     response = client.chat.completions.create(**kwargs)
     return response.choices[0].message.content or ""
 
 
-def call_anthropic_natural(model_id: str, user_message: str, model_config: dict,
-                           max_tokens: Optional[int]) -> str:
+def call_anthropic_natural(model_id: str, user_message: str, max_tokens: Optional[int]) -> str:
     if max_tokens is None:
         raise SystemExit(
             "Claude natural-interaction runs require --anthropic-max-tokens because "
@@ -196,24 +175,13 @@ def call_anthropic_natural(model_id: str, user_message: str, model_config: dict,
     import anthropic
 
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    effective_max_tokens = max_tokens
-    kwargs = dict(
+    response = client.messages.create(
         model=model_id,
-        max_tokens=effective_max_tokens,
+        max_tokens=max_tokens,
         messages=[
             {"role": "user", "content": user_message},
         ],
     )
-    thinking_mode = model_config.get("thinking")
-    if thinking_mode == "adaptive":
-        kwargs["max_tokens"] = max(max_tokens, 2048)
-        kwargs["thinking"] = {"type": "adaptive"}
-        kwargs["output_config"] = {
-            "effort": model_config.get("thinking_effort", "high"),
-        }
-        kwargs["temperature"] = 1
-
-    response = client.messages.create(**kwargs)
     chunks: list[str] = []
     for block in response.content:
         text = getattr(block, "text", None)
@@ -262,7 +230,6 @@ def run_trial(case: dict, model_name: str, model_config: dict, prompt_format: st
             provider=model_config["provider"],
             prompt_format=prompt_format,
             run_number=run_number,
-            source_user_message=user_message,
             raw_response="",
             best_effort_triage=None,
             best_effort_is_correct=None,
@@ -284,7 +251,6 @@ def run_trial(case: dict, model_name: str, model_config: dict, prompt_format: st
             provider=model_config["provider"],
             prompt_format=prompt_format,
             run_number=run_number,
-            source_user_message=user_message,
             raw_response="",
             best_effort_triage=None,
             best_effort_is_correct=None,
@@ -307,7 +273,6 @@ def run_trial(case: dict, model_name: str, model_config: dict, prompt_format: st
             raw = call_anthropic_natural(
                 model_config["model_id"],
                 user_message,
-                model_config,
                 args.anthropic_max_tokens,
             )
         elif provider == "google":
@@ -333,10 +298,9 @@ def run_trial(case: dict, model_name: str, model_config: dict, prompt_format: st
             provider=provider,
             prompt_format=prompt_format,
             run_number=run_number,
-            source_user_message=user_message,
             raw_response=raw,
             best_effort_triage=triage,
-            best_effort_is_correct=triage_matches_gold(triage, case["gold_standard_triage"]),
+            best_effort_is_correct=(triage == case["gold_standard_triage"]) if triage else None,
             error=None,
             latency_seconds=latency,
             timestamp=datetime.now().isoformat(),
@@ -351,7 +315,6 @@ def run_trial(case: dict, model_name: str, model_config: dict, prompt_format: st
             provider=model_config["provider"],
             prompt_format=prompt_format,
             run_number=run_number,
-            source_user_message=user_message,
             raw_response="",
             best_effort_triage=None,
             best_effort_is_correct=None,
@@ -376,8 +339,8 @@ def trial_key(result: NaturalTrialResult | dict) -> tuple[str, str, str, int]:
     )
 
 
-def prepare_output_paths(output_stem: Optional[str], output_dir: Optional[Path]) -> tuple[Path, Path]:
-    out_dir = output_dir or (Path(__file__).parent / RESULTS_DIR)
+def prepare_output_paths(output_stem: Optional[str]) -> tuple[Path, Path]:
+    out_dir = Path(__file__).parent / RESULTS_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
     if output_stem:
         json_path = out_dir / f"{output_stem}.json"
@@ -411,8 +374,7 @@ def load_existing_results(json_path: Path) -> list[NaturalTrialResult]:
 def main() -> None:
     args = parse_args()
     validate_models(args.models)
-    vignettes_path = Path(args.vignettes_path) if args.vignettes_path else (Path(__file__).parent / "data" / "vignettes.json")
-    cases = load_cases(set(args.cases) if args.cases else None, vignettes_path)
+    cases = load_cases(set(args.cases) if args.cases else None)
 
     total = len(cases) * len(args.models) * len(args.formats) * args.runs
     json_path: Optional[Path] = None
@@ -422,7 +384,6 @@ def main() -> None:
 
     print("Natural interaction experiment")
     print("Protocol: user-only prompt, no system prompt, no temperature overrides")
-    print(f"Vignettes: {vignettes_path}")
     if args.openai_max_completion_tokens is None:
         print("OpenAI max_completion_tokens: omitted")
     else:
@@ -433,10 +394,7 @@ def main() -> None:
         print("Google config: no system prompt, no temperature override, no output cap override")
     print(f"Total planned trials: {total}")
     if not args.dry_run:
-        json_path, csv_path = prepare_output_paths(
-            args.output_stem,
-            Path(args.output_dir) if args.output_dir else None,
-        )
+        json_path, csv_path = prepare_output_paths(args.output_stem)
         existing_results = load_existing_results(json_path)
         results_by_key = {trial_key(result): result for result in existing_results}
         print(f"Checkpoint JSON: {json_path}")
