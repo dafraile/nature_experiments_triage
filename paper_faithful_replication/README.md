@@ -56,3 +56,23 @@ This generates:
 - `paper_faithful_replication/data/canonical_source_bank.json`
 - `paper_faithful_replication/data/canonical_rewrite_workbook.csv`
 
+## Current Result Snapshot
+
+Completed faithful single-turn run:
+
+- exact structured paper prompts: `82.4%`
+- natural free-text rewrites: `78.2%`
+- matched-cell Wilcoxon: `p = 0.00354`
+
+Key interpretation:
+
+- the exact paper-style structured prompt outperformed the free-text
+  conversational rewrite in this faithful `60`-case study
+- the natural free-text condition increased under-triage, especially on the
+  symptoms-only (`F/NH`) cases
+
+Primary result files:
+
+- `paper_faithful_replication/results/paper_faithful_singleturn_r2_20260314_013738_structured.csv`
+- `paper_faithful_replication/results/paper_faithful_singleturn_r2_20260314_013738_natural_adjudicated_paper.csv`
+- `paper_faithful_replication/results/paper_faithful_singleturn_r2_20260314_013738_comparison.json`

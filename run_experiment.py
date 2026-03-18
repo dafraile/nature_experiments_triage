@@ -38,6 +38,7 @@ from llm_utils import (
     google_visible_output_tokens,
     infer_free_text_triage,
     parse_structured_response,
+    triage_matches_gold,
 )
 
 # ═══════════════════════════════════════════════
@@ -117,9 +118,15 @@ def call_openai(model_id: str, system_prompt: str, user_message: str,
 
     reasoning_effort = (model_config or {}).get("reasoning_effort", None)
 
+    max_completion_tokens = MAX_TOKENS
+    if reasoning_effort == "xhigh":
+        # GPT-5.4 can spend the full visible budget on hidden reasoning unless
+        # we leave more headroom for the actual answer.
+        max_completion_tokens = max(MAX_TOKENS, 8192)
+
     kwargs = dict(
         model=model_id,
-        max_completion_tokens=MAX_TOKENS,   # GPT-5.2 requires max_completion_tokens, not max_tokens
+        max_completion_tokens=max_completion_tokens,
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_message},
@@ -141,21 +148,37 @@ def call_openai(model_id: str, system_prompt: str, user_message: str,
 def call_anthropic(model_id: str, system_prompt: str, user_message: str,
                    model_config: dict = None) -> str:
     """
-    Call Anthropic API. Thinking is OFF for Claude models per experimental design
-    (performs well without it, sometimes detrimental).
+    Call Anthropic API. Supports optional adaptive thinking via the model config.
     """
     import anthropic
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    response = client.messages.create(
+    max_tokens = MAX_TOKENS
+    kwargs = dict(
         model=model_id,
-        max_tokens=MAX_TOKENS,
+        max_tokens=max_tokens,
         temperature=TEMPERATURE,
         system=system_prompt,
         messages=[
             {"role": "user", "content": user_message},
         ],
     )
-    return response.content[0].text
+
+    thinking_mode = (model_config or {}).get("thinking")
+    if thinking_mode == "adaptive":
+        kwargs["max_tokens"] = max(MAX_TOKENS, 2048)
+        kwargs["thinking"] = {"type": "adaptive"}
+        kwargs["output_config"] = {
+            "effort": (model_config or {}).get("thinking_effort", "high"),
+        }
+        kwargs["temperature"] = 1
+
+    response = client.messages.create(**kwargs)
+    chunks: list[str] = []
+    for block in response.content:
+        text = getattr(block, "text", None)
+        if text:
+            chunks.append(text)
+    return "".join(chunks).strip()
 
 
 def call_google(model_id: str, system_prompt: str, user_message: str,
@@ -285,7 +308,7 @@ def run_single_trial(
     # Parse response
     parsed = parse_triage_response(raw_response) if raw_response else {}
     predicted = parsed.get("triage_category")
-    is_correct = (predicted == case["gold_standard_triage"]) if predicted else None
+    is_correct = triage_matches_gold(predicted, case["gold_standard_triage"])
 
     return TrialResult(
         case_id=case["id"],
@@ -307,26 +330,93 @@ def run_single_trial(
     )
 
 
+def load_cases(vignettes_path: Path, case_ids: Optional[list[str]] = None) -> list[dict]:
+    with open(vignettes_path) as f:
+        cases = json.load(f)
+
+    if not case_ids:
+        return cases
+
+    allowed = set(case_ids)
+    selected = [case for case in cases if case["id"] in allowed]
+    missing = sorted(allowed - {case["id"] for case in selected})
+    if missing:
+        raise SystemExit(f"Unknown case ids: {', '.join(missing)}")
+    return selected
+
+
+def trial_key(result: TrialResult | dict) -> tuple[str, str, str, int]:
+    return (
+        str(result["model"] if isinstance(result, dict) else result.model),
+        str(result["case_id"] if isinstance(result, dict) else result.case_id),
+        str(result["prompt_format"] if isinstance(result, dict) else result.prompt_format),
+        int(result["run_number"] if isinstance(result, dict) else result.run_number),
+    )
+
+
+def prepare_output_paths(tag: str = "", output_stem: Optional[str] = None,
+                         output_dir: Optional[Path] = None) -> tuple[Path, Path]:
+    if output_dir is None:
+        output_dir = Path(__file__).parent / RESULTS_DIR
+    output_dir.mkdir(parents=True, exist_ok=True)
+    if output_stem:
+        base_name = output_stem
+    else:
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        base_name = f"results_{tag}_{timestamp}" if tag else f"results_{timestamp}"
+    return output_dir / f"{base_name}.csv", output_dir / f"{base_name}.json"
+
+
+def save_results(results: list[TrialResult], csv_path: Path, json_path: Path) -> None:
+    rows = [asdict(r) for r in results]
+    fieldnames = list(TrialResult.__dataclass_fields__.keys())
+    with open(csv_path, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow(row)
+    with open(json_path, "w") as f:
+        json.dump(rows, f, indent=2)
+
+
+def load_existing_results(json_path: Path) -> list[TrialResult]:
+    if not json_path.exists():
+        return []
+    with open(json_path) as f:
+        rows = json.load(f)
+    return [TrialResult(**row) for row in rows]
+
+
 def run_experiment(
     models: list[str],
     formats: list[str],
     num_runs: int,
+    vignettes_path: Path,
     case_ids: Optional[list[str]] = None,
     dry_run: bool = False,
-) -> list[TrialResult]:
-    """Run the full experiment matrix."""
+    tag: str = "",
+    output_stem: Optional[str] = None,
+    output_dir: Optional[Path] = None,
+    call_wait: float = 1.0,
+) -> tuple[list[TrialResult], Optional[Path], Optional[Path]]:
+    """Run the full experiment matrix with per-trial checkpointing."""
 
-    # Load vignettes
-    vignettes_path = Path(__file__).parent / DATA_DIR / "vignettes.json"
-    with open(vignettes_path) as f:
-        cases = json.load(f)
-    if case_ids:
-        allowed = set(case_ids)
-        cases = [case for case in cases if case["id"] in allowed]
-
-    results = []
+    cases = load_cases(vignettes_path, case_ids)
     total = len(models) * len(cases) * len(formats) * num_runs
     current = 0
+
+    csv_path: Optional[Path] = None
+    json_path: Optional[Path] = None
+    results_by_key: dict[tuple[str, str, str, int], TrialResult] = {}
+
+    if not dry_run:
+        csv_path, json_path = prepare_output_paths(tag=tag, output_stem=output_stem, output_dir=output_dir)
+        existing_results = load_existing_results(json_path)
+        results_by_key = {trial_key(result): result for result in existing_results}
+        print(f"Checkpoint CSV:  {csv_path}")
+        print(f"Checkpoint JSON: {json_path}")
+        if existing_results:
+            print(f"Resuming from {len(existing_results)} saved trial(s)")
 
     for model_name in models:
         model_config = MODELS[model_name]
@@ -334,52 +424,37 @@ def run_experiment(
             for fmt in formats:
                 for run in range(1, num_runs + 1):
                     current += 1
+                    key = (model_name, case["id"], fmt, run)
+                    if key in results_by_key and not results_by_key[key].error:
+                        print(
+                            f"[{current}/{total}] {model_name} | {case['id']} | {fmt} | run {run} "
+                            "(skip: already saved)",
+                        )
+                        continue
+
                     print(f"[{current}/{total}] {model_name} | {case['id']} | {fmt} | run {run}")
-
                     result = run_single_trial(case, model_name, model_config, fmt, run, dry_run)
-                    results.append(result)
+                    results_by_key[key] = result
 
-                    # Brief log
                     if not dry_run and result.error:
                         print(f"  ✗ ERROR: {result.error}")
                     elif not dry_run:
                         correct_str = "✓" if result.is_correct else "✗"
-                        print(f"  {correct_str} Predicted: {result.predicted_triage} "
-                              f"(gold: {result.gold_standard}) "
-                              f"confidence: {result.confidence} "
-                              f"({result.latency_seconds}s)")
+                        print(
+                            f"  {correct_str} Predicted: {result.predicted_triage} "
+                            f"(gold: {result.gold_standard}) confidence: {result.confidence} "
+                            f"({result.latency_seconds}s)"
+                        )
 
-                    # Rate limiting: brief pause between calls
-                    if not dry_run:
-                        time.sleep(1.0)
+                    if not dry_run and csv_path and json_path:
+                        ordered_results = [results_by_key[item] for item in sorted(results_by_key)]
+                        save_results(ordered_results, csv_path, json_path)
 
-    return results
+                    if not dry_run and call_wait > 0:
+                        time.sleep(call_wait)
 
-
-def save_results(results: list[TrialResult], tag: str = ""):
-    """Save results to CSV and JSON."""
-    results_dir = Path(__file__).parent / RESULTS_DIR
-    results_dir.mkdir(exist_ok=True)
-
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    base_name = f"results_{tag}_{timestamp}" if tag else f"results_{timestamp}"
-
-    # CSV
-    csv_path = results_dir / f"{base_name}.csv"
-    fieldnames = list(TrialResult.__dataclass_fields__.keys())
-    with open(csv_path, "w", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for r in results:
-            writer.writerow(asdict(r))
-
-    # JSON (full including raw responses)
-    json_path = results_dir / f"{base_name}.json"
-    with open(json_path, "w") as f:
-        json.dump([asdict(r) for r in results], f, indent=2)
-
-    print(f"\nResults saved to:\n  CSV:  {csv_path}\n  JSON: {json_path}")
-    return csv_path, json_path
+    ordered_results = [results_by_key[item] for item in sorted(results_by_key)]
+    return ordered_results, csv_path, json_path
 
 
 # ═══════════════════════════════════════════════
@@ -438,25 +513,25 @@ def main():
                         help="Tag for output filenames")
     parser.add_argument("--cases", nargs="+", default=None,
                         help="Optional list of case ids to run (for targeted verification)")
+    parser.add_argument("--vignettes-path", type=str, default=None,
+                        help="Optional path to a vignettes JSON file")
+    parser.add_argument("--output-stem", type=str, default=None,
+                        help="Optional fixed output stem (without extension) for resumable runs")
+    parser.add_argument("--output-dir", type=str, default=None,
+                        help="Optional directory for CSV/JSON outputs")
+    parser.add_argument("--call-wait", type=float, default=1.0,
+                        help="Seconds to wait between API calls (default: 1)")
     args = parser.parse_args()
 
-    vignettes_path = Path(__file__).parent / DATA_DIR / "vignettes.json"
-    with open(vignettes_path) as f:
-        all_cases = json.load(f)
-    if args.cases:
-        allowed = set(args.cases)
-        selected_cases = [case for case in all_cases if case["id"] in allowed]
-        missing = sorted(allowed - {case["id"] for case in selected_cases})
-        if missing:
-            raise SystemExit(f"Unknown case ids: {', '.join(missing)}")
-    else:
-        selected_cases = all_cases
+    vignettes_path = Path(args.vignettes_path) if args.vignettes_path else Path(__file__).parent / DATA_DIR / "vignettes.json"
+    selected_cases = load_cases(vignettes_path, args.cases)
 
     print(f"\n{'='*70}")
     print(f"  TRIAGE REPLICATION EXPERIMENT")
     print(f"{'='*70}")
     print(f"  Models:  {', '.join(args.models)}")
     print(f"  Formats: {', '.join(args.formats)}")
+    print(f"  Vignettes: {vignettes_path}")
     if args.cases:
         print(f"  Cases:   {', '.join(args.cases)}")
     print(f"  Runs:    {args.runs}")
@@ -464,10 +539,22 @@ def main():
     print(f"  Dry run: {args.dry_run}")
     print(f"{'='*70}\n")
 
-    results = run_experiment(args.models, args.formats, args.runs, args.cases, args.dry_run)
+    results, csv_path, json_path = run_experiment(
+        args.models,
+        args.formats,
+        args.runs,
+        vignettes_path=vignettes_path,
+        case_ids=args.cases,
+        dry_run=args.dry_run,
+        tag=args.tag,
+        output_stem=args.output_stem,
+        output_dir=Path(args.output_dir) if args.output_dir else None,
+        call_wait=args.call_wait,
+    )
 
     if not args.dry_run:
-        save_results(results, args.tag)
+        if csv_path and json_path:
+            print(f"\nResults saved to:\n  CSV:  {csv_path}\n  JSON: {json_path}")
         print_summary(results)
     else:
         print(f"\n[DRY RUN] {len(results)} trials would be executed.")

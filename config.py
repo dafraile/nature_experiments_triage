@@ -41,6 +41,11 @@ MODELS = {
         # reasoning_effort="high".
         "supports_temperature_override": False,
     },
+    "gpt-5.4-xhigh": {
+        "provider": "openai",
+        "model_id": "gpt-5.4",
+        "reasoning_effort": "xhigh",
+    },
     # gpt-5.2-pro omitted for now (expensive) — uncomment to add:
     # "gpt-5.2-pro": {
     #     "provider": "openai",
@@ -48,16 +53,18 @@ MODELS = {
     #     "reasoning_effort": "high",
     # },
 
-    # ── Anthropic (no thinking — per your guidance, performs well without it) ──
+    # ── Anthropic (adaptive thinking enabled for the next paper-faithful pass) ──
     "claude-sonnet-4.6": {
         "provider": "anthropic",
         "model_id": "claude-sonnet-4-6",
-        "thinking": False,
+        "thinking": "adaptive",
+        "thinking_effort": "high",
     },
     "claude-opus-4.6": {
         "provider": "anthropic",
         "model_id": "claude-opus-4-6",
-        "thinking": False,
+        "thinking": "adaptive",
+        "thinking_effort": "high",
     },
 
     # ── Google (thinking enabled) ──
