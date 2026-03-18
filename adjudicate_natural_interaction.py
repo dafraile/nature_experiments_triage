@@ -21,7 +21,7 @@ from typing import Optional
 
 sys.path.insert(0, str(Path(__file__).parent))
 from config import ANTHROPIC_API_KEY, MODELS, OPENAI_API_KEY, RESULTS_DIR  # noqa: E402
-from llm_utils import extract_triage_category  # noqa: E402
+from llm_utils import extract_triage_category, triage_matches_gold  # noqa: E402
 
 
 DEFAULT_ADJUDICATORS = ["gpt-5.2-thinking-high", "claude-opus-4.6"]
@@ -89,6 +89,16 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Print the first adjudication prompt without calling APIs",
     )
+    parser.add_argument(
+        "--vignettes-path",
+        default=None,
+        help="Optional path to a vignettes JSON file for source-message fallback",
+    )
+    parser.add_argument(
+        "--output-dir",
+        default=None,
+        help="Optional directory for adjudicated CSV/JSON outputs",
+    )
     return parser.parse_args()
 
 
@@ -151,6 +161,8 @@ def call_openai_adjudicator(model_name: str, prompt: str, max_completion_tokens:
     reasoning_effort = model_config.get("reasoning_effort")
     if reasoning_effort and reasoning_effort != "none":
         kwargs["reasoning_effort"] = reasoning_effort
+        if reasoning_effort == "xhigh":
+            kwargs["max_completion_tokens"] = max(max_completion_tokens, 4096)
     response = client.chat.completions.create(**kwargs)
     return response.choices[0].message.content or ""
 
@@ -160,11 +172,21 @@ def call_anthropic_adjudicator(model_name: str, prompt: str, max_tokens: int) ->
 
     model_config = MODELS[model_name]
     client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    response = client.messages.create(
+    kwargs = dict(
         model=model_config["model_id"],
         max_tokens=max_tokens,
         messages=[{"role": "user", "content": prompt}],
     )
+    thinking_mode = model_config.get("thinking")
+    if thinking_mode == "adaptive":
+        kwargs["max_tokens"] = max(max_tokens, 2048)
+        kwargs["thinking"] = {"type": "adaptive"}
+        kwargs["output_config"] = {
+            "effort": model_config.get("thinking_effort", "high"),
+        }
+        kwargs["temperature"] = 1
+
+    response = client.messages.create(**kwargs)
     chunks: list[str] = []
     for block in response.content:
         text = getattr(block, "text", None)
@@ -191,8 +213,9 @@ def row_key(row: dict) -> tuple[str, str, str, str]:
     )
 
 
-def prepare_output_paths(source_path: Path) -> tuple[Path, Path]:
-    out_dir = Path(__file__).parent / RESULTS_DIR
+def prepare_output_paths(source_path: Path, output_dir: Optional[Path]) -> tuple[Path, Path]:
+    out_dir = output_dir or (Path(__file__).parent / RESULTS_DIR)
+    out_dir.mkdir(parents=True, exist_ok=True)
     stem = source_path.stem + "_adjudicated"
     return out_dir / f"{stem}.json", out_dir / f"{stem}.csv"
 
@@ -352,6 +375,7 @@ def main() -> None:
     validate_adjudicators(args.adjudicators)
 
     source_path = Path(args.input) if args.input else latest_natural_csv()
+    vignettes_path = Path(args.vignettes_path) if args.vignettes_path else (Path(__file__).parent / "data" / "vignettes.json")
     source_rows_raw = load_rows(source_path)
     cases_by_id: Optional[dict[str, dict]] = None
     source_rows = []
@@ -362,7 +386,7 @@ def main() -> None:
         normalized["source_user_message"] = normalized.get("source_user_message") or ""
         if not normalized["source_user_message"]:
             if cases_by_id is None:
-                with open(Path(__file__).parent / "data" / "vignettes.json") as f:
+                with open(vignettes_path) as f:
                     cases_by_id = {case["id"]: case for case in json.load(f)}
             case = cases_by_id[normalized["case_id"]]
             normalized["source_user_message"] = case[normalized["prompt_format"]]
@@ -372,11 +396,15 @@ def main() -> None:
     if not source_rows:
         raise SystemExit("No rows matched the requested filters.")
 
-    json_path, csv_path = prepare_output_paths(source_path)
+    json_path, csv_path = prepare_output_paths(
+        source_path,
+        Path(args.output_dir) if args.output_dir else None,
+    )
     output_rows = load_or_initialize_output(all_source_rows, args.adjudicators, json_path)
 
     print("Natural-interaction adjudication")
     print(f"Source file: {source_path}")
+    print(f"Vignettes: {vignettes_path}")
     print(f"Rows selected: {len(source_rows)}")
     print(f"Adjudicators: {', '.join(args.adjudicators)}")
     print(f"Checkpoint JSON: {json_path}")
@@ -421,9 +449,7 @@ def main() -> None:
                 target[f"{prefix}_triage"] = triage
                 target[f"{prefix}_rationale"] = rationale
                 target[f"{prefix}_raw"] = raw
-                target[f"{prefix}_is_correct"] = (
-                    triage == target["gold_standard"] if triage else None
-                )
+                target[f"{prefix}_is_correct"] = triage_matches_gold(triage, target["gold_standard"])
                 target[f"{prefix}_error"] = None
                 if triage:
                     marker = "✓" if target[f"{prefix}_is_correct"] else "✗"
