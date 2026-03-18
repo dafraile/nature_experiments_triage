@@ -1,3 +1,0 @@
-results/*.csv
-results/*.json
-!results/.gitkeep
